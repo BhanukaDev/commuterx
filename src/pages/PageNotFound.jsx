@@ -1,3 +1,3 @@
-export const ErrorPage = () => {
+export function PageNotFound() {
   return <div>No Such Page Boss!</div>;
-};
+}
