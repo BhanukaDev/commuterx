@@ -6,6 +6,7 @@ export default function App() {
   const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY;
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: googlemapAPIKey,
+    libraries: ['places'],
   });
 
   if (!isLoaded) return <div>Loading Boss!</div>;
