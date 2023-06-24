@@ -1,11 +1,16 @@
-import Iconbar from "./components/Iconbar";
+import './App.css';
 
-function App() {
+export default function App() {
+  const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY;
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: googlemapAPIKey,
+  });
+
+  if (!isLoaded) return <div>Loading Boss!</div>;
+
   return (
-    <>
-      <Iconbar />
-    </>
+    <div className='bg-red-500'>
+      <h1>Hi</h1>
+    </div>
   );
 }
-
-export default App;
