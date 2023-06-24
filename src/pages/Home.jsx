@@ -1,4 +1,4 @@
-import Iconbar from "../components/Iconbar";
+import Iconbar from '../components/Iconbar';
 
 export const Home = () => {
   return <Iconbar />;

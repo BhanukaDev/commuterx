@@ -1,12 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import mainlinks from "../links";
-import { FaBars } from "react-icons/fa";
-import { AiFillAlert } from "react-icons/ai";
+/* eslint-disable react/prop-types */
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+import mainlinks from '../links';
+import { FaBars } from 'react-icons/fa';
+import { AiFillAlert } from 'react-icons/ai';
 
 function IconbarRow({ IconSvg, linker, func }) {
   return (
-    <li className="w-full h-10 cursor-pointer">
+    <li className='w-full h-10 cursor-pointer'>
       <Link to={linker} onClick={func}>
         {IconSvg}
       </Link>
@@ -19,8 +21,8 @@ export default function Iconbar() {
     console.log(2);
   };
   return (
-    <div className="bg-slate-400 w-16 h-screen ">
-      <ul className="">
+    <div className='bg-slate-400 w-16 h-screen '>
+      <ul className=''>
         {mainlinks.map((link) => {
           return (
             <IconbarRow
