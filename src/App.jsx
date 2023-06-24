@@ -11,7 +11,8 @@ export default function App() {
     libraries: ["places"],
   });
 
-  if (!isLoaded) return <div>Loading Boss!</div>;
+  if (!isLoaded) return <div>Loading Boss!</div>; // keep code above
+
   return (
     <BrowserRouter>
       <Iconbar />

@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 export const Map = () => {
   const mapCenter = useMemo(
     () => ({ lat: 6.937929989306971, lng: 79.83734955347708 }),
-    [] // right now there is no dependencies to change its center, we can implement it later
+    [] // right now there is no dependencies to change its center, we can implement it
   );
   return (
     <GoogleMap
