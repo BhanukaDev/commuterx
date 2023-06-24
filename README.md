@@ -30,4 +30,6 @@ To use CommuterX, follow these steps:
 
 ## License
 
-CommuterX is released under the [MIT License](https://github.com/CommuterX/LICENSE). Feel free to use, modify, and distribute this software according to the terms of the license.
+CommuterX is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+You are free to use, modify, and distribute this software under the terms of the Apache License 2.0. This license allows for commercial use, modification, distribution, and sublicensing. It also includes patent protection and disclaimers of warranty and liability. See the [LICENSE](LICENSE) file for more details.
