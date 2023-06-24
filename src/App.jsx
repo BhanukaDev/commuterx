@@ -1,8 +1,10 @@
+import Iconbar from "./components/Iconbar";
+
 function App() {
   return (
-    <div className="bg-red-500">
-      <h1>Hi</h1>
-    </div>
+    <>
+      <Iconbar />
+    </>
   );
 }
 
