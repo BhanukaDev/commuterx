@@ -1,24 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useLoadScript } from "@react-google-maps/api";
-import { Map } from "./components/Map";
-import { Home } from "./pages/Home";
-import Iconbar from "./components/Iconbar";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
+import { MapPage } from './pages/MapPage/MapPage';
+import { ErrorPage } from './pages/ErrorPage';
 
 export default function App() {
-  const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY;
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: googlemapAPIKey,
-    libraries: ["places"],
-  });
-
-  if (!isLoaded) return <div>Loading Boss!</div>; // keep code above
-
   return (
     <BrowserRouter>
-      <Iconbar />
-      <Map />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index path='/home' element={<Home />} />
+        <Route path='/showmap' element={<MapPage />} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );
