@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import mainlinks from "../links";
-import SideBar from "./SideNavBar";
 
 function IconbarRow({ iconSvg, linker }) {
   return (
@@ -14,8 +13,7 @@ function IconbarRow({ iconSvg, linker }) {
     </li>
   );
 }
-
-export default function Iconbar() {
+export const IconBar = () => {
   return (
     <>
       <div className="bg-white w-16 h-screen block fixed shadow-lg z-10">
@@ -33,4 +31,4 @@ export default function Iconbar() {
       </div>
     </>
   );
-}
+};

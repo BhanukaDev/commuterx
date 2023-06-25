@@ -1,11 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer {
+@layer base {
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    display: inline;
+    vertical-align: middle;
+  }
+}
+@layer components {
+  .btn {
+    @apply font-quicksand text-base py-2 px-5 outline-none cursor-pointer border-none hover:transition-all hover:duration-500 hover:ease-in-out;
+  }
+  .btn-nav {
+    @apply h-full text-black text-opacity-80 hover:text-opacity-100;
+  }
+  .btn-calltoaction {
+    @apply text-white bg-accent rounded-3xl py-2 px-5 hover:opacity-80;
   }
 }

@@ -5,7 +5,7 @@ import { IoBus } from "react-icons/io5";
 const mainlinks = [
   {
     id: 1,
-    url: "/kizuki",
+    url: "/",
     text: "Kizuki",
     rfcname: "dd",
     iconSvg: (
@@ -14,7 +14,7 @@ const mainlinks = [
   },
   {
     id: 2,
-    url: "/sekai",
+    url: "/",
     text: "Sekai",
     rfcname: "dd",
     iconSvg: (
