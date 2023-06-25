@@ -1,7 +1,7 @@
 import { useLoadScript } from '@react-google-maps/api';
 import { Map } from '../../components/Map';
 import { Loading } from '../Loading';
-import { IconBar } from '../../components/Iconbar';
+import { NavBar } from '../../components/NavBar';
 
 export const MapPage = () => {
   const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY;
@@ -17,7 +17,7 @@ export const MapPage = () => {
 
   return (
     <>
-      <IconBar />
+      <NavBar />
       <Map />
     </>
   );

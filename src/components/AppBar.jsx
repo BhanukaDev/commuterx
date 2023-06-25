@@ -6,7 +6,7 @@ import { mainlinks } from '../links';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-export const SideNavBar = () => {
+export const AppBar = () => {
   const [show, setShow] = useState(false);
 
   const handleMenuClick = () => {
