@@ -1,39 +1,36 @@
 /* eslint-disable react/prop-types */
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import mainlinks from '../links';
-import { FaBars } from 'react-icons/fa';
-import { AiFillAlert } from 'react-icons/ai';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import mainlinks from "../links";
+import SideBar from "./SideNavBar";
 
-function IconbarRow({ IconSvg, linker, func }) {
+function IconbarRow({ iconSvg, linker }) {
   return (
-    <li className='w-full h-10 cursor-pointer'>
-      <Link to={linker} onClick={func}>
-        {IconSvg}
+    <li className="w-full h-16 cursor-pointer p-3">
+      <Link to={linker} className="w-full h-full block">
+        {iconSvg}
       </Link>
     </li>
   );
 }
 
 export default function Iconbar() {
-  const closeSidebar = () => {
-    console.log(2);
-  };
   return (
-    <div className='bg-slate-400 w-16 h-screen '>
-      <ul className=''>
-        {mainlinks.map((link) => {
-          return (
-            <IconbarRow
-              key={link.id}
-              icon={link.IconSvg}
-              linker={link.url}
-              func={closeSidebar}
-            />
-          );
-        })}
-      </ul>
-    </div>
+    <>
+      <div className="bg-white w-16 h-screen block fixed shadow-lg z-10">
+        <ul className="my-16">
+          {mainlinks.map((link) => {
+            return (
+              <IconbarRow
+                key={link.id}
+                iconSvg={link.iconSvg}
+                linker={link.url}
+              />
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 }
