@@ -13,7 +13,7 @@ export const MapPage = () => {
     //libraries: ['places'],
   });
 
-  if (isLoaded) return <Loading />; // keep code above
+  if (!isLoaded) return <Loading />; // keep code above
 
   return (
     <>
