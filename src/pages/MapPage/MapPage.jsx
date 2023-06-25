@@ -1,6 +1,7 @@
 import { useLoadScript } from '@react-google-maps/api';
 import { Map } from '../../components/Map';
 import { Loading } from '../Loading';
+import { IconBar } from '../../components/Iconbar';
 
 export const MapPage = () => {
   const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY;
@@ -12,10 +13,11 @@ export const MapPage = () => {
     //libraries: ['places'],
   });
 
-  if (!isLoaded) return <Loading />; // keep code above
+  if (isLoaded) return <Loading />; // keep code above
 
   return (
     <>
+      <IconBar />
       <Map />
     </>
   );
