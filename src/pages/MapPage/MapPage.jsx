@@ -1,6 +1,6 @@
-import { useLoadScript } from "@react-google-maps/api";
-import { Map } from "../../components/Map";
-import { Loading } from "../Loading";
+import { useLoadScript } from '@react-google-maps/api';
+import { Map } from '../../components/Map';
+import { Loading } from '../Loading';
 
 export const MapPage = () => {
   const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY;
