@@ -3,14 +3,14 @@ import { Logo } from "./Logo";
 import { FaBars, FaArrowRight } from "react-icons/fa6";
 import { FiLogIn } from "react-icons/fi";
 import { Button } from "./Button";
-import mainlinks from "../links";
+import { mainlinks } from "../links";
 import { Link } from "react-router-dom";
 
 export const SideNavBar = () => {
   const [show, setShow] = useState(false);
 
   const handleMenuClick = () => {
-    setShow(!show);
+    setShow(true);
   };
 
   const closeSidebar = () => {
@@ -55,6 +55,7 @@ export const SideNavBar = () => {
           </div>
         </div>
       </nav>
+
       {/**the sidebar*/}
       <div
         className={`h-screen w-screen fixed px-3 z-30 bg-white flex flex-col transition-all duration-300 ease-out ${
@@ -66,7 +67,7 @@ export const SideNavBar = () => {
           <Logo />
           <FaArrowRight
             className="cursor-pointer text-3xl"
-            onClick={handleMenuClick}
+            onClick={closeSidebar}
           />
         </div>
         {/**the sidebar links*/}

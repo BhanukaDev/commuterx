@@ -1,5 +1,5 @@
-import { GoogleMap, Marker } from '@react-google-maps/api';
-import { useCallback, useMemo, useRef } from 'react';
+import { GoogleMap, Marker } from "@react-google-maps/api";
+import { useCallback, useMemo, useRef } from "react";
 
 export const Map = () => {
   const mapRef = useRef();
@@ -12,7 +12,7 @@ export const Map = () => {
     () => ({
       disableDefaultUI: true,
       clickableIcons: false,
-      mapId: 'c488565ca706849c',
+      mapId: "c488565ca706849c",
     }),
     []
   );
@@ -23,7 +23,7 @@ export const Map = () => {
     <GoogleMap
       zoom={15}
       center={mapCenter}
-      mapContainerClassName='w-screen h-screen'
+      mapContainerClassName="w-screen h-screen"
       options={mapOption}
       onLoad={onLoad}
     >

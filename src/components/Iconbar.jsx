@@ -2,7 +2,10 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import mainlinks from "../links";
+import { transportLinks, mainlinks } from "../links";
+import { FaHome } from "react-icons/fa";
+import { IoSettings } from "react-icons/io5";
+import { MdFeedback } from "react-icons/md";
 
 function IconbarRow({ iconSvg, linker }) {
   return (
@@ -16,17 +19,47 @@ function IconbarRow({ iconSvg, linker }) {
 export const IconBar = () => {
   return (
     <>
-      <div className="bg-white w-16 h-screen block fixed shadow-lg z-10">
-        <ul className="my-16">
-          {mainlinks.map((link) => {
-            return (
-              <IconbarRow
-                key={link.id}
-                iconSvg={link.iconSvg}
-                linker={link.url}
-              />
-            );
-          })}
+      <div className="bg-white w-16 py-3 h-screen fixed shadow-lg z-30 flex flex-col justify-between">
+        <div className="flex flex-col items-center">
+          <Link to="/" className="w-full h-full p-3">
+            <FaHome className="icon-bar-icon" />
+          </Link>
+          <hr className="border w-4/5 my-2" />
+
+          <ul className="">
+            {transportLinks.map((link) => {
+              return (
+                <IconbarRow
+                  key={link.id}
+                  iconSvg={link.iconSvg}
+                  linker={link.url}
+                />
+              );
+            })}
+          </ul>
+          <hr className="border w-4/5 my-2" />
+          <ul>
+            {mainlinks.map((link) => {
+              return (
+                <IconbarRow
+                  key={link.id}
+                  iconSvg={link.iconSvg}
+                  linker={link.url}
+                />
+              );
+            })}
+          </ul>
+        </div>
+
+        <ul className="flex flex-col items-center">
+          <hr className="border w-4/5 my-2" />
+
+          <Link to="/settings" className="w-full h-full p-3">
+            <IoSettings className="icon-bar-icon" />
+          </Link>
+          <Link to="/feedback" className="w-full h-full p-3">
+            <MdFeedback className="icon-bar-icon" />
+          </Link>
         </ul>
       </div>
     </>

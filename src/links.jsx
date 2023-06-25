@@ -2,7 +2,7 @@ import { AiFillAlert, AiFillAliwangwang, AiFillBug } from "react-icons/ai";
 import { IoMdTrain } from "react-icons/io";
 import { IoBus } from "react-icons/io5";
 
-const mainlinks = [
+export const mainlinks = [
   {
     id: 1,
     url: "/",
@@ -18,7 +18,7 @@ const mainlinks = [
     text: "Sekai",
     rfcname: "dd",
     iconSvg: (
-      <IoMdTrain className="w-full h-full opacity-80 hover:opacity-100" />
+      <AiFillAlert className="w-full h-full opacity-80 hover:opacity-100" />
     ),
   },
   {
@@ -27,9 +27,26 @@ const mainlinks = [
     text: "Hanatatachi",
     rfcname: "dd",
     iconSvg: (
-      <IoBus className="w-full h-full p-[1px] opacity-80 hover:opacity-100" />
+      <AiFillBug className="w-full h-full p-[1px] opacity-80 hover:opacity-100" />
     ),
   },
 ];
 
-export default mainlinks;
+export const transportLinks = [
+  {
+    id: 1,
+    url: "/showmap",
+    text: "Train",
+    rfcname: "dd",
+    iconSvg: (
+      <IoMdTrain className="w-full h-full opacity-80 hover:opacity-100" />
+    ),
+  },
+  {
+    id: 2,
+    url: "/showmap",
+    text: "Bus",
+    rfcname: "dd",
+    iconSvg: <IoBus className="w-full h-full opacity-80 hover:opacity-100" />,
+  },
+];
