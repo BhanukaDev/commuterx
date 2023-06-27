@@ -25,6 +25,9 @@ export default {
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],
         searchBar: ['Poppins', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
+        lato: ['Lato', 'sans-serif'],
+        bebas: ['Bebas Neue', 'sans-serif'],
       },
       width: {
         searchBar: '94%',
