@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const STYLES = ["btn-nav", "btn-outline", "btn-calltoaction"];
+const STYLES = ["btn-primary", "btn-outline", "btn-calltoaction"];
 
 export const Button = ({
   children,
