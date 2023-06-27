@@ -27,7 +27,7 @@ export default {
         searchBar: ['Poppins', 'sans-serif'],
       },
       width: {
-        searchBar: '98%',
+        searchBar: '96%',
         searchBarSmall: '80%',
         searchBarMedium: '450px',
         searchBarLarge: '500px',
