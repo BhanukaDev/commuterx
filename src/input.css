@@ -31,7 +31,10 @@
     @apply h-full w-full font-quicksand text-base py-2 px-5 outline-none cursor-pointer border-none hover:transition-all hover:duration-500 hover:ease-in-out;
   }
   .btn-primary {
-    @apply text-white bg-black text-opacity-80 hover:text-opacity-100;
+    @apply text-white bg-black rounded-lg text-opacity-80 hover:text-opacity-100;
+  }
+  .btn-outline {
+    @apply text-black bg-white border border-black border-solid rounded-lg hover:text-white hover:bg-gray-600;
   }
   .btn-calltoaction {
     @apply text-white bg-accent rounded-3xl py-2 px-5 hover:opacity-80;

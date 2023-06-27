@@ -19,7 +19,7 @@ export const AppBar = () => {
 
   return (
     <>
-      <nav className="w-screen h-16 fixed bg-white z-20">
+      <nav className="w-screen h-16 fixed top-0 bg-white z-20">
         {/**the main nav bar */}
         <div className="m-auto h-full flex justify-between items-center px-3 md:w-4/5">
           {/**the inner nav bar */}
@@ -60,7 +60,7 @@ export const AppBar = () => {
 
       {/**the sidebar*/}
       <div
-        className={`h-screen w-screen fixed px-3 z-30 bg-white flex flex-col transition-all duration-300 ease-out ${
+        className={`h-screen w-screen fixed top-0 px-3 z-30 bg-white flex flex-col transition-all duration-300 ease-out ${
           show ? "right-0" : "right-[-500%]"
         }`}
       >
