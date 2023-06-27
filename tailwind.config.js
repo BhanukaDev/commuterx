@@ -24,6 +24,21 @@ export default {
       },
       fontFamily: {
         quicksand: ['Quicksand', 'sans-serif'],
+        searchBar: ['Poppins', 'sans-serif'],
+      },
+      width: {
+        searchBar: '98%',
+        searchBarSmall: '80%',
+        searchBarMedium: '450px',
+        searchBarLarge: '500px',
+      },
+      height: {
+        searchBar: '50px',
+      },
+
+      zIndex: {
+        searchBar: '5000',
+        loadingScreen: '6000',
       },
     },
   },
