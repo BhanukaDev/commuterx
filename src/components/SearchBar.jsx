@@ -3,9 +3,14 @@ import { BiSolidBus, BiSolidTrain, BiSearch } from 'react-icons/bi';
 import { Divider } from './Divider';
 import { SearchOption } from './SearchOption';
 export const SearchBar = ({ type, placeholder, icon }) => {
+  const tempList = [
+    'Moratuwa-Pittah (100)',
+    'Colombo-Galle (2)',
+    'Kiribathgoda-Angulana (154)',
+  ];
   return (
-    <div className='absolute top-2 left-1/2 -translate-x-1/2 z-searchBar flex flex-col items-center justify-center font-searchBar'>
-      <div className='h-searchBar flex items-center  w-searchBar sm:w-searchBarSmall md:w-searchBarMedium lg:w-searchBarLarge transition-width duration-150 rounded-full py-2 px-4 drop-shadow-lg bg-slate-50'>
+    <div className='absolute top-2 left-1/2 -translate-x-1/2 z-searchBar w-searchBar sm:w-searchBarSmall md:w-searchBarMedium lg:w-searchBarLarge flex flex-col items-center justify-center font-searchBar  transition-all'>
+      <div className=' h-searchBar flex items-center  w-full duration-150 rounded-full py-2 px-4 drop-shadow-lg bg-slate-50'>
         {type === 'bus' ? (
           <BiSolidBus className='h-full w-[25px]' />
         ) : type === 'train' ? (
@@ -31,9 +36,9 @@ export const SearchBar = ({ type, placeholder, icon }) => {
         </form>
       </div>
       <div className='drop-shadow-lg mt-1 bg-slate-50 w-full rounded-md'>
-        <SearchOption text={'Moratuwa-Pittah (100)'} />
-        <SearchOption text={'Colombo-Galle (2)'} />
-        <SearchOption text={'Kiribathgoda-Angulana (154)'} />
+        {tempList.map((text, index) => (
+          <SearchOption text={text} key={index} />
+        ))}
       </div>
     </div>
   );

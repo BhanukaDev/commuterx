@@ -1,6 +1,5 @@
-import { AppBar } from "../components/AppBar";
-import { Tooltip } from "../components/Tooltip";
-import { Hero } from "../components/Hero";
+import { AppBar } from '../components/AppBar';
+import { Hero } from '../components/Hero';
 
 export const Home = () => {
   return (
