@@ -46,7 +46,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
             <IoClose className='h-[25px] w-[25px]' />
           </button>
         </div>
-        <div className='drop-shadow-lg mt-1 bg-slate-50 w-full rounded-md max-h-[204px] overflow-auto'>
+        <div className='drop-shadow-lg mt-1 bg-slate-50 w-full rounded-md max-h-[204px] overflow-y-scroll scroll-m-1'>
           {tempList.length > 0 ? (
             tempList.map((bus, index) => (
               <SearchOption

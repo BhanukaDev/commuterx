@@ -6,13 +6,13 @@ export const SearchOption = ({ primary, secondary, type, icon }) => {
   return (
     <button
       type='submit'
-      className='w-full hover:bg-gray-200 py-2 px-4 rounded-md flex items-center cursor-pointer transition-colors duration-500'
+      className='w-full hover:bg-gray-200  py-2 px-4 rounded-md flex items-center cursor-pointer drop-shadow-none'
     >
       {icon ? icon : type === 'bus' ? <BusOPIcon /> : <TrainOPIcon />}
       <Divider />
       <div className=' text-slate-500 flex flex-col items-start'>
         <p> {primary}</p>
-        <p className='text-slate-400 font-lato text-lg'>{secondary}</p>
+        <p className='text-slate-800 font-lato text-lg'>{secondary}</p>
       </div>
     </button>
   );
@@ -20,7 +20,7 @@ export const SearchOption = ({ primary, secondary, type, icon }) => {
 
 export const SearchOpNoResult = () => {
   return (
-    <div className='w-full py-4 px-4 rounded-md flex items-center transition-colors duration-500'>
+    <div className='w-full py-4 px-4 rounded-md flex items-center'>
       <NoresOPIcon />
       <Divider />
       <div className=' text-slate-500 flex flex-col items-start'>
