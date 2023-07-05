@@ -25,7 +25,7 @@ export const NavBar = () => {
             <FaHome className="icon-bar-icon" />
           </Link>
 
-          <Divider className="sm:hidden" orientation={"vertical"} />
+          <Divider className="invisible sm:hidden" orientation={"vertical"} />
 
           <hr className="hidden border w-4/5 my-2 sm:block" />
 
@@ -38,7 +38,10 @@ export const NavBar = () => {
                     iconSvg={link.iconSvg}
                     linker={link.url}
                   />
-                  <Divider className="sm:hidden" orientation={"vertical"} />
+                  <Divider
+                    className="invisible sm:hidden"
+                    orientation={"vertical"}
+                  />
                 </>
               );
             })}
