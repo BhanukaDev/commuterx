@@ -19,7 +19,7 @@ function IconbarRow({ iconSvg, linker }) {
 export const NavBar = () => {
   return (
     <>
-      <div className="bg-white w-screen h-16 bottom-10 fixed shadow-lg z-30 flex justify-center sm:w-16 sm:h-full sm:bottom-0 sm:flex-col sm:justify-between">
+      <div className="bg-white w-screen h-16 bottom-0 fixed shadow-lg z-30 flex justify-center sm:w-16 sm:h-full sm:flex-col sm:justify-between">
         <div className="flex sm:flex-col items-center">
           <Link to="/" className="w-full h-full p-3">
             <FaHome className="icon-bar-icon" />
