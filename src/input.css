@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Manrope&family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&family=Manrope&family=Poppins:wght@300;400;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -16,9 +16,8 @@
   input[type="search"]::-webkit-search-cancel-button,
   input[type="search"]::-webkit-search-results-button,
   input[type="search"]::-webkit-search-results-decoration {
-    -webkit-appearance:none;
-}
-
+    -webkit-appearance: none;
+  }
 
   img,
   svg,
@@ -40,12 +39,15 @@
     @apply h-full w-full font-quicksand text-base py-2 px-5 outline-none cursor-pointer border-none hover:transition-all hover:duration-500 hover:ease-in-out;
   }
   .btn-primary {
-    @apply text-white bg-black rounded-lg text-opacity-80 hover:text-opacity-100;
+    @apply text-white bg-black rounded-lg;
   }
   .btn-outline {
     @apply text-black bg-white border border-black border-solid rounded-lg hover:text-white hover:bg-gray-600;
   }
   .btn-calltoaction {
     @apply text-white bg-accent rounded-3xl py-2 px-5 hover:opacity-80;
+  }
+  .btn-secondary {
+    @apply text-white rounded-xl py-2 px-5 hover:opacity-80;
   }
 }

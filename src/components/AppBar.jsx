@@ -42,11 +42,11 @@ export const AppBar = () => {
             {/**the login button and menu icon(only on mobile) */}
 
             <Button
-              linkpath="/signup"
+              linkpath="/login"
               buttonStyle="btn-calltoaction"
               className={"h-full text-center m-2"}
             >
-              Sign Up
+              Login
               <FiLogIn className="ml-2 text-xl" />
             </Button>
 

@@ -1,13 +1,20 @@
-import React from "react";
+/* eslint-disable react/prop-types */
+
 import { Link } from "react-router-dom";
 
-const STYLES = ["btn-primary", "btn-outline", "btn-calltoaction"];
+const STYLES = [
+  "btn-primary",
+  "btn-outline",
+  "btn-calltoaction",
+  "btn-secondary",
+];
 
 export const Button = ({
   children,
   type,
   onClick,
   buttonStyle,
+  buttonColor,
   className,
   linkpath,
 }) => {
@@ -18,7 +25,7 @@ export const Button = ({
   return (
     <Link to={linkpath} className={className}>
       <button
-        className={`btn ${checkButtonStyle}`}
+        className={`btn ${checkButtonStyle} ${buttonColor}`}
         onClick={onClick}
         type={type}
       >
