@@ -3,19 +3,11 @@
 import { Link } from "react-router-dom";
 import { transportLinks, mainlinks } from "../links";
 import { FaHome } from "react-icons/fa";
-import { IoSettings } from "react-icons/io5";
+import { IoPerson } from "react-icons/io5";
 import { MdFeedback } from "react-icons/md";
 import { Divider } from "./Divider";
+import { v4 as uuidv4 } from "uuid";
 
-function IconbarRow({ iconSvg, linker }) {
-  return (
-    <li className="w-16 h-16 cursor-pointer p-3">
-      <Link to={linker} className="w-full h-full block">
-        {iconSvg}
-      </Link>
-    </li>
-  );
-}
 export const NavBar = () => {
   return (
     <>
@@ -32,17 +24,18 @@ export const NavBar = () => {
           <ul className="flex sm:flex-col">
             {transportLinks.map((link) => {
               return (
-                <>
-                  <IconbarRow
-                    key={link.id}
-                    iconSvg={link.iconSvg}
-                    linker={link.url}
-                  />
+                <li key={uuidv4()} className="flex">
+                  <div key={uuidv4()} className="w-16 h-16 cursor-pointer p-3">
+                    <Link to={link.url} className="w-full h-full block">
+                      {link.iconSvg}
+                    </Link>
+                  </div>
                   <Divider
+                    key={uuidv4()}
                     className="invisible sm:hidden"
                     orientation={"vertical"}
                   />
-                </>
+                </li>
               );
             })}
           </ul>
@@ -50,27 +43,27 @@ export const NavBar = () => {
           <ul className="hidden sm:flex sm:flex-col">
             {mainlinks.map((link) => {
               return (
-                <IconbarRow
-                  key={link.id}
-                  iconSvg={link.iconSvg}
-                  linker={link.url}
-                />
+                <li key={uuidv4()} className="w-16 h-16 cursor-pointer p-3">
+                  <Link to={link.url} className="w-full h-full block">
+                    {link.iconSvg}
+                  </Link>
+                </li>
               );
             })}
           </ul>
         </div>
 
-        <ul className="flex sm:flex-col items-center">
+        <div className="flex sm:flex-col items-center">
           <hr className="hidden border w-4/5 my-2 sm:block" />
 
-          <Link to="/settings" className="w-full h-full p-3">
-            <IoSettings className="icon-bar-icon" />
+          <Link to="/profile" className="w-full h-full p-3">
+            <IoPerson className="icon-bar-icon" />
           </Link>
 
           <Link to="/feedback" className="hidden w-full h-full p-3 sm:block">
             <MdFeedback className="icon-bar-icon" />
           </Link>
-        </ul>
+        </div>
       </div>
     </>
   );

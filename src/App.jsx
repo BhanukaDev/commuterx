@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import { BrowserCheck } from "./components/BrowserCheck";
 import { NotSupport } from "./pages/NotSupport";
 import { Login } from "./pages/Login";
+import { ProfilePage } from "./pages/ProfilePage";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/showmap" element={<MapPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<ProfilePage />} />
 
         <Route path="*" element={<PageNotFound />} />
         <Route path="/not-supported" element={<NotSupport />} />
