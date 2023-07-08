@@ -1,36 +1,75 @@
 import { useState, useRef, useEffect } from "react";
-import { Button } from "./Button";
 
 export const BusForm = () => {
+  const [validity, setValidity] = useState({
+    routenoV: true,
+    numberplateV: true,
+    organisationV: true,
+  });
   const [government, setGovernment] = useState(true);
+  const form = useRef(null);
   const organisationName = useRef("ctb");
+  const numberplate = useRef("");
+  const routeNo = useRef("");
+
+  console.log(validity);
+  const checkInput = () => {
+    event.preventDefault();
+    let data = new FormData(form.current);
+    data.append("routeno", routeNo.current.value);
+    setValidity({
+      routenoV: !(routeNo.current.value === ""),
+      numberplateV: numberplate.current.value.length > 5,
+      organisationV: !(!government && organisationName.current.value === ""),
+    });
+    if (
+      !(routeNo.current.value === "") &&
+      numberplate.current.value.length > 5 &&
+      !(!government && organisationName.current.value === "")
+    ) {
+      console.log(data);
+      fetch("/backend", { method: "post", body: data });
+    }
+  };
 
   useEffect(() => {
     organisationName.current.value = government ? "ctb" : "";
     organisationName.current.hidden = government;
   }, [government]);
+
   return (
-    <form className="flex flex-col items-start p-5 bg-white rounded-r-xl rounded-b-xl">
+    <form
+      ref={form}
+      onSubmit={checkInput}
+      action="server.js"
+      method="get"
+      className="relative h-5/6 flex flex-col items-start p-5 bg-white rounded-r-xl rounded-b-xl"
+    >
       <label className="mb-2" htmlFor="busrouteno">
-        Route No
+        Route No<span className="text-red-400 font-bold">*</span>
       </label>
       <input
+        ref={routeNo}
         id="busrouteno"
         name="busrouteno"
         type="text"
         placeholder="e.g. 101"
-        className="rounded-md border border-black mb-4 px-2 leading-loose"
+        className={`${!validity.routenoV && "border-red-500"} 
+        rounded-md border border-black mb-4 px-2 leading-loose`}
       />
 
       <label className="mb-2" htmlFor="numberplate">
         Number Plate
       </label>
       <input
+        ref={numberplate}
         id="numberplate"
         name="numberplate"
         type="text"
         placeholder="e.g. ND-1986"
-        className="rounded-md border border-black mb-4 px-2 leading-loose"
+        className={`${
+          !validity.numberplateV && "border-red-500"
+        } rounded-md border border-black mb-4 px-2 leading-loose`}
       />
 
       <div className="flex mb-2">
@@ -47,7 +86,7 @@ export const BusForm = () => {
         </button>
         <button
           type="button"
-          className={`mr-5 px-2 py-1 rounded ${
+          className={`px-2 py-1 rounded ${
             !government ? "bg-accent text-white" : "bg-white text-black"
           }  border-black border`}
           onClick={() => {
@@ -64,12 +103,18 @@ export const BusForm = () => {
         type="text"
         placeholder="Organisation Name"
         ref={organisationName}
-        className="mt-1 mb-3 px-2 border-b-2 border-black outline-0"
+        className={`${!validity.organisationV && "border-red-500"} 
+        mt-1 mb-3 px-2 border-b-2 border-black outline-0`}
       />
 
-      <Button className={"w-auto"} buttonColor={"bg-green-600"}>
+      <button
+        type="submit"
+        className={
+          "w-auto h-auto md:absolute md:bottom-5 bg-green-600 btn btn-secondary"
+        }
+      >
         Update Profile
-      </Button>
+      </button>
     </form>
   );
 };
