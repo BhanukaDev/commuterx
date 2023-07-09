@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Bus } from "./BusObject";
 
 export const BusForm = () => {
   const [validity, setValidity] = useState({
@@ -15,8 +16,12 @@ export const BusForm = () => {
   console.log(validity);
   const checkInput = () => {
     event.preventDefault();
-    let data = new FormData(form.current);
-    data.append("routeno", routeNo.current.value);
+    let data = new Bus(
+      routeNo.current.value,
+      numberplate.current.value,
+      organisationName.current.value
+    );
+
     setValidity({
       routenoV: !(routeNo.current.value === ""),
       numberplateV: numberplate.current.value.length > 5,
@@ -27,8 +32,9 @@ export const BusForm = () => {
       numberplate.current.value.length > 5 &&
       !(!government && organisationName.current.value === "")
     ) {
+      data.getLocationInformation();
       console.log(data);
-      fetch("/backend", { method: "post", body: data });
+      // fetch("/backend", { method: "post", body: data });
     }
   };
 
@@ -59,7 +65,7 @@ export const BusForm = () => {
       />
 
       <label className="mb-2" htmlFor="numberplate">
-        Number Plate
+        Number Plate<span className="text-red-400 font-bold">*</span>
       </label>
       <input
         ref={numberplate}
