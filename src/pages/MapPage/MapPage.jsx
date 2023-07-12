@@ -2,10 +2,14 @@ import { useLoadScript } from '@react-google-maps/api';
 import { Map } from '../../components/Map';
 import { Loading } from '../Loading';
 import { NavBar } from '../../components/NavBar';
-import { SearchBar } from '../../components/SearchBar';
+import { Button } from '../../components/Button';
+import { Bus } from '../../Data/Bus';
+//import { SearchBar } from '../../components/SearchBar';
 
 export const MapPage = () => {
   const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY;
+
+  const testBus = new Bus(100, 100, 1);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: googlemapAPIKey,
@@ -17,8 +21,9 @@ export const MapPage = () => {
 
   return (
     <>
-      <SearchBar type={'bus'} />
+      {/* <SearchBar type={'bus'} /> */}
       <NavBar />
+      <Button onClick={() => testBus.getLocationInformation()}>Test</Button>
       <Map />
     </>
   );

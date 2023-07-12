@@ -4,7 +4,7 @@ import { useCallback, useMemo, useRef } from 'react';
 export const Map = () => {
   const mapRef = useRef();
   const mapCenter = useMemo(
-    () => ({ lat: 6.937929989306971, lng: 79.83734955347708 }), // default coordinates, port city
+    () => ({ lat: 6.895506168321762, lng: 79.8557110778035 }), // default coordinates, port city
     [] // right now there is no dependencies to change its center, we can implement it
   );
 
