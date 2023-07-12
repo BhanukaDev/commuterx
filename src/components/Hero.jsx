@@ -17,19 +17,19 @@ export const Hero = () => {
         than ever to plan your journey and minimize waiting times.
       </p>
       <div className="flex justify-center ">
-        <img className="w-40 px-5" src="./bus.svg" alt="" />
-        <img className="w-40 px-5" src="./train.svg" alt="" />
+        <img className="w-20 h-20 mx-5" src="./icons8-bus-64.png" alt="" />
+        <img className="w-20 h-20 mx-5" src="./icons8-train-64.png" alt="" />
       </div>
       <div className="my-5 flex justify-center">
         <Button
-          className="mx-10 w-20"
+          className="mx-5 w-20"
           buttonStyle="btn-outline"
           linkpath="/showmap"
         >
           Bus
         </Button>
         <Button
-          className="mx-10 w-20"
+          className="mx-5 w-20"
           buttonStyle="btn-outline"
           linkpath="/showmap"
         >

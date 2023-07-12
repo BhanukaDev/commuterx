@@ -42,7 +42,7 @@
     @apply text-white bg-black rounded-lg;
   }
   .btn-outline {
-    @apply text-black bg-white border border-black border-solid rounded-lg hover:text-white hover:bg-gray-600;
+    @apply text-black bg-white border border-black border-solid rounded-lg hover:text-white hover:bg-black;
   }
   .btn-calltoaction {
     @apply text-white bg-accent rounded-3xl py-2 px-5 hover:opacity-80;
