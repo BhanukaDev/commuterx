@@ -2,8 +2,8 @@
 
 export const NotSupport = () => {
   return (
-    <div className='w-screen h-screen flex justify-center items-center font-bebas text-3xl'>
+    <div className="flex h-screen w-screen items-center justify-center font-bebas text-3xl">
       Sorry, this website is not supported on your current browser.
     </div>
-  );
-};
+  )
+}

@@ -1,47 +1,47 @@
-import { useState, useRef, useEffect } from "react";
-import { Bus } from "./BusObject";
+import { useState, useRef, useEffect } from "react"
+import { Bus } from "../Data/Bus"
 
 export const BusForm = () => {
   const [validity, setValidity] = useState({
     routenoV: true,
     numberplateV: true,
     organisationV: true,
-  });
-  const [government, setGovernment] = useState(true);
-  const form = useRef(null);
-  const organisationName = useRef("ctb");
-  const numberplate = useRef("");
-  const routeNo = useRef("");
+  })
+  const [government, setGovernment] = useState(true)
+  const form = useRef(null)
+  const organisationName = useRef("ctb")
+  const numberplate = useRef("")
+  const routeNo = useRef("")
 
-  console.log(validity);
+  console.log(validity)
   const checkInput = () => {
-    event.preventDefault();
+    event.preventDefault()
     let data = new Bus(
       routeNo.current.value,
       numberplate.current.value,
       organisationName.current.value
-    );
+    )
 
     setValidity({
       routenoV: !(routeNo.current.value === ""),
       numberplateV: numberplate.current.value.length > 5,
       organisationV: !(!government && organisationName.current.value === ""),
-    });
+    })
     if (
       !(routeNo.current.value === "") &&
       numberplate.current.value.length > 5 &&
       !(!government && organisationName.current.value === "")
     ) {
-      data.getLocationInformation();
-      console.log(data);
+      data.getLocationInformation()
+      console.log(data)
       // fetch("/backend", { method: "post", body: data });
     }
-  };
+  }
 
   useEffect(() => {
-    organisationName.current.value = government ? "ctb" : "";
-    organisationName.current.hidden = government;
-  }, [government]);
+    organisationName.current.value = government ? "ctb" : ""
+    organisationName.current.hidden = government
+  }, [government])
 
   return (
     <form
@@ -49,10 +49,10 @@ export const BusForm = () => {
       onSubmit={checkInput}
       action="server.js"
       method="get"
-      className="relative h-5/6 flex flex-col items-start p-5 bg-white rounded-r-xl rounded-b-xl"
+      className="relative flex h-5/6 flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5"
     >
       <label className="mb-2" htmlFor="busrouteno">
-        Route No<span className="text-red-400 font-bold">*</span>
+        Route No<span className="font-bold text-red-400">*</span>
       </label>
       <input
         ref={routeNo}
@@ -61,11 +61,11 @@ export const BusForm = () => {
         type="text"
         placeholder="e.g. 101"
         className={`${!validity.routenoV && "border-red-500"} 
-        rounded-md border border-black mb-4 px-2 leading-loose`}
+        mb-4 rounded-md border border-black px-2 leading-loose`}
       />
 
       <label className="mb-2" htmlFor="numberplate">
-        Number Plate<span className="text-red-400 font-bold">*</span>
+        Number Plate<span className="font-bold text-red-400">*</span>
       </label>
       <input
         ref={numberplate}
@@ -75,28 +75,28 @@ export const BusForm = () => {
         placeholder="e.g. ND-1986"
         className={`${
           !validity.numberplateV && "border-red-500"
-        } rounded-md border border-black mb-4 px-2 leading-loose`}
+        } mb-4 rounded-md border border-black px-2 leading-loose`}
       />
 
-      <div className="flex mb-2">
+      <div className="mb-2 flex">
         <button
           type="button"
           onClick={() => {
-            setGovernment(true);
+            setGovernment(true)
           }}
-          className={`mr-3 px-2 py-1 rounded ${
+          className={`mr-3 rounded px-2 py-1 ${
             government ? "bg-accent text-white" : "bg-white text-black"
-          }  border-black border`}
+          }  border border-black`}
         >
           Ceylon Transport Board (CTB)
         </button>
         <button
           type="button"
-          className={`px-2 py-1 rounded ${
+          className={`rounded px-2 py-1 ${
             !government ? "bg-accent text-white" : "bg-white text-black"
-          }  border-black border`}
+          }  border border-black`}
           onClick={() => {
-            setGovernment(false);
+            setGovernment(false)
           }}
         >
           Other
@@ -110,17 +110,17 @@ export const BusForm = () => {
         placeholder="Organisation Name"
         ref={organisationName}
         className={`${!validity.organisationV && "border-red-500"} 
-        mt-1 mb-3 px-2 border-b-2 border-black outline-0`}
+        mb-3 mt-1 border-b-2 border-black px-2 outline-0`}
       />
 
       <button
         type="submit"
         className={
-          "w-auto h-auto md:absolute md:bottom-5 bg-green-600 btn btn-secondary"
+          "btn btn-secondary h-auto w-auto bg-green-600 md:absolute md:bottom-5"
         }
       >
         Update Profile
       </button>
     </form>
-  );
-};
+  )
+}

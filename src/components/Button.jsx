@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 const STYLES = [
   "btn-primary",
   "btn-outline",
   "btn-calltoaction",
   "btn-secondary",
-];
+]
 
 export const Button = ({
   children,
@@ -20,7 +20,7 @@ export const Button = ({
 }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
-    : STYLES[0];
+    : STYLES[0]
 
   return (
     <Link to={linkpath} className={className}>
@@ -32,5 +32,5 @@ export const Button = ({
         {children}
       </button>
     </Link>
-  );
-};
+  )
+}

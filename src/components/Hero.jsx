@@ -1,24 +1,24 @@
 /* eslint-disable react/prop-types */
 
-import { Button } from "./Button";
+import { Button } from "./Button"
 export const Hero = () => {
   return (
-    <div className="w-full h-[90vh] mt-16 px-3 flex items-center flex-col sm:px-[10%]">
-      <h1 className="my-10 text-3xl font-bold text-accent sm:text-4xl md:5xl lg:6xl">
+    <div className="mt-16 flex h-[90vh] w-full flex-col items-center px-3 sm:px-[10%]">
+      <h1 className="md:5xl lg:6xl my-10 text-3xl font-bold text-accent sm:text-4xl">
         Welcome to CommuterX!
       </h1>
-      <p className="my-5 text-center w-full">
+      <p className="my-5 w-full text-center">
         Stay on track with our live transit tracker. Whether you're a daily
         commuter or an occasional traveler, we've got you covered with real-time
         updates on the location of buses and trains around the country.
       </p>
-      <p className="my-5 text-center w-full">
+      <p className="my-5 w-full text-center">
         Our user-friendly interface and robust tracking system make it easier
         than ever to plan your journey and minimize waiting times.
       </p>
       <div className="flex justify-center ">
-        <img className="w-20 h-20 mx-5" src="./icons8-bus-64.png" alt="" />
-        <img className="w-20 h-20 mx-5" src="./icons8-train-64.png" alt="" />
+        <img className="mx-5 h-20 w-20" src="./icons8-bus-64.png" alt="" />
+        <img className="mx-5 h-20 w-20" src="./icons8-train-64.png" alt="" />
       </div>
       <div className="my-5 flex justify-center">
         <Button
@@ -37,5 +37,5 @@ export const Hero = () => {
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}

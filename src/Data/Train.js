@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 
-export class Bus {
-  constructor(routeID, busID, routeDir) {
-    this.routeID = routeID
-    this.busID = busID
-    this.routeDir = routeDir
+export class Train {
+  constructor(trainID, start, stop) {
+    this.trainID = trainID
+    this.start = start
+    this.stop = stop
   }
 
-  busStops = []
+  trainStations = []
 
   getLocationInformation() {
     navigator.geolocation.getCurrentPosition((position) => {

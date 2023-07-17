@@ -1,27 +1,27 @@
-import { Logo } from "./Logo";
-import { FaBars, FaArrowRight } from "react-icons/fa6";
-import { FiLogIn } from "react-icons/fi";
-import { Button } from "./Button";
-import { mainlinks } from "../links";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Logo } from "./Logo"
+import { FaBars, FaArrowRight } from "react-icons/fa6"
+import { FiLogIn } from "react-icons/fi"
+import { Button } from "./Button"
+import { mainlinks } from "../links"
+import { Link } from "react-router-dom"
+import { useState } from "react"
 
 export const AppBar = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
   const handleMenuClick = () => {
-    setShow(true);
-  };
+    setShow(true)
+  }
 
   const closeSidebar = () => {
-    setShow(false);
-  };
+    setShow(false)
+  }
 
   return (
     <>
-      <nav className="w-screen h-16 fixed top-0 bg-white z-20">
+      <nav className="fixed top-0 z-20 h-16 w-screen bg-white">
         {/**the main nav bar */}
-        <div className="m-auto h-full flex justify-between items-center px-3 md:w-4/5">
+        <div className="m-auto flex h-full items-center justify-between px-3 md:w-4/5">
           {/**the inner nav bar */}
           <Logo />
           <ul className="hidden md:flex">
@@ -30,21 +30,21 @@ export const AppBar = () => {
             {mainlinks.map((link) => {
               //loop through link list and return link
               return (
-                <li className="w-full text-lg p-3" key={link.id}>
+                <li className="w-full p-3 text-lg" key={link.id}>
                   <Link to={link.url} onClick={closeSidebar}>
                     {link.text}
                   </Link>
                 </li>
-              );
+              )
             })}
           </ul>
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             {/**the login button and menu icon(only on mobile) */}
 
             <Button
               linkpath="/login"
               buttonStyle="btn-calltoaction"
-              className={"h-full text-center m-2"}
+              className={"m-2 h-full text-center"}
             >
               Login
               <FiLogIn className="ml-2 text-xl" />
@@ -60,12 +60,12 @@ export const AppBar = () => {
 
       {/**the sidebar*/}
       <div
-        className={`h-screen w-screen fixed top-0 px-3 z-30 bg-white flex flex-col transition-all duration-300 ease-out ${
+        className={`fixed top-0 z-30 flex h-screen w-screen flex-col bg-white px-3 transition-all duration-300 ease-out ${
           show ? "right-0" : "right-[-500%]"
         }`}
       >
         {/**the sidebar header*/}
-        <div className="flex justify-between items-center h-16">
+        <div className="flex h-16 items-center justify-between">
           <Logo />
           <FaArrowRight
             className="cursor-pointer text-3xl"
@@ -77,15 +77,15 @@ export const AppBar = () => {
           {mainlinks.map((link) => {
             return (
               //loop through link list and return link
-              <li className="w-full text-xl p-1" key={link.id}>
+              <li className="w-full p-1 text-xl" key={link.id}>
                 <Link to={link.url} onClick={closeSidebar}>
                   {link.text}
                 </Link>
               </li>
-            );
+            )
           })}
         </ul>
       </div>
     </>
-  );
-};
+  )
+}

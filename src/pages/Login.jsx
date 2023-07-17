@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
 
-import { Link } from "react-router-dom";
-import { Button } from "../components/Button";
+import { Link } from "react-router-dom"
+import { Button } from "../components/Button"
 
 export const Login = () => {
   return (
     <>
-      <div className="w-full h-screen flex justify-center items-center">
+      <div className="flex h-screen w-full items-center justify-center">
         <div className="w-full max-w-md">
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+          <form className="mb-4 flex flex-col rounded bg-white px-8 pb-8 pt-6 shadow-md">
             <div className="mb-4">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="mb-2 block text-sm font-bold text-gray-700"
                 htmlFor="email"
               >
                 Email
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="email"
                 type="text"
                 placeholder="Email"
@@ -26,13 +26,13 @@ export const Login = () => {
             </div>
             <div className="mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="mb-2 block text-sm font-bold text-gray-700"
                 htmlFor="password"
               >
                 Password
               </label>
               <input
-                className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="focus:shadow-outline mb-3 w-full appearance-none rounded border border-red-500 px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
                 id="password"
                 type="password"
                 placeholder="Password"
@@ -41,20 +41,20 @@ export const Login = () => {
 
             <div className="flex items-center justify-center">
               <button
-                className="mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded focus:outline-none focus:shadow-outline"
+                className="focus:shadow-outline mb-2 w-full rounded bg-blue-500 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
                 type="button"
               >
                 Login
               </button>
             </div>
             <Link
-              className="underline text-blue-800 mb-5 w-full text-right"
+              className="mb-5 w-full text-right text-blue-800 underline"
               to="/help"
             >
               Forgot password?
             </Link>
             <Button
-              className={"w-3/5 mx-auto"}
+              className={"mx-auto w-3/5"}
               buttonStyle={"btn-secondary"}
               buttonColor="bg-green-600"
               linkpath={"/signup"}
@@ -66,5 +66,5 @@ export const Login = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

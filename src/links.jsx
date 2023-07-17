@@ -1,6 +1,6 @@
-import { AiFillAlert, AiFillAliwangwang, AiFillBug } from "react-icons/ai";
-import { IoMdTrain } from "react-icons/io";
-import { IoBus } from "react-icons/io5";
+import { AiFillAlert, AiFillAliwangwang, AiFillBug } from "react-icons/ai"
+import { IoMdTrain } from "react-icons/io"
+import { IoBus } from "react-icons/io5"
 
 export const mainlinks = [
   {
@@ -9,7 +9,7 @@ export const mainlinks = [
     text: "Kizuki",
     rfcname: "dd",
     iconSvg: (
-      <AiFillAliwangwang className="w-full h-full opacity-80 hover:opacity-100" />
+      <AiFillAliwangwang className="h-full w-full opacity-80 hover:opacity-100" />
     ),
   },
   {
@@ -18,7 +18,7 @@ export const mainlinks = [
     text: "Sekai",
     rfcname: "dd",
     iconSvg: (
-      <AiFillAlert className="w-full h-full opacity-80 hover:opacity-100" />
+      <AiFillAlert className="h-full w-full opacity-80 hover:opacity-100" />
     ),
   },
   {
@@ -27,10 +27,10 @@ export const mainlinks = [
     text: "Hanatatachi",
     rfcname: "dd",
     iconSvg: (
-      <AiFillBug className="w-full h-full p-[1px] opacity-80 hover:opacity-100" />
+      <AiFillBug className="h-full w-full p-[1px] opacity-80 hover:opacity-100" />
     ),
   },
-];
+]
 
 export const transportLinks = [
   {
@@ -39,7 +39,7 @@ export const transportLinks = [
     text: "Train",
     rfcname: "dd",
     iconSvg: (
-      <IoMdTrain className="w-full h-full opacity-80 hover:opacity-100" />
+      <IoMdTrain className="h-full w-full opacity-80 hover:opacity-100" />
     ),
   },
   {
@@ -47,6 +47,6 @@ export const transportLinks = [
     url: "/showmap",
     text: "Bus",
     rfcname: "dd",
-    iconSvg: <IoBus className="w-full h-full opacity-80 hover:opacity-100" />,
+    iconSvg: <IoBus className="h-full w-full opacity-80 hover:opacity-100" />,
   },
-];
+]

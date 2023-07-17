@@ -1,0 +1,14 @@
+BUS (its easy)..
+
+when driver logs in he enters the route
+when user searches route, send the query to db and return an array of bus objects that have the same route
+then extract the location information in the front end and place marker
+
+TRAIN (its harder..but not really)..
+
+when driver logs in they enter the START and END location 
+this is sent to the google API called Directions Service with a appropriate request query object(like Trains only etc)
+the data is returned and we take the route locations (Directions Route Legs) and place the name/id of the station in our train object.stops
+send the train object to database(not realtime)
+when user searches for train (start to stop) we send this as a query to the db to return array of trains who have (start to stop) inluded in their object.stops
+then extract the location information in the front end and place marker
