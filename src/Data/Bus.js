@@ -11,7 +11,11 @@ export class Bus {
 
   getLocationInformation() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords)
+      return position.coords;
     })
+  }
+
+  getLoc() {
+    return navigator.geolocation.getCurrentPosition.coords;
   }
 }

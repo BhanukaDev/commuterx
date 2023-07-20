@@ -23,7 +23,7 @@ export const MapPage = () => {
     <>
       {/* <SearchBar type={"bus"} /> */}
       <NavBar />
-      <Button onClick={() => testBus.getLocationInformation()}>Test</Button>
+      <Button onClick={() => console.log(testBus.getLoc())}>Test</Button>
       <Map />
     </>
   )
