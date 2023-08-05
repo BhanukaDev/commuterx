@@ -2,13 +2,6 @@
 
 import { Link } from "react-router-dom"
 
-const STYLES = [
-  "btn-primary",
-  "btn-outline",
-  "btn-calltoaction",
-  "btn-secondary",
-]
-
 export const Button = ({
   children,
   type,
@@ -18,14 +11,12 @@ export const Button = ({
   className,
   linkpath,
 }) => {
-  const checkButtonStyle = STYLES.includes(buttonStyle)
-    ? buttonStyle
-    : STYLES[0]
-
   return (
     <Link to={linkpath} className={className}>
       <button
-        className={`btn ${checkButtonStyle} ${buttonColor}`}
+        className={`btn ${
+          buttonStyle ? buttonStyle : "btn-nav"
+        } ${buttonColor}`}
         onClick={onClick}
         type={type}
       >

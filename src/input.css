@@ -50,4 +50,7 @@
   .btn-secondary {
     @apply rounded-xl px-5 py-2 text-white hover:opacity-80;
   }
+  .btn-small {
+    @apply max-sm:px-3 max-sm:py-1.5 max-sm:text-sm;
+  }
 }

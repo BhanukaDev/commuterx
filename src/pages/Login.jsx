@@ -67,7 +67,7 @@ export const Login = () => {
             </Button>
 
             <div className=" flex items-center justify-center">
-              <p> Don't have an account? </p>
+              <p> Don&#39;t have an account? </p>
               <Link
                 className="mx-1 font-bold text-blue-600 hover:underline"
                 to={"/signup"}

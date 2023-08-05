@@ -21,7 +21,7 @@ export const AppBar = () => {
     <>
       <nav className="fixed top-0 z-20 h-16 w-screen bg-white">
         {/**the main nav bar */}
-        <div className="m-auto flex h-full items-center justify-between px-3 md:w-4/5">
+        <div className="m-auto flex h-full items-center justify-between px-3 md:w-5/6">
           {/**the inner nav bar */}
           <Logo />
           <ul className="hidden md:flex">
@@ -42,12 +42,12 @@ export const AppBar = () => {
             {/**the login button and menu icon(only on mobile) */}
 
             <Button
-              linkpath="/login"
-              buttonStyle="btn-calltoaction"
+              linkpath="/signup"
+              buttonStyle="btn-calltoaction btn-small"
               className={"m-2 h-full text-center"}
             >
-              Login
-              <FiLogIn className="ml-2 text-xl" />
+              Sign Up
+              <FiLogIn className="ml-1 text-lg sm:ml-2 md:text-xl" />
             </Button>
 
             <FaBars
