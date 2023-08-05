@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function SignUp() {
   return (
     <>
@@ -54,6 +56,15 @@ export default function SignUp() {
               >
                 Sign Up
               </button>
+            </div>
+            <div className="mt-5 flex items-center justify-center">
+              <p> Already a user? </p>
+              <Link
+                className="mx-1 font-bold text-blue-600 hover:underline"
+                to={"/login"}
+              >
+                Log In
+              </Link>
             </div>
           </form>
         </div>

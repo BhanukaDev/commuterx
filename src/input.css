@@ -39,10 +39,10 @@
     @apply h-full w-full cursor-pointer border-none px-5 py-2 font-quicksand text-base outline-none hover:transition-all hover:duration-500 hover:ease-in-out;
   }
   .btn-primary {
-    @apply rounded-lg bg-black text-white;
+    @apply rounded-lg border border-solid border-black bg-black text-white hover:bg-transparent hover:text-black;
   }
   .btn-outline {
-    @apply rounded-lg border border-solid border-black bg-white text-black hover:bg-black hover:text-white;
+    @apply rounded-lg border border-solid border-black bg-transparent text-black hover:bg-black hover:text-white;
   }
   .btn-calltoaction {
     @apply rounded-3xl bg-accent px-5 py-2 text-white hover:opacity-80;

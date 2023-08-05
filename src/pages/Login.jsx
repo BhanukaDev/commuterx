@@ -2,6 +2,7 @@
 
 import { Link } from "react-router-dom"
 import { Button } from "../components/Button"
+import { FcGoogle } from "react-icons/fc"
 
 export const Login = () => {
   return (
@@ -39,29 +40,41 @@ export const Login = () => {
               />
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
               <button
-                className="focus:shadow-outline mb-2 w-full rounded bg-blue-500 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+                className="focus:shadow-outline mb-1 w-full rounded bg-blue-500 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
                 type="button"
               >
-                Login
+                Sign In
               </button>
+              <Link
+                className="ml-auto text-blue-800 hover:underline"
+                to="/help"
+              >
+                Forgot password?
+              </Link>
             </div>
-            <Link
-              className="mb-5 w-full text-right text-blue-800 underline"
-              to="/help"
-            >
-              Forgot password?
-            </Link>
+            <p className="my-3 flex items-center before:mx-2 before:h-px before:flex-1 before:bg-slate-400 before:content-[''] after:mx-2 after:h-px after:flex-1 after:bg-slate-400 after:content-['']">
+              OR
+            </p>
             <Button
-              className={"mx-auto w-3/5"}
-              buttonStyle={"btn-secondary"}
-              buttonColor="bg-green-600"
+              className={"min-w-64 relative mx-auto mb-5 w-11/12 sm:w-4/5"}
+              buttonStyle={"btn-primary"}
               linkpath={"/signup"}
-              type={"reset"}
             >
-              Create new account
+              <FcGoogle className="absolute left-0 mx-3 text-2xl" />
+              Sign in with Google
             </Button>
+
+            <div className=" flex items-center justify-center">
+              <p> Don't have an account? </p>
+              <Link
+                className="mx-1 font-bold text-blue-600 hover:underline"
+                to={"/signup"}
+              >
+                Sign Up
+              </Link>
+            </div>
           </form>
         </div>
       </div>
