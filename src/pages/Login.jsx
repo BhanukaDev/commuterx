@@ -1,11 +1,17 @@
 /* eslint-disable react/prop-types */
 
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "../components/Button"
 import { FcGoogle } from "react-icons/fc"
 import { signInWithGoogle } from "../Utils/auth"
 
 export const Login = () => {
+  const navigate = useNavigate()
+
+  const signUp = () => {
+    signInWithGoogle(navigate)
+  }
+
   return (
     <>
       <div className="flex h-screen w-full items-center justify-center">
@@ -61,7 +67,7 @@ export const Login = () => {
             <Button
               className={"min-w-64 relative mx-auto mb-5 w-11/12 sm:w-4/5"}
               buttonStyle={"btn-primary"}
-              onClick={signInWithGoogle}
+              onClick={signUp}
             >
               <FcGoogle className="absolute left-0 mx-3 text-2xl" />
               Sign in with Google

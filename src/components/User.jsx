@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 // import { signInWithToken } from "../Utils/auth"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "../Utils/auth"
@@ -13,7 +13,7 @@ export const User = ({ children }) => {
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser)
   })
-  console.log(user)
+  // console.log(user)
   // useEffect(() => {
   //   // let jwtToken = localStorage.getItem("JWTTOKEN")
   //   // if (jwtToken) signInWithToken(jwtToken)
