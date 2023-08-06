@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom"
 import { Button } from "../components/Button"
 import { FcGoogle } from "react-icons/fc"
+import { signInWithGoogle } from "../Utils/auth"
 
 export const Login = () => {
   return (
@@ -60,7 +61,7 @@ export const Login = () => {
             <Button
               className={"min-w-64 relative mx-auto mb-5 w-11/12 sm:w-4/5"}
               buttonStyle={"btn-primary"}
-              linkpath={"/signup"}
+              onClick={signInWithGoogle}
             >
               <FcGoogle className="absolute left-0 mx-3 text-2xl" />
               Sign in with Google
