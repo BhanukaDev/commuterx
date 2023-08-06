@@ -43,7 +43,11 @@ export default {
         searchBar: "5000",
         loadingScreen: "6000",
       },
+      boxShadow: {
+        upwardsLG: "0px 0px 3px rgba(0, 0, 0, 0.25)",
+        upwardsXL: "0px 3px 3px rgba(0, 0, 0, 0.15)",
+      },
     },
   },
   plugins: [],
-};
+}

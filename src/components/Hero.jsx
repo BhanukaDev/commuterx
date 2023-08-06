@@ -8,9 +8,10 @@ export const Hero = () => {
         Welcome to CommuterX!
       </h1>
       <p className="my-5 w-full text-center">
-        Stay on track with our live transit tracker. Whether you're a daily
-        commuter or an occasional traveler, we've got you covered with real-time
-        updates on the location of buses and trains around the country.
+        Stay on track with our live transit tracker. Whether you&#39;re a daily
+        commuter or an occasional traveler, we&#39;ve got you covered with
+        real-time updates on the location of buses and trains around the
+        country.
       </p>
       <p className="my-5 w-full text-center">
         Our user-friendly interface and robust tracking system make it easier

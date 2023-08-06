@@ -11,17 +11,17 @@ import { v4 as uuidv4 } from "uuid"
 export const NavBar = () => {
   return (
     <>
-      <div className="fixed bottom-0 z-30 flex h-16 w-screen justify-center bg-white shadow-lg sm:h-full sm:w-16 sm:flex-col sm:justify-between">
-        <div className="flex items-center sm:flex-col">
+      <div className="fixed bottom-0 z-30 flex h-16 w-screen justify-center border-t border-solid border-slate-100 bg-white shadow-lg md:h-full md:w-16 md:flex-col md:justify-between">
+        <div className="flex items-center md:flex-col">
           <Link to="/" className="h-full w-full p-3">
             <FaHome className="icon-bar-icon" />
           </Link>
 
-          <Divider className="invisible sm:hidden" orientation={"vertical"} />
+          <Divider className="invisible md:hidden" orientation={"vertical"} />
 
-          <hr className="my-2 hidden w-4/5 border sm:block" />
+          <hr className="my-2 hidden w-4/5 border md:block" />
 
-          <ul className="flex sm:flex-col">
+          <ul className="flex md:flex-col">
             {transportLinks.map((link) => {
               return (
                 <li key={uuidv4()} className="flex">
@@ -32,15 +32,15 @@ export const NavBar = () => {
                   </div>
                   <Divider
                     key={uuidv4()}
-                    className="invisible sm:hidden"
+                    className="invisible md:hidden"
                     orientation={"vertical"}
                   />
                 </li>
               )
             })}
           </ul>
-          <hr className="my-2 hidden w-4/5 border sm:block" />
-          <ul className="hidden sm:flex sm:flex-col">
+          <hr className="my-2 hidden w-4/5 border md:block" />
+          <ul className="hidden md:flex md:flex-col">
             {mainlinks.map((link) => {
               return (
                 <li key={uuidv4()} className="h-16 w-16 cursor-pointer p-3">
@@ -53,14 +53,14 @@ export const NavBar = () => {
           </ul>
         </div>
 
-        <div className="flex items-center sm:flex-col">
-          <hr className="my-2 hidden w-4/5 border sm:block" />
+        <div className="flex items-center md:flex-col">
+          <hr className="my-2 hidden w-4/5 border md:block" />
 
           <Link to="/profile" className="h-full w-full p-3">
             <IoPerson className="icon-bar-icon" />
           </Link>
 
-          <Link to="/feedback" className="hidden h-full w-full p-3 sm:block">
+          <Link to="/feedback" className="hidden h-full w-full p-3 md:block">
             <MdFeedback className="icon-bar-icon" />
           </Link>
         </div>

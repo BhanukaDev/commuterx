@@ -33,7 +33,7 @@ export const TrainForm = () => {
       onSubmit={checkInput}
       action="server.js"
       method="get"
-      className="relative flex h-5/6 flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5"
+      className="relative flex h-[90%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
     >
       <label className="mb-2" htmlFor="trainID">
         Train No<span className="font-bold text-red-400">*</span>
@@ -875,7 +875,7 @@ export const TrainForm = () => {
       <button
         type="submit"
         className={
-          "btn btn-secondary h-auto w-auto bg-green-600 md:absolute md:bottom-5"
+          "btn btn-secondary mt-2 h-auto w-auto bg-green-600 md:absolute md:bottom-5"
         }
       >
         Update Profile
