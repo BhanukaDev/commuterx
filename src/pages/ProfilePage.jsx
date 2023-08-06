@@ -13,8 +13,8 @@ export const ProfilePage = () => {
   return (
     <>
       <NavBar />
-      <div className="flex h-full min-h-screen flex-col bg-white px-[2%] pt-5 font-searchBar md:flex-row md:justify-between md:pl-16">
-        <div className="w-full px-2 sm:px-5">
+      <div className="flex h-full min-h-screen flex-col bg-white px-[2%] pt-5 font-searchBar md:flex-row md:justify-between md:pl-20">
+        <div className="w-full px-2 ">
           <div className="mb-5 flex max-h-60 w-full items-center justify-between rounded-xl px-2 py-4 shadow-upwardsLG ">
             <figure className="group relative w-40 overflow-hidden rounded-full border-4 border-white">
               <img
@@ -40,7 +40,7 @@ export const ProfilePage = () => {
           <div className="">{/* <p>poopoo</p> */}</div>
         </div>
 
-        <div className="w-full px-2 pb-2 sm:pl-5 md:w-5/6 md:max-w-sm">
+        <div className="w-full px-2 pb-2 md:w-5/6 md:max-w-sm md:pl-5">
           <div className="flex rounded-t-lg bg-slate-50">
             <button
               type="button"
