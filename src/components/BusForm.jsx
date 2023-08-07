@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react"
 import { Bus } from "../Data/Bus"
+import { useNavigate } from "react-router-dom"
 
 export const BusForm = () => {
+  const navigate = useNavigate()
   const [validity, setValidity] = useState({
     routenoV: true,
     numberplateV: true,
@@ -16,11 +18,6 @@ export const BusForm = () => {
   console.log(validity)
   const checkInput = () => {
     event.preventDefault()
-    let data = new Bus(
-      routeNo.current.value,
-      numberplate.current.value,
-      organisationName.current.value
-    )
 
     setValidity({
       routenoV: !(routeNo.current.value === ""),
@@ -32,6 +29,14 @@ export const BusForm = () => {
       numberplate.current.value.length > 5 &&
       !(!government && organisationName.current.value === "")
     ) {
+      navigate("/showmap")
+
+      let data = new Bus(
+        routeNo.current.value,
+        numberplate.current.value,
+        organisationName.current.value
+      )
+
       data.getLocationInformation()
       console.log(data)
       // fetch("/backend", { method: "post", body: data });

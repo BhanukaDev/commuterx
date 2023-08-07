@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Button } from "../components/Button"
 import { FcGoogle } from "react-icons/fc"
 import { signInWithGoogle } from "../Utils/auth"
+import { AppBar } from "../components/AppBar"
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -14,9 +15,13 @@ export const Login = () => {
 
   return (
     <>
+      <AppBar />
       <div className="flex h-screen w-full items-center justify-center">
         <div className="w-full max-w-md">
           <form className="mb-4 flex flex-col rounded bg-white px-8 pb-8 pt-6 shadow-md">
+            <h2 className="mb-4 font-searchBar text-2xl font-semibold sm:text-3xl">
+              Log In
+            </h2>
             <div className="mb-4">
               <label
                 className="mb-2 block text-sm font-bold text-gray-700"

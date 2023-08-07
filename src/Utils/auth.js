@@ -1,4 +1,9 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth"
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth"
 import app from "../firebase"
 
 export const auth = getAuth(app)
@@ -50,4 +55,8 @@ export const signInWithGoogle = (navigate) => {
     .catch((error) => {
       console.log(error)
     })
+}
+export const logOut = (navigate) => {
+  signOut(auth)
+  setTimeout(() => navigate("/showmap"), 10)
 }

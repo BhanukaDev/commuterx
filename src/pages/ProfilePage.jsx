@@ -6,8 +6,12 @@ import { useState } from "react"
 import { BusForm } from "../components/BusForm"
 import { TrainForm } from "../components/TrainForm"
 import { NavBar } from "../components/NavBar"
+import { Button } from "../components/Button"
+import { logOut } from "../Utils/auth"
+import { useNavigate } from "react-router-dom"
 
 export const ProfilePage = () => {
+  const navigate = useNavigate()
   const [active, setActive] = useState("bus")
 
   return (
@@ -41,13 +45,13 @@ export const ProfilePage = () => {
         </div>
 
         <div className="w-full px-2 pb-2 md:w-5/6 md:max-w-sm md:pl-5">
-          <div className="flex rounded-t-lg bg-slate-50">
+          <div className="flex rounded-t-lg bg-slate-50 ">
             <button
               type="button"
               onClick={() => {
                 setActive("bus")
               }}
-              className={`mr-[1px] w-20 rounded-t-xl bg-white px-3 pt-1 text-xl  ${
+              className={`mr-[1px] w-20 rounded-t-xl bg-white px-3 pt-1 text-xl ${
                 active === "bus" ? " shadow-upwardsLG" : "hover:bg-opacity-80"
               }  `}
             >
@@ -68,6 +72,16 @@ export const ProfilePage = () => {
           {active === "bus" ? <BusForm /> : <TrainForm />}
         </div>
       </div>
+      <Button
+        className={""}
+        buttonStyle={"btn-primary"}
+        onClick={() => {
+          logOut(navigate)
+        }}
+      >
+        Log Out
+      </Button>
+      <div className="h-16 w-full"></div>
     </>
   )
 }

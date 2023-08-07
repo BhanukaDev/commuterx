@@ -1,7 +1,9 @@
 import { useState, useRef } from "react"
 import { Train } from "../Data/Train"
+import { useNavigate } from "react-router-dom"
 
 export const TrainForm = () => {
+  const navigate = useNavigate()
   const [validity, setValidity] = useState({
     trainIDV: true,
   })
@@ -23,6 +25,7 @@ export const TrainForm = () => {
         trainStart.current.value,
         trainStop.current.value
       )
+      navigate("/showmap")
       fetch("/backend", { method: "post", body: data })
     }
   }

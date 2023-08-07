@@ -12,6 +12,7 @@ export const User = ({ children }) => {
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser)
+    console.log(currentUser)
   })
   // console.log(user)
   // useEffect(() => {

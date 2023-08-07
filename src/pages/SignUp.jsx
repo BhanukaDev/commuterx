@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Button } from "../components/Button"
 import { FcGoogle } from "react-icons/fc"
 import { signInWithGoogle } from "../Utils/auth"
+import { AppBar } from "../components/AppBar"
 
 export default function SignUp() {
   const navigate = useNavigate()
@@ -11,6 +12,7 @@ export default function SignUp() {
   }
   return (
     <>
+      <AppBar />
       <div className="flex h-screen w-full items-center justify-center">
         <div className="w-full max-w-md">
           <form className="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
