@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 
 export class Bus {
-  constructor(routeID, busID, routeDir) {
+  constructor(uid, routeID, numberPlate, routeDir) {
+    this.uid = uid
     this.routeID = routeID
-    this.busID = busID
+    this.numberPlate = numberPlate
     this.routeDir = routeDir
   }
 
