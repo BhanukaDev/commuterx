@@ -11,6 +11,7 @@
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.35",
     "@react-google-maps/api": "^2.18.1",
     "autoprefixer": "^10.4.14",
     "firebase": "^9.23.0",

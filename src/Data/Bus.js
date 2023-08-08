@@ -10,12 +10,28 @@ export class Bus {
   busStops = []
 
   getLocationInformation() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      return position.coords;
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position)
+        },
+        (error) => {
+          reject(error)
+        }
+      )
     })
   }
 
   getLoc() {
-    return navigator.geolocation.getCurrentPosition.coords;
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position.coords)
+        },
+        (error) => {
+          reject(error)
+        }
+      )
+    })
   }
 }

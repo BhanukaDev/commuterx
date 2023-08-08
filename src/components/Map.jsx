@@ -1,11 +1,11 @@
+import { useState, useMemo, useEffect } from "react"
 import { GoogleMap, Marker } from "@react-google-maps/api"
-import { useCallback, useMemo, useRef } from "react"
+import "../pages/MapPage/test.css"
 
 export const Map = () => {
-  const mapRef = useRef()
   const mapCenter = useMemo(
-    () => ({ lat: 6.895506168321762, lng: 79.8557110778035 }), // default coordinates, port city
-    [] // right now there is no dependencies to change its center, we can implement it
+    () => ({ lat: 6.895506168321762, lng: 79.8557110778035 }),
+    []
   )
 
   const mapOption = useMemo(
@@ -17,7 +17,30 @@ export const Map = () => {
     []
   )
 
-  const onLoad = useCallback((map) => (mapRef.current = map), [])
+  const [userCoords, setUserCoords] = useState({ lat: null, lng: null })
+
+  useEffect(() => {
+    getLoc()
+      .then((coords) => {
+        setUserCoords({ lat: coords.latitude, lng: coords.longitude })
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [])
+
+  function getLoc() {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position.coords)
+        },
+        (error) => {
+          reject(error)
+        }
+      )
+    })
+  }
 
   return (
     <GoogleMap
@@ -25,9 +48,10 @@ export const Map = () => {
       center={mapCenter}
       mapContainerClassName="w-screen h-screen"
       options={mapOption}
-      onLoad={onLoad}
     >
-      <Marker position={mapCenter} />
+      {userCoords.lat !== null && userCoords.lng !== null && (
+        <Marker position={{ lat: userCoords.lat, lng: userCoords.lng }} />
+      )}
     </GoogleMap>
   )
 }

@@ -1,4 +1,5 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */ // remove this line later
 
 import { Divider } from "./Divider"
 import { SearchOpNoResult, SearchOption } from "./SearchOption"
@@ -46,7 +47,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
             <IoClose className="h-[25px] w-[25px]" />
           </button>
         </div>
-        <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
+        {/* <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
           {tempList.length > 0 ? (
             tempList.map((bus, index) => (
               <SearchOption
@@ -59,7 +60,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
           ) : (
             <SearchOpNoResult />
           )}
-        </div>
+        </div> */}
       </div>
     </form>
   )
