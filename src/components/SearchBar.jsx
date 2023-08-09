@@ -26,7 +26,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
   }
 
   const updateResultsList = async () => {
-    const searchResults = await getSearchRoutes("1")
+    const searchResults = await getSearchRoutes("10")
 
     setSeResults(searchResults)
     console.log(seResults[0].id)
