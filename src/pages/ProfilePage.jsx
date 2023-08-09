@@ -22,12 +22,12 @@ export const ProfilePage = () => {
       <NavBar />
       <div className="flex h-full min-h-screen flex-col bg-white px-[2%] pt-5 font-searchBar md:flex-row md:justify-between md:pl-20">
         <div className="w-full px-2 ">
-          <div className="mb-5 flex max-h-60 w-full items-center justify-between rounded-xl px-2 py-4 shadow-upwardsLG ">
-            <figure className="group relative w-40 overflow-hidden rounded-full border-4 border-white">
+          <div className="mb-4 flex max-h-52 w-full items-center justify-between rounded-xl px-2 py-4 shadow-upwardsLG ">
+            <figure className="group relative w-32 overflow-hidden rounded-full border-4 border-white">
               <img
-                width={200}
+                width={120}
                 src={user?.photoURL ? user?.photoURL : "noImage.jpg"}
-                className="aspect-square scale-110"
+                className=""
                 alt="no image"
               />
               <img
@@ -36,11 +36,9 @@ export const ProfilePage = () => {
                 alt="edit"
               />
             </figure>
-            <div className="flex w-1/2 flex-col items-end justify-center pt-5">
+            <div className="flex w-1/2 flex-col items-end justify-center ">
               <IoBus className="-mr-1 h-10 w-10"></IoBus>
-              <h2 className="text-2xl font-bold md:text-3xl md:leading-loose">
-                101
-              </h2>
+              <h2 className="text-2xl font-bold md:text-3xl">101</h2>
               <h2 className="text-lg md:text-xl "> ND-4017 </h2>
               <h2 className="text-lg md:text-xl"> Nilanka Travels </h2>
             </div>
@@ -49,7 +47,7 @@ export const ProfilePage = () => {
         </div>
 
         <div className="w-full px-2 pb-2 md:w-5/6 md:max-w-sm md:pl-5">
-          <div className="flex rounded-t-lg bg-slate-50 ">
+          <div className="flex rounded-t-lg bg-slate-50 pt-1 ">
             <button
               type="button"
               className={`mr-[1px] w-36 rounded-t-xl bg-white px-3 pt-1 text-xl  ${
