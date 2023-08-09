@@ -1,4 +1,13 @@
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore"
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  getFirestore,
+  query,
+  setDoc,
+  where,
+} from "firebase/firestore"
 import app from "../firebase"
 import { auth, getUID } from "./auth"
 
@@ -47,5 +56,30 @@ export const getMarkerIcon = async () => {
       return "mapIcons/train.png"
     default:
       return "mapIcons/manicon.png"
+  }
+}
+
+export const getSearchRoutes = async (keyword) => {
+  // Get a reference to the "Routes" collection
+  const routesCollectionRef = collection(db, "Routes")
+
+  const queryCriteria = query(
+    routesCollectionRef,
+    where("keywords", "array-contains", keyword)
+  )
+
+  try {
+    const querySnapshot = await getDocs(queryCriteria)
+    let results = []
+    querySnapshot.forEach((doc) => {
+      const data = doc.data()
+      //console.log("Document data:", data)
+      results.push(data)
+    })
+
+    return results
+  } catch (error) {
+    return []
+    //console.error("Error getting documents:", error)
   }
 }
