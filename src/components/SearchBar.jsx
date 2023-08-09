@@ -17,15 +17,19 @@ export const SearchBar = ({ type, placeholder, icon }) => {
   //   { route: "Matara to Colombo", number: "1" },
   // ]
 
-  const [seResults, setSeResults] = useState()
+  const [seResults, setSeResults] = useState([])
 
   const handleSearch = async (e) => {
     e.preventDefault()
-    const searchResults = await getSearchRoutes("10")
+    updateResultsList()
+    // console.log("Event: Form Submit")
+  }
+
+  const updateResultsList = async () => {
+    const searchResults = await getSearchRoutes("1")
 
     setSeResults(searchResults)
     console.log(seResults[0].id)
-    // console.log("Event: Form Submit")
   }
 
   const handleReset = (e) => {
@@ -70,7 +74,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
           {seResults.length > 0 ? (
             seResults.map((route, index) => (
               <SearchOption
-                primary={route.desA}
+                primary={`${route.desA} - ${route.desB}`}
                 secondary={route.id}
                 key={index}
                 type={type}
