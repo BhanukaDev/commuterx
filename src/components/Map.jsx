@@ -17,29 +17,25 @@ export const Map = () => {
   )
 
   const [markerIcon, setMarkerIcon] = useState(null)
+  const [centerChange, updateCenter] = useState(false)
 
   useEffect(() => {
     async function fetchMarkerIcon() {
       const icon = await getMarkerIcon()
       setMarkerIcon(icon)
-      console.log(icon)
+      //console.log(icon)
     }
     fetchMarkerIcon()
-  }, [])
+  }, [centerChange])
 
   // user location ui update
-
-  const [centerChange, updateCenter] = useState(false)
 
   const [coords, setCoords] = useState({
     lat: 6.895506168321762,
     lng: 79.8557110778035,
   })
 
-  const mapCenter = useMemo(
-    () => coords, // default coordinates, port city
-    [centerChange] // right now there is no dependencies to change its center, we can implement it
-  )
+  const mapCenter = useMemo(() => coords, [centerChange])
 
   const updateMapLocation = () => {
     if (navigator.geolocation) {
@@ -65,6 +61,16 @@ export const Map = () => {
     }, 1500)
     return () => {
       clearInterval(interval)
+    }
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      updateCenter(!centerChange)
+    }, 1800)
+
+    return () => {
+      clearTimeout(timer)
     }
   }, [])
 
