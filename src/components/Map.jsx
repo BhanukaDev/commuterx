@@ -1,11 +1,13 @@
-import { useState, useMemo, useEffect } from "react"
 import { GoogleMap, Marker } from "@react-google-maps/api"
-import "../pages/MapPage/test.css"
+import { useCallback, useMemo, useRef } from "react"
+import { RecenterButton } from "./RecenterButton"
 
 export const Map = () => {
+  const mapRef = useRef()
+
   const mapCenter = useMemo(
-    () => ({ lat: 6.895506168321762, lng: 79.8557110778035 }),
-    []
+    () => ({ lat: 6.895506168321762, lng: 79.8557110778035 }), // default coordinates, port city
+    [] // right now there is no dependencies to change its center, we can implement it
   )
 
   const mapOption = useMemo(
@@ -17,30 +19,7 @@ export const Map = () => {
     []
   )
 
-  const [userCoords, setUserCoords] = useState({ lat: null, lng: null })
-
-  useEffect(() => {
-    getLoc()
-      .then((coords) => {
-        setUserCoords({ lat: coords.latitude, lng: coords.longitude })
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }, [])
-
-  function getLoc() {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          resolve(position.coords)
-        },
-        (error) => {
-          reject(error)
-        }
-      )
-    })
-  }
+  const onLoad = useCallback((map) => (mapRef.current = map), [])
 
   return (
     <GoogleMap
@@ -48,10 +27,11 @@ export const Map = () => {
       center={mapCenter}
       mapContainerClassName="w-screen h-screen"
       options={mapOption}
+      onLoad={onLoad}
     >
-      {userCoords.lat !== null && userCoords.lng !== null && (
-        <Marker position={{ lat: userCoords.lat, lng: userCoords.lng }} />
-      )}
+      <Marker position={mapCenter}></Marker>
+      <RecenterButton />
+      {/* <Marker position={{ lat: 6.795506168321762, lng: 79.8557110778035 }} /> */}
     </GoogleMap>
   )
 }
