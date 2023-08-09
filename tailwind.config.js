@@ -8,6 +8,7 @@ export default {
   ],
   theme: {
     screens: {
+      sc0: "0px",
       sm: "600px",
 
       md: "768px",
@@ -25,6 +26,7 @@ export default {
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
         searchBar: ["Poppins", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
         manrope: ["Manrope", "sans-serif"],
         lato: ["Lato", "sans-serif"],
         bebas: ["Bebas Neue", "sans-serif"],

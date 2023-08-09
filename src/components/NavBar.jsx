@@ -5,7 +5,6 @@ import { transportLinks, mainlinks } from "../links"
 import { FaHome } from "react-icons/fa"
 import { IoPerson } from "react-icons/io5"
 import { MdFeedback } from "react-icons/md"
-import { Divider } from "./Divider"
 import { v4 as uuidv4 } from "uuid"
 
 export const NavBar = () => {
