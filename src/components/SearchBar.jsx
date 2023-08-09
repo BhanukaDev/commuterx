@@ -23,18 +23,16 @@ export const SearchBar = ({ type, placeholder, icon }) => {
 
   const handleSearch = async (e) => {
     e.preventDefault()
-    updateResultsList()
-    // console.log("Event: Form Submit")
+
+    console.log("Event: Form Submit")
   }
 
   const updateResultsList = async (res) => {
-    console.log("1st phase")
     if (res === "") {
       setShowSearchOptions(false)
       return
     }
 
-    console.log("2nd phase")
     setShowSearchOptions(true)
     const searchResults = await getSearchRoutes(res)
     setSeResults(searchResults)

@@ -12,6 +12,7 @@ export const TrainForm = () => {
   const form = useRef(null)
 
   const trainID = useRef("")
+  const trainName = useRef("")
   const trainStart = useRef("")
   const trainStop = useRef("")
 
@@ -24,6 +25,7 @@ export const TrainForm = () => {
     if (!(trainID.current.value === "")) {
       let data = new Train(
         auth.currentUser.uid,
+        trainName.current.value,
         trainID.current.value,
         trainStart.current.value,
         trainStop.current.value
@@ -50,6 +52,19 @@ export const TrainForm = () => {
         name="trainID"
         type="text"
         placeholder="e.g. 8086"
+        className={`${!validity.trainIDV && "border-red-500"} 
+    mb-4 rounded-md border border-black px-2 leading-loose`}
+      />
+
+      <label className="mb-2" htmlFor="trainName">
+        Train Name<span className="font-bold text-red-400">*</span>
+      </label>
+      <input
+        ref={trainName}
+        id="trainName"
+        name="trainName"
+        type="text"
+        placeholder="Ruhunu Kumari"
         className={`${!validity.trainIDV && "border-red-500"} 
     mb-4 rounded-md border border-black px-2 leading-loose`}
       />
