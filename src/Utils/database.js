@@ -22,6 +22,7 @@ export const addCommuterToDatabase = () => {
   const user = auth.currentUser
   setDoc(doc(db, "Commuters", user.uid), {
     uid: user.uid,
+    role: "commuter",
     name: user.displayName,
     email: user.email,
   })
