@@ -20,7 +20,6 @@ export const Map = () => {
   )
 
   const onLoad = useCallback((map) => (mapRef.current = map), [])
-
   return (
     <GoogleMap
       zoom={15}
@@ -29,10 +28,7 @@ export const Map = () => {
       options={mapOption}
       onLoad={onLoad}
     >
-      <Marker
-        position={mapCenter}
-        icon={"src/assets/person-solid.svg"}
-      ></Marker>
+      <Marker position={mapCenter} icon={"mapIcons/busprt.png"}></Marker>
       <RecenterButton />
       {/* <Marker position={{ lat: 6.795506168321762, lng: 79.8557110778035 }} /> */}
     </GoogleMap>

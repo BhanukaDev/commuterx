@@ -63,3 +63,7 @@ export const logOut = (navigate) => {
     })
     .catch((error) => console.log(error))
 }
+
+export const getUID = () => {
+  return auth.currentUser?.uid
+}
