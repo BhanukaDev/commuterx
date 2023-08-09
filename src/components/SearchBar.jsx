@@ -19,6 +19,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
 
   const [seResults, setSeResults] = useState([])
   const [inputValue, setInputValue] = useState("")
+  const [showSearchOptions, setShowSearchOptions] = useState(false)
 
   const handleSearch = async (e) => {
     e.preventDefault()
@@ -27,13 +28,22 @@ export const SearchBar = ({ type, placeholder, icon }) => {
   }
 
   const updateResultsList = async (res) => {
-    const searchResults = await getSearchRoutes(res)
+    console.log("1st phase")
+    if (res === "") {
+      setShowSearchOptions(false)
+      return
+    }
 
+    console.log("2nd phase")
+    setShowSearchOptions(true)
+    const searchResults = await getSearchRoutes(res)
     setSeResults(searchResults)
     // console.log(seResults[0].id)
   }
 
-  const handleReset = (e) => {
+  const handleReset = () => {
+    setInputValue("")
+    setShowSearchOptions(false)
     console.log("Event: Form Reset")
   }
 
@@ -63,7 +73,11 @@ export const SearchBar = ({ type, placeholder, icon }) => {
                 ? "Search for bus routes or destinations"
                 : "Search for train lines or destinations"
             }
-            onChange={(e) => updateResultsList(e.target.value)}
+            onChange={(e) => {
+              setInputValue(e.target.value)
+              updateResultsList(e.target.value)
+            }}
+            value={inputValue}
           />
           <button
             type="reset"
@@ -73,20 +87,22 @@ export const SearchBar = ({ type, placeholder, icon }) => {
             <IoClose className="h-[25px] w-[25px]" />
           </button>
         </div>
-        <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
-          {seResults.length > 0 ? (
-            seResults.map((route, index) => (
-              <SearchOption
-                primary={`${route.desA} - ${route.desB}`}
-                secondary={route.id}
-                key={index}
-                type={type}
-              />
-            ))
-          ) : (
-            <SearchOpNoResult />
-          )}
-        </div>
+        {showSearchOptions === true ? (
+          <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
+            {seResults.length > 0 ? (
+              seResults.map((route, index) => (
+                <SearchOption
+                  primary={`${route.desA} - ${route.desB}`}
+                  secondary={route.id}
+                  key={index}
+                  type={type}
+                />
+              ))
+            ) : (
+              <SearchOpNoResult />
+            )}
+          </div>
+        ) : null}
       </div>
     </form>
   )
