@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import { addCommuterToDatabase } from "../Utils/database"
-import { auth } from "../Utils/auth"
+import { useContext, useRef, useState } from "react"
+import { authContext } from "./User"
 
 export const CommuterForm = () => {
   const navigate = useNavigate()
+  const user = useContext(authContext)
   // const [validity, setValidity] = useState({
   //   routenoV: true,
   //   numberplateV: true,
@@ -12,8 +14,8 @@ export const CommuterForm = () => {
   // const [government, setGovernment] = useState(true)
   // const form = useRef(null)
   // const organisationName = useRef("ctb")
-  // const numberplate = useRef("")
-  // const routeNo = useRef("")
+  const [name, setName] = useState("")
+  const email = useRef("")
 
   // console.log(validity)
   const checkInput = () => {
@@ -58,32 +60,35 @@ export const CommuterForm = () => {
       method="get"
       className="relative flex h-[90%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
     >
-      {/* <label className="mb-2" htmlFor="busrouteno">
-        Route No<span className="font-bold text-red-400">*</span>
-      </label> */}
-      {/* <input
-        ref={routeNo}
-        id="busrouteno"
-        name="busrouteno"
+      <label className="mb-2" htmlFor="name">
+        Name<span className="font-bold text-red-400">*</span>
+      </label>
+      <input
+        value={user.displayName}
+        onChange={(e) => {
+          setName(e.target.value)
+        }}
+        id="name"
+        name="name"
         type="text"
-        placeholder="e.g. 101"
-        className={`${!validity.routenoV && "border-red-500"} 
+        placeholder="Name"
+        className={` 
         mb-4 rounded-md border border-black px-2 leading-loose`}
       />
 
-      <label className="mb-2" htmlFor="numberplate">
-        Number Plate<span className="font-bold text-red-400">*</span>
+      <label className="mb-2" htmlFor="email">
+        Email<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        ref={numberplate}
-        id="numberplate"
-        name="numberplate"
-        type="text"
-        placeholder="e.g. ND-1986"
-        className={`${
-          !validity.numberplateV && "border-red-500"
-        } mb-4 rounded-md border border-black px-2 leading-loose`}
-      /> */}
+        value={user.email}
+        readOnly
+        ref={email}
+        id="email"
+        name="email"
+        type="email"
+        className={`
+         mb-4 rounded-md border border-black px-2 leading-loose`}
+      />
 
       {/* <div className="mb-2 flex">
         <button
