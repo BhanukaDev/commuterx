@@ -28,7 +28,7 @@ export const TrainForm = () => {
         trainStart.current.value,
         trainStop.current.value
       )
-      navigate("/showmap")
+      navigate("/trainmap")
       addTrainToDatabase(data)
     }
   }

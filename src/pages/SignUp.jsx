@@ -13,9 +13,9 @@ export default function SignUp() {
   return (
     <>
       <AppBar />
-      <div className="flex h-screen w-full items-center justify-center">
+      <div className="flex h-screen w-full items-center justify-center px-5 pt-16">
         <div className="w-full max-w-md">
-          <form className="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
+          <form className="mb-4 rounded bg-white px-8 pb-8 pt-6 drop-shadow-lg">
             <h2 className="mb-4 font-searchBar text-2xl font-semibold sm:text-3xl">
               Sign Up
             </h2>

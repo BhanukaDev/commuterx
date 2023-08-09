@@ -22,7 +22,7 @@ export const CommuterForm = () => {
     event.preventDefault()
 
     addCommuterToDatabase()
-    navigate("/showmap")
+    navigate("/busmap")
 
     // setValidity({
     //   routenoV: !(routeNo.current.value === ""),

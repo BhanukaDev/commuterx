@@ -35,7 +35,7 @@ export const mainlinks = [
 export const transportLinks = [
   {
     id: 1,
-    url: "/showmap",
+    url: "/trainmap",
     text: "Train",
     rfcname: "dd",
     iconSvg: (
@@ -44,7 +44,7 @@ export const transportLinks = [
   },
   {
     id: 2,
-    url: "/showmap",
+    url: "/busmap",
     text: "Bus",
     rfcname: "dd",
     iconSvg: <IoBus className="h-full w-full opacity-80 hover:opacity-100" />,

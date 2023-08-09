@@ -32,7 +32,7 @@ export const BusForm = () => {
       numberplate.current.value.length > 5 &&
       !(!government && organisationName.current.value === "")
     ) {
-      navigate("/showmap")
+      navigate("/busmap")
 
       let data = new Bus(
         auth.currentUser.uid,
@@ -59,7 +59,6 @@ export const BusForm = () => {
     <form
       ref={form}
       onSubmit={checkInput}
-      action="server.js"
       method="get"
       className="relative flex h-[85%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
     >

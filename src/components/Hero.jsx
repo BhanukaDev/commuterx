@@ -25,14 +25,14 @@ export const Hero = () => {
         <Button
           className="mx-5 w-20"
           buttonStyle="btn-outline"
-          linkpath="/showmap"
+          linkpath="/busmap"
         >
           Bus
         </Button>
         <Button
           className="mx-5 w-20"
           buttonStyle="btn-outline"
-          linkpath="/showmap"
+          linkpath="/trainmap"
         >
           Train
         </Button>

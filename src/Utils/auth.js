@@ -48,7 +48,7 @@ export const signInWithGoogle = (navigate) => {
         }, 10)
       } else {
         setTimeout(() => {
-          setTimeout(navigate, 0, "/showmap", { replace: true })
+          setTimeout(navigate, 0, "/busmap", { replace: true })
         }, 10)
       }
     })
@@ -59,7 +59,7 @@ export const signInWithGoogle = (navigate) => {
 export const logOut = (navigate) => {
   signOut(auth)
     .then(() => {
-      setTimeout(() => navigate("/showmap"), 10)
+      setTimeout(() => navigate("/login"), 10)
     })
     .catch((error) => console.log(error))
 }

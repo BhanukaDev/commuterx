@@ -15,7 +15,8 @@ export default function App() {
       <BrowserCheck />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/showmap" element={<MapPage />} />
+        <Route path="/busmap" element={<MapPage />} />
+        <Route path="/trainmap" element={<MapPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
 
