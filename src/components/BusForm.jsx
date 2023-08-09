@@ -19,7 +19,6 @@ export const BusForm = () => {
   const desA = useRef("")
   const desB = useRef("")
 
-  console.log(validity)
   const checkInput = () => {
     event.preventDefault()
 

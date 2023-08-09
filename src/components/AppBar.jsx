@@ -19,7 +19,7 @@ export const AppBar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 z-20 h-16 w-screen bg-white">
+      <nav className="fixed top-0 z-20 h-16 w-screen bg-white shadow-md">
         {/**the main nav bar */}
         <div className="m-auto flex h-full items-center justify-between px-3 md:w-5/6">
           {/**the inner nav bar */}
