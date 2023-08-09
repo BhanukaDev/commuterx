@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app"
-// import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 
 const app = initializeApp({
   // later replace these values with env variables

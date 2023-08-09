@@ -1,6 +1,7 @@
 import { useState, useRef } from "react"
 import { Train } from "../Data/Train"
 import { useNavigate } from "react-router-dom"
+import { addTrainToDatabase } from "../Utils/database"
 
 export const TrainForm = () => {
   const navigate = useNavigate()
@@ -26,7 +27,7 @@ export const TrainForm = () => {
         trainStop.current.value
       )
       navigate("/showmap")
-      fetch("/backend", { method: "post", body: data })
+      addTrainToDatabase(data)
     }
   }
 

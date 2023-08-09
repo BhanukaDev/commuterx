@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react"
 import { Bus } from "../Data/Bus"
 import { useNavigate } from "react-router-dom"
+import { addBusToDatabase } from "../Utils/database"
+import { auth } from "../Utils/auth"
 
 export const BusForm = () => {
   const navigate = useNavigate()
@@ -32,6 +34,7 @@ export const BusForm = () => {
       navigate("/showmap")
 
       let data = new Bus(
+        auth.currentUser.uid,
         routeNo.current.value,
         numberplate.current.value,
         organisationName.current.value
@@ -39,7 +42,7 @@ export const BusForm = () => {
 
       data.getLocationInformation()
       console.log(data)
-      // fetch("/backend", { method: "post", body: data });
+      addBusToDatabase(data)
     }
   }
 
