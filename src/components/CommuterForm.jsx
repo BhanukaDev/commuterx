@@ -14,7 +14,7 @@ export const CommuterForm = () => {
   // const [government, setGovernment] = useState(true)
   // const form = useRef(null)
   // const organisationName = useRef("ctb")
-  const [name, setName] = useState("")
+  const [name, setName] = useState(user.displayName)
   const email = useRef("")
 
   // console.log(validity)
@@ -64,7 +64,7 @@ export const CommuterForm = () => {
         Name<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        value={user.displayName}
+        value={name}
         onChange={(e) => {
           setName(e.target.value)
         }}

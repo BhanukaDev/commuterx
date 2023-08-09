@@ -16,6 +16,8 @@ export const BusForm = () => {
   const organisationName = useRef("ctb")
   const numberplate = useRef("")
   const routeNo = useRef("")
+  const desA = useRef("")
+  const desB = useRef("")
 
   console.log(validity)
   const checkInput = () => {
@@ -37,7 +39,10 @@ export const BusForm = () => {
         auth.currentUser.uid,
         routeNo.current.value,
         numberplate.current.value,
-        organisationName.current.value
+        true,
+        organisationName.current.value,
+        desA.current.value,
+        desB.current.value
       )
 
       data.getLocationInformation()
@@ -119,6 +124,31 @@ export const BusForm = () => {
         ref={organisationName}
         className={`${!validity.organisationV && "border-red-500"} 
         mb-3 mt-1 border-b-2 border-black px-2 outline-0`}
+      />
+      <label className="mb-2" htmlFor="desA">
+        Destination A<span className="font-bold text-red-400">*</span>
+      </label>
+      <input
+        ref={desA}
+        id="desA"
+        name="desA"
+        type="text"
+        placeholder="e.g. Moratuwa"
+        className={`
+        mb-4 rounded-md border border-black px-2 leading-loose`}
+      />
+
+      <label className="mb-2" htmlFor="desB">
+        Destination B<span className="font-bold text-red-400">*</span>
+      </label>
+      <input
+        ref={desB}
+        id="desB"
+        name="desB"
+        type="text"
+        placeholder="e.g. Pettah"
+        className={`
+        mb-4 rounded-md border border-black px-2 leading-loose`}
       />
 
       <button
