@@ -22,13 +22,14 @@ export const SearchBar = ({ type, placeholder, icon }) => {
   const handleSearch = async (e) => {
     e.preventDefault()
     const searchResults = await getSearchRoutes("10")
+
     setSeResults(searchResults)
+    console.log(seResults[0].id)
     // console.log("Event: Form Submit")
   }
 
   const handleReset = (e) => {
     console.log("Event: Form Reset")
-    //setSeResults(getSearchRoutes("m"))
   }
 
   return (
@@ -65,7 +66,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
             <IoClose className="h-[25px] w-[25px]" />
           </button>
         </div>
-        {/* <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
+        <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
           {seResults.length > 0 ? (
             seResults.map((route, index) => (
               <SearchOption
@@ -78,7 +79,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
           ) : (
             <SearchOpNoResult />
           )}
-        </div> */}
+        </div>
       </div>
     </form>
   )
