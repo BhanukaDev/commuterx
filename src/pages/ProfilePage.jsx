@@ -88,17 +88,18 @@ export const ProfilePage = () => {
           {active === "bus" && <BusForm />}
           {active === "train" && <TrainForm />}
           {active === "commuter" && <CommuterForm />}
+          <Button
+            className={""}
+            buttonStyle={"btn-primary my-3 h-10"}
+            onClick={() => {
+              logOut(navigate)
+            }}
+          >
+            Log Out
+          </Button>
         </div>
       </div>
-      <Button
-        className={""}
-        buttonStyle={"btn-primary"}
-        onClick={() => {
-          logOut(navigate)
-        }}
-      >
-        Log Out
-      </Button>
+
       <div className="h-16 w-full"></div>
     </>
   )

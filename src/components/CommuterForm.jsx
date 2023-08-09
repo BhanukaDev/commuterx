@@ -58,7 +58,7 @@ export const CommuterForm = () => {
     <form
       onSubmit={checkInput}
       method="get"
-      className="relative flex h-[90%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
+      className="relative flex h-[85%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
     >
       <label className="mb-2" htmlFor="name">
         Name<span className="font-bold text-red-400">*</span>
