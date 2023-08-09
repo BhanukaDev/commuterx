@@ -29,7 +29,10 @@ export const Map = () => {
       options={mapOption}
       onLoad={onLoad}
     >
-      <Marker position={mapCenter}></Marker>
+      <Marker
+        position={mapCenter}
+        icon={"src/assets/person-solid.svg"}
+      ></Marker>
       <RecenterButton />
       {/* <Marker position={{ lat: 6.795506168321762, lng: 79.8557110778035 }} /> */}
     </GoogleMap>
