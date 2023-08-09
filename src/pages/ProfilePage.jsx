@@ -2,7 +2,7 @@
 
 // import { IoMdTrain } from "react-icons/io";
 import { IoBus } from "react-icons/io5"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { BusForm } from "../components/BusForm"
 import { TrainForm } from "../components/TrainForm"
 import { NavBar } from "../components/NavBar"
@@ -10,8 +10,10 @@ import { Button } from "../components/Button"
 import { logOut } from "../Utils/auth"
 import { useNavigate } from "react-router-dom"
 import { CommuterForm } from "../components/CommuterForm"
+import { authContext } from "../components/User"
 
 export const ProfilePage = () => {
+  const user = useContext(authContext)
   const navigate = useNavigate()
   const [active, setActive] = useState("bus")
 
@@ -23,7 +25,8 @@ export const ProfilePage = () => {
           <div className="mb-5 flex max-h-60 w-full items-center justify-between rounded-xl px-2 py-4 shadow-upwardsLG ">
             <figure className="group relative w-40 overflow-hidden rounded-full border-4 border-white">
               <img
-                src="lkbus.webp"
+                width={200}
+                src={user?.photoURL ? user?.photoURL : "noImage.jpg"}
                 className="aspect-square scale-110"
                 alt="no image"
               />
