@@ -9,6 +9,7 @@ import { NavBar } from "../components/NavBar"
 import { Button } from "../components/Button"
 import { logOut } from "../Utils/auth"
 import { useNavigate } from "react-router-dom"
+import { CommuterForm } from "../components/CommuterForm"
 
 export const ProfilePage = () => {
   const navigate = useNavigate()
@@ -48,6 +49,19 @@ export const ProfilePage = () => {
           <div className="flex rounded-t-lg bg-slate-50 ">
             <button
               type="button"
+              className={`mr-[1px] w-36 rounded-t-xl bg-white px-3 pt-1 text-xl  ${
+                active === "commuter"
+                  ? " shadow-upwardsLG"
+                  : "hover:bg-opacity-80"
+              }  `}
+              onClick={() => {
+                setActive("commuter")
+              }}
+            >
+              Commuter
+            </button>
+            <button
+              type="button"
               onClick={() => {
                 setActive("bus")
               }}
@@ -69,7 +83,10 @@ export const ProfilePage = () => {
               Train
             </button>
           </div>
-          {active === "bus" ? <BusForm /> : <TrainForm />}
+
+          {active === "bus" && <BusForm />}
+          {active === "train" && <TrainForm />}
+          {active === "commuter" && <CommuterForm />}
         </div>
       </div>
       <Button
