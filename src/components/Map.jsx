@@ -2,9 +2,9 @@
 import { GoogleMap, Marker } from "@react-google-maps/api"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { RecenterButton } from "./RecenterButton"
-import { getMarkerIcon, getSearchRoutes } from "../Utils/database"
+import { getMarkerIcon } from "../Utils/database"
 
-export const Map = ({ type = "bus" }) => {
+export const Map = () => {
   const mapRef = useRef()
 
   const mapOption = useMemo(

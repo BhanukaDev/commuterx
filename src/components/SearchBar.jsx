@@ -21,8 +21,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
 
   const handleSearch = async (e) => {
     e.preventDefault()
-    const searchResults = await getSearchRoutes("col")
-
+    const searchResults = await getSearchRoutes("10")
     setSeResults(searchResults)
     // console.log("Event: Form Submit")
   }
@@ -48,7 +47,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
           <Divider />
 
           <input
-            type="text"
+            type="search"
             name="search"
             id="search"
             className="h-full w-full bg-transparent focus:outline-none"
@@ -57,7 +56,6 @@ export const SearchBar = ({ type, placeholder, icon }) => {
                 ? "Search for bus routes or destinations"
                 : "Search for train lines or destinations"
             }
-            onSubmit={handleSearch}
           />
           <button
             type="reset"
@@ -67,7 +65,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
             <IoClose className="h-[25px] w-[25px]" />
           </button>
         </div>
-        <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
+        {/* <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
           {seResults.length > 0 ? (
             seResults.map((route, index) => (
               <SearchOption
@@ -80,7 +78,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
           ) : (
             <SearchOpNoResult />
           )}
-        </div>
+        </div> */}
       </div>
     </form>
   )
