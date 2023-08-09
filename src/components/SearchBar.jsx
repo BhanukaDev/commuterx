@@ -18,6 +18,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
   // ]
 
   const [seResults, setSeResults] = useState([])
+  const [inputValue, setInputValue] = useState("")
 
   const handleSearch = async (e) => {
     e.preventDefault()
@@ -25,11 +26,11 @@ export const SearchBar = ({ type, placeholder, icon }) => {
     // console.log("Event: Form Submit")
   }
 
-  const updateResultsList = async () => {
-    const searchResults = await getSearchRoutes("10")
+  const updateResultsList = async (res) => {
+    const searchResults = await getSearchRoutes(res)
 
     setSeResults(searchResults)
-    console.log(seResults[0].id)
+    // console.log(seResults[0].id)
   }
 
   const handleReset = (e) => {
@@ -61,6 +62,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
                 ? "Search for bus routes or destinations"
                 : "Search for train lines or destinations"
             }
+            onChange={(e) => updateResultsList(e.target.value)}
           />
           <button
             type="reset"
