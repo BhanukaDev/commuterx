@@ -53,6 +53,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
           <Divider />
 
           <input
+            autoComplete="off"
             type="search"
             name="search"
             id="search"
