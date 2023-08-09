@@ -2,6 +2,7 @@
 
 export class Bus {
   constructor(uid, routeID, numberPlate, routeDir) {
+    this.role = "Bus"
     this.uid = uid
     this.routeID = routeID
     this.numberPlate = numberPlate

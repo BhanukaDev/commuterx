@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 
 export class Train {
-  constructor(trainID, start, stop) {
+  constructor(uid, trainID, start, stop) {
+    this.role = "Bus"
+    this.uid = uid
     this.trainID = trainID
     this.start = start
     this.stop = stop
@@ -11,7 +13,7 @@ export class Train {
 
   getLocationInformation() {
     navigator.geolocation.getCurrentPosition((position) => {
-      return position.coords;
+      return position.coords
     })
   }
 }

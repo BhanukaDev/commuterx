@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import { Train } from "../Data/Train"
 import { useNavigate } from "react-router-dom"
 import { addTrainToDatabase } from "../Utils/database"
+import { auth } from "../Utils/auth"
 
 export const TrainForm = () => {
   const navigate = useNavigate()
@@ -22,6 +23,7 @@ export const TrainForm = () => {
     })
     if (!(trainID.current.value === "")) {
       let data = new Train(
+        auth.currentUser.uid,
         trainID.current.value,
         trainStart.current.value,
         trainStop.current.value
