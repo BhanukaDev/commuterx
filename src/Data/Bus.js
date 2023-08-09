@@ -1,12 +1,23 @@
 /* eslint-disable no-unused-vars */
 
 export class Bus {
-  constructor(uid, routeID, numberPlate, routeDir) {
+  constructor(
+    uid,
+    routeID,
+    numberPlate,
+    routeDir,
+    organistaionName,
+    desA,
+    desB
+  ) {
     this.role = "Bus"
     this.uid = uid
     this.routeID = routeID
     this.numberPlate = numberPlate
     this.routeDir = routeDir
+    this.organistaionName = organistaionName
+    this.desA = desA
+    this.desB = desB
   }
 
   busStops = []
