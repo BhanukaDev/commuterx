@@ -1,6 +1,6 @@
-import { doc, getFirestore, setDoc } from "firebase/firestore"
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore"
 import app from "../firebase"
-import { auth } from "./auth"
+import { auth, getUID } from "./auth"
 
 export const db = getFirestore(app)
 
@@ -22,9 +22,30 @@ export const addCommuterToDatabase = () => {
   const user = auth.currentUser
   setDoc(doc(db, "Commuters", user.uid), {
     uid: user.uid,
-    role: "commuter",
     name: user.displayName,
     email: user.email,
   })
-  addToUniteDB(user.uid, "user")
+  addToUniteDB(user.uid, "commuter")
+}
+
+export const getUserRole = async () => {
+  const docRef = doc(db, "Unite", getUID())
+  const docSnap = await getDoc(docRef)
+  if (docSnap.exists()) {
+    return docSnap.data().role
+  } else {
+    return ""
+  }
+}
+
+export const getMarkerIcon = async () => {
+  const userRole = await getUserRole()
+  switch (userRole) {
+    case "bus":
+      return "mapIcons/busprt.png"
+    case "train":
+      return "mapIcons/train.png"
+    default:
+      return "mapIcons/manicon.png"
+  }
 }

@@ -1,6 +1,7 @@
 import { GoogleMap, Marker } from "@react-google-maps/api"
-import { useCallback, useMemo, useRef } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { RecenterButton } from "./RecenterButton"
+import { getMarkerIcon, getUserRole } from "../Utils/database"
 
 export const Map = () => {
   const mapRef = useRef()
@@ -19,6 +20,16 @@ export const Map = () => {
     []
   )
 
+  const [markerIcon, setMarkerIcon] = useState(null)
+
+  useEffect(() => {
+    async function fetchMarkerIcon() {
+      const icon = await getMarkerIcon()
+      setMarkerIcon(icon)
+    }
+    fetchMarkerIcon()
+  }, [])
+
   const onLoad = useCallback((map) => (mapRef.current = map), [])
   return (
     <GoogleMap
@@ -28,7 +39,7 @@ export const Map = () => {
       options={mapOption}
       onLoad={onLoad}
     >
-      <Marker position={mapCenter} icon={"mapIcons/busprt.png"}></Marker>
+      <Marker position={mapCenter} icon={markerIcon}></Marker>
       <RecenterButton />
       {/* <Marker position={{ lat: 6.795506168321762, lng: 79.8557110778035 }} /> */}
     </GoogleMap>
