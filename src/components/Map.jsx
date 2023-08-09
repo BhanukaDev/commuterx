@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { GoogleMap, Marker } from "@react-google-maps/api"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { RecenterButton } from "./RecenterButton"
-import { getMarkerIcon, getUserRole } from "../Utils/database"
+import { getMarkerIcon } from "../Utils/database"
 
-export const Map = () => {
+export const Map = ({ type = "bus" }) => {
   const mapRef = useRef()
 
   const mapCenter = useMemo(
@@ -30,6 +31,40 @@ export const Map = () => {
     fetchMarkerIcon()
   }, [])
 
+  // user location ui update
+
+  const [coords, setCoords] = useState({
+    lat: 6.895506168321762,
+    lng: 79.8557110778035,
+  })
+
+  const updateMapLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCoords({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          })
+        },
+        (error) => {
+          console.error(error)
+        }
+      )
+    } else {
+      alert("Geolocation is not supported by this browser.")
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateMapLocation()
+    }, 500)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
   const onLoad = useCallback((map) => (mapRef.current = map), [])
   return (
     <GoogleMap
@@ -39,7 +74,7 @@ export const Map = () => {
       options={mapOption}
       onLoad={onLoad}
     >
-      <Marker position={mapCenter} icon={markerIcon}></Marker>
+      <Marker position={coords} icon={markerIcon}></Marker>
       <RecenterButton />
       {/* <Marker position={{ lat: 6.795506168321762, lng: 79.8557110778035 }} /> */}
     </GoogleMap>
