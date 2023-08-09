@@ -22,6 +22,7 @@ export const Map = () => {
     async function fetchMarkerIcon() {
       const icon = await getMarkerIcon()
       setMarkerIcon(icon)
+      console.log(icon)
     }
     fetchMarkerIcon()
   }, [])
