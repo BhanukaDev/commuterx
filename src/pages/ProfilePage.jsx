@@ -7,7 +7,7 @@ import { BusForm } from "../components/BusForm"
 import { TrainForm } from "../components/TrainForm"
 import { NavBar } from "../components/NavBar"
 import { Button } from "../components/Button"
-import { logOut } from "../Utils/auth"
+import { deleteCurrentUser, logOut } from "../Utils/auth"
 import { useNavigate } from "react-router-dom"
 import { CommuterForm } from "../components/CommuterForm"
 import { authContext } from "../components/User"
@@ -96,6 +96,15 @@ export const ProfilePage = () => {
             }}
           >
             Log Out
+          </Button>
+          <Button
+            className={""}
+            buttonStyle={"btn-primary my-3 h-10"}
+            onClick={() => {
+              deleteCurrentUser(navigate)
+            }}
+          >
+            Delete Account
           </Button>
         </div>
       </div>

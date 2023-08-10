@@ -1,6 +1,8 @@
 import {
   GoogleAuthProvider,
+  deleteUser,
   getAuth,
+  reauthenticateWithPopup,
   signInWithPopup,
   signOut,
 } from "firebase/auth"
@@ -62,6 +64,18 @@ export const logOut = (navigate) => {
       setTimeout(() => navigate("/login"), 10)
     })
     .catch((error) => console.log(error))
+}
+export const deleteCurrentUser = (navigate) => {
+  deleteUser(auth.currentUser)
+    .then(() => {
+      setTimeout(() => navigate("/"), 10)
+    })
+    .catch((err) => {
+      console.log(err)
+      reauthenticateWithPopup(auth.currentUser, authProvider).then(
+        deleteCurrentUser
+      )
+    })
 }
 
 export const getUID = () => {
