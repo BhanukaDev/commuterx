@@ -10,7 +10,7 @@ export const Hero = () => {
           CommuterX!
         </span>
       </h1> */}
-      <h1 className="mt-10 w-11/12 max-w-xs font-manrope text-[clamp(34px,5vw,54px)] font-bold leading-[1.05] text-black md:mt-16 md:max-w-sm lg:max-w-lg ">
+      <h1 className="mt-10 w-11/12 max-w-xs font-manrope text-[clamp(34px,5vw,54px)] font-extrabold leading-[1.05] text-black md:mt-16 md:max-w-sm lg:max-w-lg ">
         The solution to your commuting problems
       </h1>
 
@@ -31,7 +31,7 @@ export const Hero = () => {
         <img className="" src="trainroutes.png" alt="" />
       </figure> */}
 
-      <div className="mt-32 flex md:mt-16">
+      <div className="mt-5 flex md:mt-16">
         <img className="mr-8 h-20 w-20" src="./icons8-bus-64.png" alt="" />
         <img className="mr-5 h-20 w-20" src="./icons8-train-64.png" alt="" />
       </div>
