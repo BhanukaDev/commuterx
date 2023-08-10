@@ -3,7 +3,7 @@ import { GoogleMap, Marker } from "@react-google-maps/api"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { RecenterButton } from "./RecenterButton"
 import { getMarkerIcon } from "../Utils/database"
-import { RouteBar } from "./RouteBar"
+// import { RouteBar } from "./RouteBar"
 
 export const Map = () => {
   const mapRef = useRef()
