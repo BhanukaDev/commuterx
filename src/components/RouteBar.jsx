@@ -9,7 +9,7 @@ export const RouteBar = ({ routeList }) => {
             <button
               key={uuidv4()}
               type="button"
-              className="mx-1 h-7 min-w-[48px] rounded-xl bg-white px-2 font-k2d text-xl font-bold text-black"
+              className="mx-1 h-7 w-auto min-w-[48px] shrink-0 rounded-xl bg-white px-2 font-k2d text-xl font-bold text-black"
             >
               {route.routeNumber}
             </button>

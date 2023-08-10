@@ -3,6 +3,7 @@ import { GoogleMap, Marker } from "@react-google-maps/api"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { RecenterButton } from "./RecenterButton"
 import { getMarkerIcon } from "../Utils/database"
+import { RouteBar } from "./RouteBar"
 
 export const Map = () => {
   const mapRef = useRef()
@@ -83,6 +84,18 @@ export const Map = () => {
       options={mapOption}
       onLoad={onLoad}
     >
+      {/* component that renders the routebar below search, pass in an array of route objects */}
+      <RouteBar
+        routeList={[
+          { routeNumber: "101" },
+          { routeNumber: "100" },
+          { routeNumber: "154" },
+          { routeNumber: "400" },
+          { routeNumber: "393" },
+          { routeNumber: "02" },
+          { routeNumber: "401" },
+        ]}
+      />
       <Marker position={coords} icon={markerIcon}></Marker>
       <RecenterButton
         centerFunc={() => {
