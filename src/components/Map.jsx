@@ -94,6 +94,9 @@ export const Map = () => {
           { routeNumber: "393" },
           { routeNumber: "02" },
           { routeNumber: "401" },
+          { routeNumber: "32" },
+          { routeNumber: "183" },
+          { routeNumber: "192" },
         ]}
       />
       <Marker position={coords} icon={markerIcon}></Marker>

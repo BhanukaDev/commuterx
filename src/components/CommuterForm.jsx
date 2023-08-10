@@ -73,7 +73,7 @@ export const CommuterForm = () => {
         type="text"
         placeholder="Name"
         className={` 
-        mb-4 rounded-md border border-black px-2 leading-loose`}
+        mb-4 w-5/6 max-w-xs rounded-md border border-black px-2 leading-loose`}
       />
 
       <label className="mb-2" htmlFor="email">
@@ -87,7 +87,7 @@ export const CommuterForm = () => {
         name="email"
         type="email"
         className={`
-         mb-4 rounded-md border border-black px-2 leading-loose`}
+         mb-4 w-5/6 max-w-xs rounded-md border border-black px-2 leading-loose`}
       />
 
       {/* <div className="mb-2 flex">
