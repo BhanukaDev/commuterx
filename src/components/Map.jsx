@@ -85,7 +85,7 @@ export const Map = () => {
       onLoad={onLoad}
     >
       {/* component that renders the routebar below search, pass in an array of route objects */}
-      <RouteBar
+      {/* <RouteBar
         routeList={[
           { routeNumber: "101" },
           { routeNumber: "100" },
@@ -98,7 +98,7 @@ export const Map = () => {
           { routeNumber: "183" },
           { routeNumber: "192" },
         ]}
-      />
+      /> */}
       <Marker position={coords} icon={markerIcon}></Marker>
       <RecenterButton
         centerFunc={() => {

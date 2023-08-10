@@ -18,7 +18,7 @@ export const BrowserCheck = () => {
       !window.navigator.userAgent.match(chromeId) &&
       !window.navigator.userAgent.match(fireFoxId)
     ) {
-      navigate("/not-supported")
+      //navigate("/not-supported")
     }
   }, [])
 
