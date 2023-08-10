@@ -22,8 +22,8 @@ export const RouteBar = ({ routeList }) => {
   }
 
   return (
-    <div className="absolute top-14 z-searchBar flex w-full  justify-center py-2">
-      <div className="no-scrollbar ml-4 flex max-w-md flex-nowrap overflow-x-scroll focus:ml-0">
+    <div className="absolute top-14 z-searchBar flex w-full justify-center  py-2 pl-4">
+      <div className="no-scrollbar  flex max-w-md flex-nowrap overflow-x-scroll ">
         {routeList.map((route) => {
           // is route button active
           const isActive = activeRoutes.includes(route.routeNumber)
