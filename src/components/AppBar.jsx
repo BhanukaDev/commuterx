@@ -21,7 +21,7 @@ export const AppBar = () => {
     <>
       <nav className="fixed top-0 z-20 h-16 w-screen bg-white shadow-md">
         {/**the main nav bar */}
-        <div className="m-auto flex h-full items-center justify-between px-3 md:w-5/6">
+        <div className="m-auto flex h-full items-center justify-between px-3 lg:w-5/6">
           {/**the inner nav bar */}
           <Logo />
           <ul className="hidden md:flex">
@@ -30,7 +30,7 @@ export const AppBar = () => {
             {mainlinks.map((link) => {
               //loop through link list and return link
               return (
-                <li className="w-full p-3 text-lg" key={link.id}>
+                <li className=" p-3 text-lg" key={link.id}>
                   <Link to={link.url} onClick={closeSidebar}>
                     {link.text}
                   </Link>

@@ -14,7 +14,7 @@ export const Hero = () => {
         The solution to your commuting problems
       </h1>
 
-      <p className=" mt-5 w-full text-lg text-zinc-800 sm:mt-4 sm:text-xl md:mt-8 md:text-2xl">
+      <p className="mt-8 w-full max-w-[240px] text-lg text-zinc-800 sm:text-xl md:max-w-xs md:text-2xl">
         Stay on track with our live transit tracker.
       </p>
       {/* Whether you&#39;re a daily
@@ -31,7 +31,7 @@ export const Hero = () => {
         <img className="" src="trainroutes.png" alt="" />
       </figure> */}
 
-      <div className="mt-32 flex md:mt-24">
+      <div className="mt-32 flex md:mt-16">
         <img className="mr-8 h-20 w-20" src="./icons8-bus-64.png" alt="" />
         <img className="mr-5 h-20 w-20" src="./icons8-train-64.png" alt="" />
       </div>
