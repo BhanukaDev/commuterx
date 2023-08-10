@@ -28,6 +28,7 @@ export default {
         searchBar: ["Poppins", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
         manrope: ["Manrope", "sans-serif"],
+        k2d: ["K2D", "sans-serif"],
         lato: ["Lato", "sans-serif"],
         bebas: ["Bebas Neue", "sans-serif"],
       },
