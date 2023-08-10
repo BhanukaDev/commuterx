@@ -15,7 +15,7 @@ import { authContext } from "../components/User"
 export const ProfilePage = () => {
   const user = useContext(authContext)
   const navigate = useNavigate()
-  const [active, setActive] = useState("bus")
+  const [active, setActive] = useState("commuter")
 
   return (
     <>
