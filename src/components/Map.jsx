@@ -3,7 +3,7 @@ import { GoogleMap, Marker } from "@react-google-maps/api"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { RecenterButton } from "./RecenterButton"
 import { getMarkerIcon } from "../Utils/database"
-import { RouteBar } from "./RouteBar"
+//import { RouteBar } from "./RouteBar"
 
 export const Map = () => {
   const mapRef = useRef()
@@ -68,7 +68,8 @@ export const Map = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       updateCenter(!centerChange)
-    }, 1800)
+      updateCenter(!centerChange)
+    }, 2000)
 
     return () => {
       clearTimeout(timer)
