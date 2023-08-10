@@ -90,7 +90,7 @@ export const ProfilePage = () => {
           {active === "commuter" && <CommuterForm />}
           <Button
             className={""}
-            buttonStyle={"btn-primary my-3 h-10"}
+            buttonStyle={"btn-solid bg-black my-3 h-10"}
             onClick={() => {
               logOut(navigate)
             }}
@@ -99,7 +99,7 @@ export const ProfilePage = () => {
           </Button>
           <Button
             className={""}
-            buttonStyle={"btn-primary my-3 h-10"}
+            buttonStyle={"btn-solid bg-rose-600 my-3 h-10"}
             onClick={() => {
               deleteCurrentUser(navigate)
             }}

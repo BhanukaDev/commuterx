@@ -1,15 +1,41 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 export const RouteBar = ({ routeList }) => {
+  const [activeRoutes, setActiveRoutes] = useState([])
+
+  const updateActiveRoutes = (e) => {
+    let routeNumber = e.target.innerHTML
+    // if route is in array remove route from array, else add to array
+    if (activeRoutes.includes(routeNumber)) {
+      setActiveRoutes((prev) => {
+        let temp = prev
+        let index = temp.indexOf(routeNumber)
+        temp.splice(index, 1)
+        return [...temp]
+      })
+    } else {
+      setActiveRoutes((prev) => {
+        return [...prev, routeNumber]
+      })
+    }
+  }
+
   return (
-    <div className="absolute top-14 flex w-full  justify-center py-2 pl-4">
-      <div className="flex max-w-md flex-nowrap overflow-x-scroll">
+    <div className="absolute top-14 z-searchBar flex w-full  justify-center py-2">
+      <div className="no-scrollbar ml-4 flex max-w-md flex-nowrap overflow-x-scroll focus:ml-0">
         {routeList.map((route) => {
+          // is route button active
+          const isActive = activeRoutes.includes(route.routeNumber)
+
           return (
             <button
               key={uuidv4()}
               type="button"
-              className="mx-1 h-7 w-auto min-w-[48px] shrink-0 rounded-xl bg-white px-2 font-k2d text-xl font-bold text-black"
+              onClick={updateActiveRoutes}
+              className={`mx-1 h-7 w-auto min-w-[48px] shrink-0 rounded-xl  px-2 font-k2d text-xl font-bold  ${
+                isActive ? "bg-black text-white" : "bg-white text-black"
+              }`}
             >
               {route.routeNumber}
             </button>

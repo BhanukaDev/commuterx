@@ -3,9 +3,10 @@
 import { Link } from "react-router-dom"
 import { transportLinks, mainlinks } from "../links"
 import { FaHome } from "react-icons/fa"
-import { IoPerson } from "react-icons/io5"
+import { IoBus, IoPerson } from "react-icons/io5"
 import { MdFeedback } from "react-icons/md"
 import { v4 as uuidv4 } from "uuid"
+import { IoMdTrain } from "react-icons/io"
 
 export const NavBar = () => {
   const isActive = (path) => {
@@ -16,7 +17,7 @@ export const NavBar = () => {
   }
   return (
     <>
-      <div className="fixed bottom-0 z-30 flex h-16 w-screen justify-center border-t border-solid border-slate-100 bg-white shadow-lg md:h-full md:w-16 md:flex-col md:justify-between">
+      <div className="fixed bottom-0 z-30 hidden h-16 w-screen justify-center border-t border-solid border-slate-100 bg-white shadow-lg md:flex md:h-full md:w-16 md:flex-col md:justify-between">
         <div className="flex items-center md:flex-col">
           <Link to="/" className="h-full w-full p-3 px-5 md:px-3">
             <FaHome className="icon-bar-icon" />
@@ -46,11 +47,6 @@ export const NavBar = () => {
                       {link.iconSvg}
                     </Link>
                   </div>
-                  {/* <Divider
-                    key={uuidv4()}
-                    className="invisible md:hidden"
-                    orientation={"vertical"}
-                  /> */}
                 </li>
               )
             })}
@@ -98,6 +94,55 @@ export const NavBar = () => {
             }
           >
             <MdFeedback className="icon-bar-icon" />
+          </Link>
+        </div>
+      </div>
+      <div className="fixed bottom-0 z-30 flex h-16 w-screen justify-center border-t border-solid border-slate-100 bg-white px-3 shadow-lg md:hidden  ">
+        <div className="flex w-full max-w-md items-center  justify-center">
+          <Link
+            to="/"
+            className={
+              "h-full w-full p-3" + ` ${isActive("/") && "bg-slate-300"}`
+            }
+          >
+            <FaHome className="icon-bar-icon" />
+          </Link>
+          <Link
+            to="/trainmap"
+            className={
+              "h-full w-full p-2.5 " +
+              ` ${isActive("/trainmap") && "bg-slate-300"}`
+            }
+          >
+            <IoMdTrain
+              className={
+                "icon-bar-icon" + ` ${isActive("/trainmap") && "opacity-100"}`
+              }
+            />
+          </Link>
+          <Link
+            to="/busmap"
+            className={
+              "h-full w-full p-3" + ` ${isActive("/busmap") && "bg-slate-300"}`
+            }
+          >
+            <IoBus
+              className={
+                "icon-bar-icon" + ` ${isActive("/busmap") && "opacity-100"}`
+              }
+            />
+          </Link>
+          <Link
+            to="/profile"
+            className={
+              "h-full w-full p-3" + ` ${isActive("/profile") && "bg-slate-300"}`
+            }
+          >
+            <IoPerson
+              className={
+                "icon-bar-icon" + ` ${isActive("/profile") && "opacity-100"}`
+              }
+            />
           </Link>
         </div>
       </div>
