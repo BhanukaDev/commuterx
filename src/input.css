@@ -32,13 +32,16 @@
 }
 @layer components {
   .icon-bar-icon {
-    @apply h-full w-full opacity-80 hover:opacity-100;
+    @apply h-full w-full opacity-80 hover:opacity-100 active:opacity-100;
   }
   .btn {
     @apply h-full w-full cursor-pointer border-none px-5 py-2 font-quicksand text-base outline-none hover:transition-all hover:duration-500 hover:ease-in-out;
   }
   .btn-primary {
     @apply rounded-lg border border-solid border-black bg-black text-white hover:bg-transparent hover:text-black;
+  }
+  .btn-solid {
+    @apply rounded-lg text-white hover:opacity-90;
   }
   .btn-outline {
     @apply rounded-lg border border-solid border-black bg-transparent text-black hover:bg-black hover:text-white;
@@ -51,5 +54,16 @@
   }
   .btn-small {
     @apply max-sm:px-3 max-sm:py-1.5 max-sm:text-sm;
+  }
+}
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
