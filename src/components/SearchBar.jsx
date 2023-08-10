@@ -36,7 +36,6 @@ export const SearchBar = ({ type, placeholder, icon }) => {
     setShowSearchOptions(true)
     const searchResults = await getSearchRoutes(res)
     setSeResults(searchResults)
-    // console.log(seResults[0].id)
   }
 
   const handleReset = () => {
