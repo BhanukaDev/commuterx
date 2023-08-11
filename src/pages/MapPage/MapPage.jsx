@@ -20,22 +20,7 @@ export const MapPage = () => {
     <>
       <SearchBar type={"bus"} />
       {/* component that renders the routebar below search, pass in an array of route objects */}
-      <RouteBar
-        routeList={[
-          { routeNumber: "101" },
-          { routeNumber: "100" },
-          { routeNumber: "154" },
-          { routeNumber: "400" },
-          { routeNumber: "393" },
-          { routeNumber: "02" },
-          { routeNumber: "401" },
-          { routeNumber: "32" },
-          { routeNumber: "183" },
-          { routeNumber: "192" },
-        ]}
-      />
       <NavBar />
-
       <Map />
     </>
   )

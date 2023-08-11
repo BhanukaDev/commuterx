@@ -7,6 +7,7 @@ import { SearchOpNoResult, SearchOption } from "./SearchOption"
 import { IoMdTrain } from "react-icons/io"
 import { IoBus, IoClose, IoSearch } from "react-icons/io5"
 import { getSearchRoutes } from "../Utils/database"
+import { RouteBar } from "./RouteBar"
 //import { ImSpinner2 } from 'react-icons/im';
 
 export const SearchBar = ({ type, placeholder, icon }) => {
@@ -84,6 +85,7 @@ export const SearchBar = ({ type, placeholder, icon }) => {
             <IoClose className="h-[25px] w-[25px]" />
           </button>
         </div>
+
         {showSearchOptions === true ? (
           <div className="mt-1 max-h-[204px] w-full scroll-m-1 overflow-y-scroll rounded-md bg-slate-50 drop-shadow-lg">
             {seResults.length > 0 ? (
@@ -99,7 +101,22 @@ export const SearchBar = ({ type, placeholder, icon }) => {
               <SearchOpNoResult />
             )}
           </div>
-        ) : null}
+        ) : (
+          <RouteBar
+            routeList={[
+              { routeNumber: "101" },
+              { routeNumber: "100" },
+              { routeNumber: "154" },
+              { routeNumber: "400" },
+              { routeNumber: "393" },
+              { routeNumber: "02" },
+              { routeNumber: "401" },
+              { routeNumber: "32" },
+              { routeNumber: "183" },
+              { routeNumber: "192" },
+            ]}
+          />
+        )}
       </div>
     </form>
   )
