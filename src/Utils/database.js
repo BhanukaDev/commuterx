@@ -57,9 +57,10 @@ export const getDataByCollectionName = async (collectionName) => {
   }
 }
 
-export const getMarkerIcon = async () => {
-  const userRole = await getUserRole()
-  switch (userRole) {
+export const getMarkerIcon = async (role) => {
+  //const userRole = await getUserRole()
+
+  switch (role) {
     case "bus":
       return "mapIcons/busprt.png"
     case "train":

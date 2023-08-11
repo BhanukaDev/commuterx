@@ -22,11 +22,8 @@ export const RouteBar = ({ routeList }) => {
   }
 
   return (
-    <div className="absolute top-14 z-searchBar flex w-full justify-center  py-2">
+    <div className=" z-searchBar flex w-full justify-center  py-2 pl-4">
       <div className="no-scrollbar  flex max-w-md flex-nowrap overflow-x-scroll ">
-        {/* the div below acts as a scroll padding that gi goes away when scrolled. gives a clean scroll look */}
-        <div className="h-full min-w-[16px] bg-transparent"></div>
-
         {routeList.map((route) => {
           // is route button active
           const isActive = activeRoutes.includes(route.routeNumber)

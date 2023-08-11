@@ -1,13 +1,21 @@
 /* eslint-disable react/prop-types */
 import { GoogleMap, Marker } from "@react-google-maps/api"
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react"
 import { RecenterButton } from "./RecenterButton"
 import { getMarkerIcon } from "../Utils/database"
+import { authContext } from "./User"
 // import { RouteBar } from "./RouteBar"
 
 export const Map = () => {
   const mapRef = useRef()
-
+  const user = useContext(authContext)
   const mapOption = useMemo(
     () => ({
       disableDefaultUI: true,
@@ -22,7 +30,7 @@ export const Map = () => {
 
   useEffect(() => {
     async function fetchMarkerIcon() {
-      const icon = await getMarkerIcon()
+      const icon = await getMarkerIcon(user.role)
       setMarkerIcon(icon)
       //console.log(icon)
     }
@@ -59,7 +67,7 @@ export const Map = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       updateMapLocation()
-    }, 1500)
+    }, 8500)
     return () => {
       clearInterval(interval)
     }
