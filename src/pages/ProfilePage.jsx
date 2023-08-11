@@ -26,7 +26,11 @@ export const ProfilePage = () => {
             <figure className="group relative w-32 overflow-hidden rounded-full border-4 border-white">
               <img
                 width={120}
-                src={user?.photoURL ? user?.photoURL : "noImage.jpg"}
+                src={
+                  user?.authData?.photoURL
+                    ? user?.authData?.photoURL
+                    : "noImage.jpg"
+                }
                 className=""
                 alt="no image"
               />

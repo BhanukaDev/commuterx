@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { addCommuterToDatabase } from "../Utils/database"
-import { useContext, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { authContext, setAuthContext, updateCurrentUserState } from "./User"
 import { auth } from "../Utils/auth"
 
@@ -16,15 +16,19 @@ export const CommuterForm = () => {
   // const [government, setGovernment] = useState(true)
   // const form = useRef(null)
   // const organisationName = useRef("ctb")
-  const [name, setName] = useState(user.displayName)
+  const [name, setName] = useState("")
+  useEffect(() => {
+    setName(user?.authData?.displayName)
+  }, [user])
   const email = useRef("")
 
-  // console.log(validity)
+  console.log(user?.authData?.displayName)
   const checkInput = () => {
     event.preventDefault()
-    updateCurrentUserState(auth.currentUser, setUser)
 
     addCommuterToDatabase()
+    updateCurrentUserState(auth.currentUser, setUser)
+
     navigate("/busmap")
 
     // setValidity({
@@ -67,7 +71,7 @@ export const CommuterForm = () => {
         Name<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        value={name}
+        value={name || ""}
         onChange={(e) => {
           setName(e.target.value)
         }}
@@ -80,11 +84,12 @@ export const CommuterForm = () => {
       />
 
       <label className="mb-2" htmlFor="email">
-        Email<span className="font-bold text-red-400">*</span>
+        Email
       </label>
       <input
-        value={user.email}
+        value={user?.authData?.email || ""}
         readOnly
+        disabled
         ref={email}
         id="email"
         name="email"
@@ -92,41 +97,6 @@ export const CommuterForm = () => {
         className={`
          mb-4 w-5/6 max-w-xs rounded-md border border-black px-2 leading-loose`}
       />
-
-      {/* <div className="mb-2 flex">
-        <button
-          type="button"
-          onClick={() => {
-            setGovernment(true)
-          }}
-          className={`mr-3 rounded px-2 py-1 ${
-            government ? "bg-accent text-white" : "bg-white text-black"
-          }  border border-black`}
-        >
-          Ceylon Transport Board (CTB)
-        </button>
-        <button
-          type="button"
-          className={`rounded px-2 py-1 ${
-            !government ? "bg-accent text-white" : "bg-white text-black"
-          }  border border-black`}
-          onClick={() => {
-            setGovernment(false)
-          }}
-        >
-          Other
-        </button>
-      </div> */}
-
-      {/* <input
-        id="organisation"
-        name="organisation"
-        type="text"
-        placeholder="Organisation Name"
-        ref={organisationName}
-        className={`${!validity.organisationV && "border-red-500"} 
-        mb-3 mt-1 border-b-2 border-black px-2 outline-0`}
-      /> */}
 
       <button
         type="submit"

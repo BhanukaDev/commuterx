@@ -34,8 +34,6 @@ export const BusForm = () => {
       numberplate.current.value.length > 5 &&
       !(!government && organisationName.current.value === "")
     ) {
-      updateCurrentUserState(auth.currentUser, setUser)
-
       navigate("/busmap")
 
       let data = new Bus(
@@ -51,6 +49,7 @@ export const BusForm = () => {
       data.getLocationInformation()
       console.log(data)
       addBusToDatabase(data)
+      updateCurrentUserState(auth.currentUser, setUser)
     }
   }
 

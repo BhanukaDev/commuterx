@@ -40,6 +40,7 @@ export const addCommuterToDatabase = () => {
 export const getUserRole = async () => {
   const docRef = doc(db, "Unite", getUID())
   const docSnap = await getDoc(docRef)
+  // console.log(docSnap.data())
   if (docSnap.exists()) {
     return docSnap.data().role
   } else {
@@ -47,13 +48,15 @@ export const getUserRole = async () => {
   }
 }
 export const getDataByCollectionName = async (collectionName) => {
+  console.log(collectionName)
   const docRef = doc(db, collectionName, getUID())
   const docSnap = await getDoc(docRef)
 
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data())
+    return docSnap.data()
   } else {
     console.log("No such document!")
+    return {}
   }
 }
 

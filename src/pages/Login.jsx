@@ -3,14 +3,18 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "../components/Button"
 import { FcGoogle } from "react-icons/fc"
-import { signInWithGoogle } from "../Utils/auth"
+import { auth, signInWithGoogle } from "../Utils/auth"
 import { AppBar } from "../components/AppBar"
+import { addCommuterToDatabase, addToUniteDB } from "../Utils/database"
 
 export const Login = () => {
   const navigate = useNavigate()
 
   const signUp = () => {
-    signInWithGoogle(navigate)
+    const isNewUser = signInWithGoogle(navigate)
+    if (isNewUser) {
+      addToUniteDB(auth.currentUser.uid, "commuter").then(addCommuterToDatabase)
+    }
   }
 
   return (

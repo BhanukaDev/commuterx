@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 // import { signInWithToken } from "../Utils/auth"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "../Utils/auth"
@@ -14,15 +14,15 @@ export const setAuthContext = createContext(null)
 
 export const updateCurrentUserState = async (currentUser, setUser) => {
   const dataFromAuth = {
-    displayName: currentUser.displayName,
-    email: currentUser.email,
-    photoURL: currentUser.photoURL,
-    phoneNumber: currentUser.phoneNumber,
+    displayName: currentUser?.displayName,
+    email: currentUser?.email,
+    photoURL: currentUser?.photoURL,
+    phoneNumber: currentUser?.phoneNumber,
   }
   const role = roleReturnsCollectionName(await getUserRole())
+  console.log(await getUserRole(), 5)
 
   const dataFromCollection = await getDataByCollectionName(role)
-
   const allUserData = {
     authData: { ...dataFromAuth },
     userData: { ...dataFromCollection },
@@ -34,24 +34,34 @@ export const updateCurrentUserState = async (currentUser, setUser) => {
 export const User = ({ children }) => {
   const [user, setUser] = useState({})
 
-  onAuthStateChanged(auth, async (currentUser) => {
-    // const dataFromAuth = {
-    //   displayName: currentUser.displayName,
-    //   email: currentUser.email,
-    //   photoURL: currentUser.photoURL,
-    //   phoneNumber: currentUser.phoneNumber,
-    // }
-    // const role = await getUserRole()
-    // const dataFromCollection = await getDataByCollectionName(role)
-
-    // const allUserData = {
-    //   authData: { ...dataFromAuth },
-    //   userData: { ...dataFromCollection },
-    // }
-    // setUser(allUserData)
-    // console.log(allUserData)
-    updateCurrentUserState(currentUser, setUser)
-  })
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      // const dataFromAuth = {
+      //   displayName: currentUser.displayName,
+      //   email: currentUser.email,
+      //   photoURL: currentUser.photoURL,
+      //   phoneNumber: currentUser.phoneNumber,
+      // }
+      // const role = await getUserRole()
+      // const dataFromCollection = await getDataByCollectionName(role)
+      // const allUserData = {
+      //   authData: { ...dataFromAuth },
+      //   userData: { ...dataFromCollection },
+      // }
+      // setUser(allUserData)
+      // console.log(allUserData)
+      setUser({
+        authData: {
+          displayName: currentUser?.displayName,
+          email: currentUser?.email,
+          photoURL: currentUser?.photoURL,
+          phoneNumber: currentUser?.phoneNumber,
+        },
+        userData: {},
+      })
+      // updateCurrentUserState(currentUser, setUser)
+    })
+  }, [])
 
   return (
     <authContext.Provider value={user}>

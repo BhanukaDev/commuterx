@@ -40,9 +40,10 @@ const authProvider = new GoogleAuthProvider()
 // }
 
 export const signInWithGoogle = (navigate) => {
+  let isNewUser = null
   signInWithPopup(auth, authProvider)
     .then((result) => {
-      const isNewUser = result._tokenResponse?.isNewUser
+      isNewUser = result._tokenResponse?.isNewUser
       console.log(result)
       if (isNewUser) {
         setTimeout(() => {
@@ -57,6 +58,7 @@ export const signInWithGoogle = (navigate) => {
     .catch((error) => {
       console.log(error)
     })
+  return isNewUser
 }
 export const logOut = (navigate) => {
   signOut(auth)
