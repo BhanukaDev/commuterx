@@ -10,7 +10,7 @@ export class Bus {
     desA,
     desB
   ) {
-    this.role = "Bus"
+    this.role = "bus"
     this.uid = uid
     this.routeID = routeID
     this.numberPlate = numberPlate

@@ -1,10 +1,12 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useContext } from "react"
 import { Train } from "../Data/Train"
 import { useNavigate } from "react-router-dom"
 import { addTrainToDatabase } from "../Utils/database"
 import { auth } from "../Utils/auth"
+import { setAuthContext, updateCurrentUserState } from "./User"
 
 export const TrainForm = () => {
+  const setUser = useContext(setAuthContext)
   const navigate = useNavigate()
   const [validity, setValidity] = useState({
     trainIDV: true,
@@ -30,6 +32,7 @@ export const TrainForm = () => {
         trainStart.current.value,
         trainStop.current.value
       )
+      updateCurrentUserState(auth.currentUser, setUser)
       navigate("/trainmap")
       addTrainToDatabase(data)
     }

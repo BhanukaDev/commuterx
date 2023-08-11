@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom"
 import { addCommuterToDatabase } from "../Utils/database"
 import { useContext, useRef, useState } from "react"
-import { authContext } from "./User"
+import { authContext, setAuthContext, updateCurrentUserState } from "./User"
+import { auth } from "../Utils/auth"
 
 export const CommuterForm = () => {
   const navigate = useNavigate()
   const user = useContext(authContext)
+  const setUser = useContext(setAuthContext)
   // const [validity, setValidity] = useState({
   //   routenoV: true,
   //   numberplateV: true,
@@ -20,6 +22,7 @@ export const CommuterForm = () => {
   // console.log(validity)
   const checkInput = () => {
     event.preventDefault()
+    updateCurrentUserState(auth.currentUser, setUser)
 
     addCommuterToDatabase()
     navigate("/busmap")

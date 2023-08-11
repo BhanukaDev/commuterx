@@ -46,6 +46,16 @@ export const getUserRole = async () => {
     return ""
   }
 }
+export const getDataByCollectionName = async (collectionName) => {
+  const docRef = doc(db, collectionName, getUID())
+  const docSnap = await getDoc(docRef)
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data())
+  } else {
+    console.log("No such document!")
+  }
+}
 
 export const getMarkerIcon = async () => {
   const userRole = await getUserRole()
@@ -81,5 +91,17 @@ export const getSearchRoutes = async (keyword) => {
   } catch (error) {
     return []
     //console.error("Error getting documents:", error)
+  }
+}
+export const roleReturnsCollectionName = (userRole) => {
+  switch (userRole) {
+    case "bus":
+      return "Buses"
+    case "train":
+      return "Trains"
+    case "commuter":
+      return "Commuters"
+    default:
+      return ""
   }
 }

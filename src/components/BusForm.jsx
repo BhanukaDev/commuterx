@@ -1,10 +1,12 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
 import { Bus } from "../Data/Bus"
 import { useNavigate } from "react-router-dom"
 import { addBusToDatabase } from "../Utils/database"
 import { auth } from "../Utils/auth"
+import { setAuthContext, updateCurrentUserState } from "./User"
 
 export const BusForm = () => {
+  const setUser = useContext(setAuthContext)
   const navigate = useNavigate()
   const [validity, setValidity] = useState({
     routenoV: true,
@@ -32,6 +34,8 @@ export const BusForm = () => {
       numberplate.current.value.length > 5 &&
       !(!government && organisationName.current.value === "")
     ) {
+      updateCurrentUserState(auth.currentUser, setUser)
+
       navigate("/busmap")
 
       let data = new Bus(

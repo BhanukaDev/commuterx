@@ -22,8 +22,11 @@ export const RouteBar = ({ routeList }) => {
   }
 
   return (
-    <div className="absolute top-14 z-searchBar flex w-full justify-center  py-2 pl-4">
+    <div className="absolute top-14 z-searchBar flex w-full justify-center  py-2">
       <div className="no-scrollbar  flex max-w-md flex-nowrap overflow-x-scroll ">
+        {/* the div below acts as a scroll padding that gi goes away when scrolled. gives a clean scroll look */}
+        <div className="h-full min-w-[16px] bg-transparent"></div>
+
         {routeList.map((route) => {
           // is route button active
           const isActive = activeRoutes.includes(route.routeNumber)
@@ -33,8 +36,10 @@ export const RouteBar = ({ routeList }) => {
               key={uuidv4()}
               type="button"
               onClick={updateActiveRoutes}
-              className={`mx-1 h-7 w-auto min-w-[48px] shrink-0 rounded-xl  px-2 font-k2d text-xl font-bold  ${
-                isActive ? "bg-black text-white" : "bg-white text-black"
+              className={`mx-1 h-7 w-auto min-w-[48px] shrink-0 rounded-xl px-2  font-k2d text-xl font-bold   ${
+                isActive
+                  ? "bg-black text-white hover:bg-slate-600"
+                  : "bg-white text-black hover:bg-slate-100"
               }`}
             >
               {route.routeNumber}

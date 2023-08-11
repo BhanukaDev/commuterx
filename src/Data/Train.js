@@ -2,7 +2,7 @@
 
 export class Train {
   constructor(uid, trainName, trainID, start, stop) {
-    this.role = "Train"
+    this.role = "train"
     this.uid = uid
     this.trainName = trainName
     this.trainID = trainID
