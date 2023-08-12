@@ -14,26 +14,26 @@ export const HomeInformation = () => {
           <div className="">
             <div className=" flex ">
               <img
-                className="mr-8 h-20 w-20"
+                className="mr-5 h-14 w-14 md:mr-8 md:h-20 md:w-20"
                 src="./icons8-bus-64.png"
                 alt=""
               />
               <img
-                className="mr-5 h-20 w-20"
+                className="mr-5 h-14 w-14 md:h-20 md:w-20"
                 src="./icons8-train-64.png"
                 alt=""
               />
             </div>
             <div className="my-5 flex ">
               <Button
-                className="mr-8 w-20"
+                className="mr-5 h-8 w-14 md:mr-8 md:h-10 md:w-20"
                 buttonStyle="btn-outline"
                 linkpath="/busmap"
               >
                 Bus
               </Button>
               <Button
-                className="mr-5 w-20"
+                className="mr-5 h-8 w-14 md:h-10 md:w-20"
                 buttonStyle="btn-outline"
                 linkpath="/trainmap"
               >
@@ -47,7 +47,7 @@ export const HomeInformation = () => {
           <h2 className="mb-6 font-manrope text-[clamp(24px,4vw,40px)] ">
             Search for your route
           </h2>
-          <figure className="w-full md:w-1/2">
+          <figure className="w-full max-w-sm">
             <img className="w-full rounded-md" src="/searchroutes.png" alt="" />
           </figure>
         </div>
