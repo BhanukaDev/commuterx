@@ -22,7 +22,7 @@ export const RouteBar = ({ routeList }) => {
   }
 
   return (
-    <div className=" z-searchBar flex w-full justify-center  py-2 pl-4">
+    <div className=" z-searchBar flex w-full justify-center  py-2">
       <div className="no-scrollbar  flex max-w-md flex-nowrap overflow-x-scroll ">
         {routeList.map((route) => {
           // is route button active

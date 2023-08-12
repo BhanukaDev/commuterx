@@ -17,8 +17,8 @@ export const NavBar = () => {
   }
   return (
     <>
-      <div className="fixed bottom-0 z-30 hidden h-16 w-screen justify-center border-t border-solid border-slate-100 bg-white shadow-lg md:flex md:h-full md:w-16 md:flex-col md:justify-between">
-        <div className="flex items-center md:flex-col">
+      <div className="no-scrollbar fixed bottom-0 z-30 hidden h-16 w-screen justify-center overflow-y-scroll border-t border-solid border-slate-100 bg-white shadow-lg md:flex md:h-full md:w-16 md:flex-col md:justify-between">
+        <div className="flex items-center  md:flex-col">
           <Link to="/" className="h-full w-full p-3 px-5 md:px-3">
             <FaHome className="icon-bar-icon" />
           </Link>
