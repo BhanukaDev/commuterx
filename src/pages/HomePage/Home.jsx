@@ -1,11 +1,13 @@
-import { AppBar } from "../components/AppBar"
-import { Hero } from "../components/Hero"
+import { AppBar } from "../../components/AppBar"
+import { Hero } from "./Hero"
+import { HomeInformation } from "./HomeInformation"
 
 export const Home = () => {
   return (
     <>
       <AppBar />
       <Hero />
+      <HomeInformation />
     </>
   )
 }

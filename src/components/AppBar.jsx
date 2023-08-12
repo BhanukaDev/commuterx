@@ -39,12 +39,10 @@ export const AppBar = () => {
             })}
           </ul>
           <div className="flex items-center justify-center">
-            {/**the login button and menu icon(only on mobile) */}
-
             <Button
               linkpath="/signup"
               buttonStyle="btn-calltoaction btn-small"
-              className={"m-2 h-full text-center"}
+              className={"m-2 hidden h-full text-center md:block"}
             >
               Sign Up
               <FiLogIn className="ml-1 text-lg sm:ml-2 md:text-xl" />
@@ -60,7 +58,7 @@ export const AppBar = () => {
 
       {/**the sidebar*/}
       <div
-        className={`fixed top-0 z-30 flex h-screen w-screen flex-col bg-white px-3 transition-all duration-300 ease-out ${
+        className={`fixed top-0 z-30 flex h-screen w-full flex-col bg-white px-3 transition-all duration-300 ease-out ${
           show ? "right-0" : "right-[-500%]"
         }`}
       >

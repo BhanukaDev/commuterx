@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { Home } from "./pages/Home"
 import { MapPage } from "./pages/MapPage/MapPage"
 import { PageNotFound } from "./pages/PageNotFound"
 import SignUp from "./pages/SignUp"
@@ -8,6 +7,7 @@ import { NotSupport } from "./pages/NotSupport"
 import { Login } from "./pages/Login"
 import { ProfilePage } from "./pages/ProfilePage"
 import { ProtectedRoutes } from "./components/ProtectedRoutes"
+import { Home } from "./pages/HomePage/Home"
 
 export default function App() {
   return (
