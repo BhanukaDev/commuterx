@@ -6,11 +6,24 @@ export const HomeInformation = () => {
   return (
     <div>
       {/* container for rest of the parts in homepage */}
-      <div className=" h-[91vh] px-5 py-10 md:px-[6%] ">
+
+      {/* part 2 */}
+      <div className=" h-[90vh] px-5 py-16 md:px-[6%] ">
         <div className="relative z-10  flex flex-col ">
           <h2 className="mb-6 font-manrope text-[clamp(24px,4vw,40px)] ">
             Choose your mode of transport
           </h2>
+          <p className="mb-5 max-w-md">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
+            quisquam, qui itaque incidunt porro dolorem, cupiditate ullam
+            laborum obcaecati vel cumque fugit corporis, quod cum assumenda
+            delectus minus.
+          </p>
+          <p className="mb-10 max-w-md">
+            Cum alias qui doloremque deleniti, earum fugiat atque modi quisquam
+            voluptatum ea voluptates velit magnam necessitatibus iusto
+            praesentium commodi esse iste eligendi.
+          </p>
           <div className="">
             <div className=" flex ">
               <img
@@ -24,6 +37,7 @@ export const HomeInformation = () => {
                 alt=""
               />
             </div>
+
             <div className="my-5 flex ">
               <Button
                 className="mr-5 h-8 w-14 md:mr-8 md:h-10 md:w-20"
@@ -42,24 +56,52 @@ export const HomeInformation = () => {
             </div>
           </div>
         </div>
+      </div>
+      {/* part 3 */}
 
-        <div className="relative z-0 mb-6 flex flex-col md:bottom-28 md:items-end ">
-          <h2 className="mb-6 font-manrope text-[clamp(24px,4vw,40px)] ">
+      <div className="flex h-[85vh] flex-col items-end px-5 pb-16 md:px-[6%]">
+        <div className=" mb-6 flex flex-col items-end">
+          <h2 className="mb-4 font-manrope text-[clamp(24px,4vw,40px)] ">
             Search for your route
           </h2>
+          <p className="mb-5 max-w-md text-end">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
+            quisquam, qui itaque incidunt porro dolorem, cupiditate ullam
+            laborum obcaecati vel cumque fugit corporis, quod cum assumenda
+            delectus minus.
+          </p>
+          <p className="mb-10 max-w-md text-end">
+            Cum alias qui doloremque deleniti, earum fugiat atque modi quisquam
+            voluptatum ea voluptates velit magnam necessitatibus iusto
+            praesentium commodi esse iste eligendi.
+          </p>
           <figure className="w-full max-w-sm">
             <img className="w-full rounded-md" src="/searchroutes.png" alt="" />
           </figure>
         </div>
+      </div>
 
-        <div className="relative flex flex-col md:bottom-28 ">
+      {/* part 4 */}
+
+      <div className="h-[85vh] px-5 pb-16 md:px-[6%] ">
+        <div className=" flex flex-col  ">
           <h2 className="mb-4 font-manrope text-[clamp(24px,4vw,40px)] ">
-            Something will come here
+            View live positions
           </h2>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem
-            nesciunt ratione modi!
+          <p className="mb-5 max-w-md">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
+            quisquam, qui itaque incidunt porro dolorem, cupiditate ullam
+            laborum obcaecati vel cumque fugit corporis, quod cum assumenda
+            delectus minus.
           </p>
+          <p className="mb-10 max-w-md">
+            Cum alias qui doloremque deleniti, earum fugiat atque modi quisquam
+            voluptatum ea voluptates velit magnam necessitatibus iusto
+            praesentium commodi esse iste eligendi.
+          </p>
+          <figure className="w-full max-w-sm">
+            <img className="rounded-md" src="/maphome.png" alt="" />
+          </figure>
         </div>
       </div>
     </div>

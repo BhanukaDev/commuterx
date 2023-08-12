@@ -30,7 +30,7 @@ export const AppBar = () => {
             {mainlinks.map((link) => {
               //loop through link list and return link
               return (
-                <li className=" p-3 text-lg" key={link.id}>
+                <li className=" p-3 font-quicksand text-lg" key={link.id}>
                   <Link to={link.url} onClick={closeSidebar}>
                     {link.text}
                   </Link>
