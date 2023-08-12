@@ -75,7 +75,10 @@ export const AppBar = () => {
           {mainlinks.map((link) => {
             return (
               //loop through link list and return link
-              <li className="w-full p-1 text-xl" key={link.id}>
+              <li
+                className="w-full rounded-lg bg-white px-3 py-2 text-xl hover:bg-slate-200"
+                key={link.id}
+              >
                 <Link to={link.url} onClick={closeSidebar}>
                   {link.text}
                 </Link>
@@ -83,6 +86,14 @@ export const AppBar = () => {
             )
           })}
         </ul>
+        <Button
+          linkpath="/signup"
+          buttonStyle="btn-primary text-lg btn-small"
+          className={"my-3 text-center "}
+        >
+          Sign Up
+          <FiLogIn className="ml-1 text-lg sm:ml-2 md:text-xl" />
+        </Button>
       </div>
     </>
   )
