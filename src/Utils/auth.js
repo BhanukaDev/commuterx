@@ -39,9 +39,9 @@ const authProvider = new GoogleAuthProvider()
 //   signInWithCredential(auth, GoogleAuthProvider.credential(userCredential))
 // }
 
-export const signInWithGoogle = (navigate) => {
+export const signInWithGoogle = async (navigate) => {
   let isNewUser = null
-  signInWithPopup(auth, authProvider)
+  await signInWithPopup(auth, authProvider)
     .then((result) => {
       isNewUser = result._tokenResponse?.isNewUser
       console.log(result)
@@ -74,9 +74,9 @@ export const deleteCurrentUser = (navigate) => {
     })
     .catch((err) => {
       console.log(err)
-      reauthenticateWithPopup(auth.currentUser, authProvider).then(
-        deleteCurrentUser
-      )
+      reauthenticateWithPopup(auth.currentUser, authProvider).then(() => {
+        navigate("/")
+      })
     })
 }
 

@@ -22,7 +22,6 @@ export const CommuterForm = () => {
   }, [user])
   const email = useRef("")
 
-  console.log(user?.authData?.displayName)
   const checkInput = () => {
     event.preventDefault()
 

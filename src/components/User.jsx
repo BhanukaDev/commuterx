@@ -14,6 +14,7 @@ export const setAuthContext = createContext(null)
 
 export const updateCurrentUserState = async (currentUser, setUser) => {
   const dataFromAuth = {
+    uid: currentUser?.uid,
     displayName: currentUser?.displayName,
     email: currentUser?.email,
     photoURL: currentUser?.photoURL,
@@ -35,7 +36,7 @@ export const User = ({ children }) => {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
+    onAuthStateChanged(auth, async (currentUser) => {
       // const dataFromAuth = {
       //   displayName: currentUser.displayName,
       //   email: currentUser.email,
@@ -50,16 +51,25 @@ export const User = ({ children }) => {
       // }
       // setUser(allUserData)
       // console.log(allUserData)
-      setUser({
-        authData: {
-          displayName: currentUser?.displayName,
-          email: currentUser?.email,
-          photoURL: currentUser?.photoURL,
-          phoneNumber: currentUser?.phoneNumber,
-        },
-        userData: {},
-      })
-      // updateCurrentUserState(currentUser, setUser)
+
+      // if (currentUser) {
+      //   setUser({
+      //     authData: {
+      //       displayName: currentUser?.displayName,
+      //       email: currentUser?.email,
+      //       photoURL: currentUser?.photoURL,
+      //       phoneNumber: currentUser?.phoneNumber,
+      //     },
+      //     userData: {},
+      //   })
+      // } else {
+      //   setUser({})
+      // }
+      if (currentUser) {
+        await updateCurrentUserState(currentUser, setUser)
+      } else {
+        setUser({})
+      }
     })
   }, [])
 

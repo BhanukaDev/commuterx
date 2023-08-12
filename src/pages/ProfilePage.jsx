@@ -16,7 +16,6 @@ export const ProfilePage = () => {
   const user = useContext(authContext)
   const navigate = useNavigate()
   const [active, setActive] = useState("commuter")
-
   return (
     <>
       <NavBar />
@@ -26,10 +25,11 @@ export const ProfilePage = () => {
             <figure className="group relative w-32 overflow-hidden rounded-full border-4 border-white">
               <img
                 width={120}
+                referrerPolicy="no-referrer"
                 src={
                   user?.authData?.photoURL
                     ? user?.authData?.photoURL
-                    : "noImage.jpg"
+                    : "/noImage.jpg"
                 }
                 className=""
                 alt="no image"

@@ -13,21 +13,21 @@ import { auth, getUID } from "./auth"
 
 export const db = getFirestore(app)
 
-export const addToUniteDB = (id, role) => {
+export const addToUniteDB = async (id, role) => {
   setDoc(doc(db, "Unite", id), {
     role: role,
   })
 }
-export const addBusToDatabase = (data) => {
+export const addBusToDatabase = async (data) => {
   console.log(data.uid)
   setDoc(doc(db, "Buses", data.uid), { ...data })
   addToUniteDB(data.uid, "bus")
 }
-export const addTrainToDatabase = (data) => {
+export const addTrainToDatabase = async (data) => {
   setDoc(doc(db, "Trains", data.uid), { ...data })
   addToUniteDB(data.uid, "train")
 }
-export const addCommuterToDatabase = () => {
+export const addCommuterToDatabase = async () => {
   const user = auth.currentUser
   setDoc(doc(db, "Commuters", user.uid), {
     uid: user.uid,
@@ -49,6 +49,7 @@ export const getUserRole = async () => {
 }
 export const getDataByCollectionName = async (collectionName) => {
   console.log(collectionName)
+  console.log(getUID())
   const docRef = doc(db, collectionName, getUID())
   const docSnap = await getDoc(docRef)
 

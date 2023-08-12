@@ -8,8 +8,8 @@ import { addCommuterToDatabase, addToUniteDB } from "../Utils/database"
 export default function SignUp() {
   const navigate = useNavigate()
 
-  const signUp = () => {
-    const isNewUser = signInWithGoogle(navigate)
+  const signUp = async () => {
+    const isNewUser = await signInWithGoogle(navigate)
     console.log(isNewUser)
     if (isNewUser) {
       addToUniteDB(auth.currentUser.uid, "commuter").then(addCommuterToDatabase)
