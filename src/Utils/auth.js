@@ -7,6 +7,7 @@ import {
   signOut,
 } from "firebase/auth"
 import app from "../firebase"
+import { addToUniteDB } from "./database"
 
 export const auth = getAuth(app)
 
@@ -42,12 +43,15 @@ const authProvider = new GoogleAuthProvider()
 export const signInWithGoogle = async (navigate) => {
   let isNewUser = null
   await signInWithPopup(auth, authProvider)
-    .then((result) => {
+    .then(async (result) => {
       isNewUser = result._tokenResponse?.isNewUser
-      console.log(result)
+
       if (isNewUser) {
+        await addToUniteDB(auth.currentUser.uid, "commuter")
+        // await addCommuterToDatabase()
+
         setTimeout(() => {
-          setTimeout(navigate, 0, "/profile", { replace: true })
+          setTimeout(navigate, 0, "/registration", { replace: true })
         }, 10)
       } else {
         setTimeout(() => {
@@ -58,6 +62,7 @@ export const signInWithGoogle = async (navigate) => {
     .catch((error) => {
       console.log(error)
     })
+
   return isNewUser
 }
 export const logOut = (navigate) => {
@@ -75,7 +80,7 @@ export const deleteCurrentUser = (navigate) => {
     .catch((err) => {
       console.log(err)
       reauthenticateWithPopup(auth.currentUser, authProvider).then(() => {
-        navigate("/")
+        deleteCurrentUser(navigate)
       })
     })
 }

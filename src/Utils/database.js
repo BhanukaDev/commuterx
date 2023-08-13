@@ -30,6 +30,7 @@ export const addTrainToDatabase = async (data) => {
 export const addCommuterToDatabase = async () => {
   const user = auth.currentUser
   setDoc(doc(db, "Commuters", user.uid), {
+    role: "commuter",
     uid: user.uid,
     name: user.displayName,
     email: user.email,
@@ -48,8 +49,6 @@ export const getUserRole = async () => {
   }
 }
 export const getDataByCollectionName = async (collectionName) => {
-  console.log(collectionName)
-  console.log(getUID())
   const docRef = doc(db, collectionName, getUID())
   const docSnap = await getDoc(docRef)
 

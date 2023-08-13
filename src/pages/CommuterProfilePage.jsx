@@ -2,20 +2,20 @@
 
 // import { IoMdTrain } from "react-icons/io";
 import { IoBus } from "react-icons/io5"
-import { useContext, useState } from "react"
-import { BusForm } from "../components/BusForm"
-import { TrainForm } from "../components/TrainForm"
+import { useContext } from "react"
 import { NavBar } from "../components/NavBar"
 import { Button } from "../components/Button"
 import { deleteCurrentUser, logOut } from "../Utils/auth"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { CommuterForm } from "../components/CommuterForm"
 import { authContext } from "../components/User"
 
-export const ProfilePage = () => {
+export const CommuterProfilePage = () => {
   const user = useContext(authContext)
   const navigate = useNavigate()
-  const [active, setActive] = useState("commuter")
+  if (user?.userData?.role !== "commuter") {
+    return <Navigate to={"/profile/driver"} />
+  }
   return (
     <>
       <NavBar />
@@ -35,7 +35,7 @@ export const ProfilePage = () => {
                 alt="no image"
               />
               <img
-                src="edit.png"
+                src="/edit.png"
                 className="absolute left-0 z-10 hidden bg-white opacity-20 group-hover:inline "
                 alt="edit"
               />
@@ -54,44 +54,13 @@ export const ProfilePage = () => {
           <div className="flex rounded-t-lg bg-slate-50 pt-1 ">
             <button
               type="button"
-              className={`mr-[1px] w-36 rounded-t-xl bg-white px-3 pt-1 text-xl  ${
-                active === "commuter"
-                  ? " shadow-upwardsLG"
-                  : "hover:bg-opacity-80"
-              }  `}
-              onClick={() => {
-                setActive("commuter")
-              }}
+              className={`mr-[1px] w-36 rounded-t-xl bg-white px-3 pt-1 text-xl `}
             >
               Commuter
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                setActive("bus")
-              }}
-              className={`mr-[1px] w-20 rounded-t-xl bg-white px-3 pt-1 text-xl ${
-                active === "bus" ? " shadow-upwardsLG" : "hover:bg-opacity-80"
-              }  `}
-            >
-              Bus
-            </button>
-            <button
-              type="button"
-              className={`mr-[1px] w-20 rounded-t-xl bg-white px-3 pt-1 text-xl  ${
-                active === "train" ? " shadow-upwardsLG" : "hover:bg-opacity-80"
-              }  `}
-              onClick={() => {
-                setActive("train")
-              }}
-            >
-              Train
-            </button>
           </div>
+          <CommuterForm />
 
-          {active === "bus" && <BusForm />}
-          {active === "train" && <TrainForm />}
-          {active === "commuter" && <CommuterForm />}
           <Button
             className={""}
             buttonStyle={"btn-solid bg-black my-3 h-10"}

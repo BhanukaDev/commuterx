@@ -11,6 +11,7 @@ import {
 
 export const authContext = createContext({})
 export const setAuthContext = createContext(null)
+export const loadingContext = createContext(false)
 
 export const updateCurrentUserState = async (currentUser, setUser) => {
   const dataFromAuth = {
@@ -21,7 +22,6 @@ export const updateCurrentUserState = async (currentUser, setUser) => {
     phoneNumber: currentUser?.phoneNumber,
   }
   const role = roleReturnsCollectionName(await getUserRole())
-  console.log(await getUserRole(), 5)
 
   const dataFromCollection = await getDataByCollectionName(role)
   const allUserData = {
@@ -34,9 +34,10 @@ export const updateCurrentUserState = async (currentUser, setUser) => {
 
 export const User = ({ children }) => {
   const [user, setUser] = useState({})
-
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     onAuthStateChanged(auth, async (currentUser) => {
+      setIsLoading(true)
       // const dataFromAuth = {
       //   displayName: currentUser.displayName,
       //   email: currentUser.email,
@@ -67,17 +68,21 @@ export const User = ({ children }) => {
       // }
       if (currentUser) {
         await updateCurrentUserState(currentUser, setUser)
+        setIsLoading(false)
       } else {
         setUser({})
+        setIsLoading(false)
       }
     })
   }, [])
 
   return (
     <authContext.Provider value={user}>
-      <setAuthContext.Provider value={setUser}>
-        {children}
-      </setAuthContext.Provider>
+      <loadingContext.Provider value={isLoading}>
+        <setAuthContext.Provider value={setUser}>
+          {children}
+        </setAuthContext.Provider>
+      </loadingContext.Provider>
     </authContext.Provider>
   )
 }
