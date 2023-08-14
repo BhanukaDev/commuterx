@@ -1,16 +1,15 @@
-import { useState, useRef, useEffect, useContext } from "react"
+import { useState, useContext } from "react"
 import { Bus } from "../Data/Bus"
-import { useNavigate } from "react-router-dom"
 import { addBusToDatabase } from "../Utils/database"
 import { auth } from "../Utils/auth"
 import { authContext, setAuthContext, updateCurrentUserState } from "./User"
 
 export const BusForm = () => {
   const user = useContext(authContext)
-  console.log(user)
   const setUser = useContext(setAuthContext)
-  const navigate = useNavigate()
-  const [validity, setValidity] = useState(true)
+
+  const validity = true //simulate validation
+
   const [government, setGovernment] = useState(true)
 
   const [organisationName, setOrganisationName] = useState(
