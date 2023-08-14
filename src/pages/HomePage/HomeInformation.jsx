@@ -10,9 +10,7 @@ export const HomeInformation = () => {
       {/* part 2 */}
       <div className=" h-[90vh] px-5 py-16 md:px-[6%] ">
         <div className="relative z-10  flex flex-col ">
-          <h2 className="mb-6 font-manrope text-[clamp(24px,4vw,40px)] ">
-            Choose your mode of transport
-          </h2>
+          <h2 className="h2-fluid mb-6 ">Choose your mode of transport</h2>
           <p className="mb-5 max-w-md">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
             quisquam, qui itaque incidunt porro dolorem, cupiditate ullam
@@ -61,9 +59,7 @@ export const HomeInformation = () => {
 
       <div className="flex h-[85vh] flex-col items-end px-5 pb-16 md:px-[6%]">
         <div className=" mb-6 flex flex-col items-end">
-          <h2 className="mb-4 font-manrope text-[clamp(24px,4vw,40px)] ">
-            Search for your route
-          </h2>
+          <h2 className="h2-fluid mb-4 ">Search for your route</h2>
           <p className="mb-5 max-w-md text-end">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
             quisquam, qui itaque incidunt porro dolorem, cupiditate ullam
@@ -85,9 +81,7 @@ export const HomeInformation = () => {
 
       <div className="h-[85vh] px-5 pb-16 md:px-[6%] ">
         <div className=" flex flex-col  ">
-          <h2 className="mb-4 font-manrope text-[clamp(24px,4vw,40px)] ">
-            View live positions
-          </h2>
+          <h2 className=" h2-fluid mb-4 ">View live positions</h2>
           <p className="mb-5 max-w-md">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
             quisquam, qui itaque incidunt porro dolorem, cupiditate ullam

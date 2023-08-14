@@ -15,7 +15,7 @@ export const Hero = () => {
 
       <Button
         buttonStyle={"btn-primary"}
-        className={" w-40 "}
+        className={" get-started "}
         linkpath={"/signup"}
       >
         Get Started
