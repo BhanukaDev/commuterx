@@ -6,7 +6,7 @@ export class Bus {
     routeID,
     numberPlate,
     routeDir,
-    organistaionName,
+    organisationName,
     desA,
     desB
   ) {
@@ -15,7 +15,7 @@ export class Bus {
     this.routeID = routeID
     this.numberPlate = numberPlate
     this.routeDir = routeDir
-    this.organistaionName = organistaionName
+    this.organisationName = organisationName
     this.desA = desA
     this.desB = desB
   }

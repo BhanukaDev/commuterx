@@ -8,6 +8,7 @@ import {
   getUserRole,
   roleReturnsCollectionName,
 } from "../Utils/database"
+import { Loading } from "../pages/Loading"
 
 export const authContext = createContext({})
 export const setAuthContext = createContext(null)
@@ -75,6 +76,10 @@ export const User = ({ children }) => {
       }
     })
   }, [])
+
+  if (isLoading) {
+    return <Loading />
+  }
 
   return (
     <authContext.Provider value={user}>

@@ -1,46 +1,47 @@
-import { useState, useRef, useContext } from "react"
+import { useState, useContext } from "react"
 import { Train } from "../Data/Train"
-import { useNavigate } from "react-router-dom"
 import { addTrainToDatabase } from "../Utils/database"
 import { auth } from "../Utils/auth"
-import { setAuthContext, updateCurrentUserState } from "./User"
+import { authContext, setAuthContext, updateCurrentUserState } from "./User"
 
 export const TrainForm = () => {
+  const user = useContext(authContext)
   const setUser = useContext(setAuthContext)
-  const navigate = useNavigate()
-  const [validity, setValidity] = useState({
-    trainIDV: true,
-  })
-  const form = useRef(null)
 
-  const trainID = useRef("")
-  const trainName = useRef("")
-  const trainStart = useRef("")
-  const trainStop = useRef("")
+  const validity = true //just to simulate validation
 
-  const checkInput = () => {
+  const [trainID, setTrainID] = useState(
+    user?.userData?.trainID ? user?.userData?.trainID : ""
+  )
+  const [trainName, setTrainName] = useState(
+    user?.userData?.trainName ? user?.userData?.trainName : ""
+  )
+  const [trainStart, setTrainStart] = useState(
+    user?.userData?.start ? user?.userData?.start : ""
+  )
+  const [trainStop, setTrainStop] = useState(
+    user?.userData?.stop ? user?.userData?.stop : ""
+  )
+
+  const checkInput = async () => {
     event.preventDefault()
 
-    setValidity({
-      trainIDV: !(trainID.current.value === ""),
-    })
-    if (!(trainID.current.value === "")) {
+    if (validity) {
       let data = new Train(
         auth.currentUser.uid,
-        trainName.current.value,
-        trainID.current.value,
-        trainStart.current.value,
-        trainStop.current.value
+        trainName,
+        trainID,
+        trainStart,
+        trainStop
       )
+      await addTrainToDatabase(data)
+
       updateCurrentUserState(auth.currentUser, setUser)
-      navigate("/trainmap")
-      addTrainToDatabase(data)
     }
   }
 
   return (
     <form
-      ref={form}
       onSubmit={checkInput}
       action="server.js"
       method="get"
@@ -50,7 +51,10 @@ export const TrainForm = () => {
         Train No<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        ref={trainID}
+        value={trainID}
+        onChange={(e) => {
+          setTrainID(e.target.value)
+        }}
         id="trainID"
         name="trainID"
         type="text"
@@ -63,7 +67,10 @@ export const TrainForm = () => {
         Train Name<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        ref={trainName}
+        value={trainName}
+        onChange={(e) => {
+          setTrainName(e.target.value)
+        }}
         id="trainName"
         name="trainName"
         type="text"
@@ -76,7 +83,10 @@ export const TrainForm = () => {
         Start<span className="font-bold text-red-400">*</span>
         <select
           className="ml-5 rounded-md px-1 py-0.5 outline outline-2"
-          ref={trainStart}
+          value={trainStart}
+          onChange={(e) => {
+            setTrainStart(e.target.value)
+          }}
           name="trainStart"
           id="trainStart"
         >
@@ -488,7 +498,10 @@ export const TrainForm = () => {
         Stop<span className="font-bold text-red-400">*</span>
         <select
           className="ml-5 rounded-md px-1 py-0.5 outline outline-2"
-          ref={trainStop}
+          value={trainStop}
+          onChange={(e) => {
+            setTrainStop(e.target.value)
+          }}
           name="trainStop"
           id="trainStop"
         >

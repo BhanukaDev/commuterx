@@ -3,64 +3,62 @@ import { Bus } from "../Data/Bus"
 import { useNavigate } from "react-router-dom"
 import { addBusToDatabase } from "../Utils/database"
 import { auth } from "../Utils/auth"
-import { setAuthContext, updateCurrentUserState } from "./User"
+import { authContext, setAuthContext, updateCurrentUserState } from "./User"
 
 export const BusForm = () => {
+  const user = useContext(authContext)
+  console.log(user)
   const setUser = useContext(setAuthContext)
   const navigate = useNavigate()
-  const [validity, setValidity] = useState({
-    routenoV: true,
-    numberplateV: true,
-    organisationV: true,
-  })
+  const [validity, setValidity] = useState(true)
   const [government, setGovernment] = useState(true)
-  const form = useRef(null)
-  const organisationName = useRef("ctb")
-  const numberplate = useRef("")
-  const routeNo = useRef("")
-  const desA = useRef("")
-  const desB = useRef("")
 
-  const checkInput = () => {
+  const [organisationName, setOrganisationName] = useState(
+    user?.userData?.organisationName ? user?.userData?.organisationName : ""
+  )
+  const [numberplate, setNumberPlate] = useState(
+    user?.userData?.numberPlate ? user?.userData?.numberPlate : ""
+  )
+  const [routeNo, setRouteNo] = useState(
+    user?.userData?.routeID ? user?.userData?.routeID : ""
+  )
+  const [desA, setDesA] = useState(
+    user?.userData?.desA ? user?.userData?.desA : ""
+  )
+  const [desB, setDesB] = useState(
+    user?.userData?.desB ? user?.userData?.desB : ""
+  )
+
+  const checkInput = async () => {
     event.preventDefault()
 
-    setValidity({
-      routenoV: !(routeNo.current.value === ""),
-      numberplateV: numberplate.current.value.length > 5,
-      organisationV: !(!government && organisationName.current.value === ""),
-    })
-    if (
-      !(routeNo.current.value === "") &&
-      numberplate.current.value.length > 5 &&
-      !(!government && organisationName.current.value === "")
-    ) {
-      navigate("/busmap")
-
+    if (validity) {
       let data = new Bus(
         auth.currentUser.uid,
-        routeNo.current.value,
-        numberplate.current.value,
+        routeNo,
+        numberplate,
         true,
-        organisationName.current.value,
-        desA.current.value,
-        desB.current.value
+        organisationName,
+        desA,
+        desB
       )
 
       data.getLocationInformation()
       console.log(data)
-      addBusToDatabase(data)
-      updateCurrentUserState(auth.currentUser, setUser)
+      await addBusToDatabase(data)
+      updateCurrentUserState(auth.currentUser, setUser).then(() => {
+        console.log(55)
+      })
     }
   }
 
-  useEffect(() => {
-    organisationName.current.value = government ? "ctb" : ""
-    organisationName.current.hidden = government
-  }, [government])
+  // useEffect(() => {
+  //   organisationName.current.value = government ? "ctb" : ""
+  //   organisationName.current.hidden = government
+  // }, [government])
 
   return (
     <form
-      ref={form}
       onSubmit={checkInput}
       method="get"
       className="relative flex h-[85%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
@@ -69,7 +67,10 @@ export const BusForm = () => {
         Route No<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        ref={routeNo}
+        value={routeNo}
+        onChange={(e) => {
+          setRouteNo(e.target.value)
+        }}
         id="busrouteno"
         name="busrouteno"
         type="text"
@@ -82,7 +83,10 @@ export const BusForm = () => {
         Number Plate<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        ref={numberplate}
+        value={numberplate}
+        onChange={(e) => {
+          setNumberPlate(e.target.value)
+        }}
         id="numberplate"
         name="numberplate"
         type="text"
@@ -97,6 +101,7 @@ export const BusForm = () => {
           type="button"
           onClick={() => {
             setGovernment(true)
+            setOrganisationName("ctb")
           }}
           className={`mr-3 rounded px-2 py-1 ${
             government ? "bg-accent text-white" : "bg-white text-black"
@@ -111,6 +116,7 @@ export const BusForm = () => {
           }  border border-black`}
           onClick={() => {
             setGovernment(false)
+            setOrganisationName("")
           }}
         >
           Other
@@ -118,11 +124,15 @@ export const BusForm = () => {
       </div>
 
       <input
+        hidden={government}
         id="organisation"
         name="organisation"
         type="text"
         placeholder="Organisation Name"
-        ref={organisationName}
+        value={organisationName}
+        onChange={(e) => {
+          setOrganisationName(e.target.value)
+        }}
         className={`${!validity.organisationV && "border-red-500"} 
         mb-3 mt-1 border-b-2 border-black px-2 outline-0`}
       />
@@ -130,7 +140,10 @@ export const BusForm = () => {
         Destination A<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        ref={desA}
+        value={desA}
+        onChange={(e) => {
+          setDesA(e.target.value)
+        }}
         id="desA"
         name="desA"
         type="text"
@@ -143,7 +156,10 @@ export const BusForm = () => {
         Destination B<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        ref={desB}
+        value={desB}
+        onChange={(e) => {
+          setDesB(e.target.value)
+        }}
         id="desB"
         name="desB"
         type="text"
