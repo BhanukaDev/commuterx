@@ -65,24 +65,17 @@ export const signInWithGoogle = async (navigate) => {
 
   return isNewUser
 }
-export const logOut = (navigate) => {
-  signOut(auth)
-    .then(() => {
-      setTimeout(() => navigate("/login"), 10)
-    })
-    .catch((error) => console.log(error))
+export const logOut = () => {
+  signOut(auth).catch((error) => console.log(error))
 }
-export const deleteCurrentUser = (navigate) => {
-  deleteUser(auth.currentUser)
-    .then(() => {
-      setTimeout(() => navigate("/"), 10)
+
+export const deleteCurrentUser = () => {
+  deleteUser(auth.currentUser).catch((err) => {
+    console.log(err)
+    reauthenticateWithPopup(auth.currentUser, authProvider).then(() => {
+      deleteCurrentUser()
     })
-    .catch((err) => {
-      console.log(err)
-      reauthenticateWithPopup(auth.currentUser, authProvider).then(() => {
-        deleteCurrentUser(navigate)
-      })
-    })
+  })
 }
 
 export const getUID = () => {

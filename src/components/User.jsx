@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react"
-// import { signInWithToken } from "../Utils/auth"
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "../Utils/auth"
 import {
@@ -22,11 +21,12 @@ export const updateCurrentUserState = async (currentUser, setUser) => {
     photoURL: currentUser?.photoURL,
     phoneNumber: currentUser?.phoneNumber,
   }
-  const role = roleReturnsCollectionName(await getUserRole())
+  const role = await getUserRole()
+  const collectionName = roleReturnsCollectionName(role)
 
-  const dataFromCollection = await getDataByCollectionName(role)
+  const dataFromCollection = await getDataByCollectionName(collectionName)
   const allUserData = {
-    authData: { ...dataFromAuth },
+    authData: { ...dataFromAuth, role: role },
     userData: { ...dataFromCollection },
   }
   setUser(allUserData)
@@ -39,34 +39,7 @@ export const User = ({ children }) => {
   useEffect(() => {
     onAuthStateChanged(auth, async (currentUser) => {
       setIsLoading(true)
-      // const dataFromAuth = {
-      //   displayName: currentUser.displayName,
-      //   email: currentUser.email,
-      //   photoURL: currentUser.photoURL,
-      //   phoneNumber: currentUser.phoneNumber,
-      // }
-      // const role = await getUserRole()
-      // const dataFromCollection = await getDataByCollectionName(role)
-      // const allUserData = {
-      //   authData: { ...dataFromAuth },
-      //   userData: { ...dataFromCollection },
-      // }
-      // setUser(allUserData)
-      // console.log(allUserData)
 
-      // if (currentUser) {
-      //   setUser({
-      //     authData: {
-      //       displayName: currentUser?.displayName,
-      //       email: currentUser?.email,
-      //       photoURL: currentUser?.photoURL,
-      //       phoneNumber: currentUser?.phoneNumber,
-      //     },
-      //     userData: {},
-      //   })
-      // } else {
-      //   setUser({})
-      // }
       if (currentUser) {
         await updateCurrentUserState(currentUser, setUser)
         setIsLoading(false)
@@ -91,3 +64,24 @@ export const User = ({ children }) => {
     </authContext.Provider>
   )
 }
+
+// here is the shape of the user state object
+// it may seem like their some duplication of data nut this is there to minimise reads and writes to the database
+// example, photourl of the gmail account may be need and it should be permanant, but the profile pic of the account can change
+
+// {
+//  authData is data that must not be changed, it is data taken from the auth.currentUser object and also has the role (role is present in both authData and userData)
+//  authData:{
+//    displayName,
+//    email,
+//    phoneNumber,
+//    photoURL,
+//    role,
+//    uid,
+//  },
+//  userData contains the data stored in the respective database
+//  such as bus data in bus database
+//  userData:{
+//    ...userData,
+//  }
+// }

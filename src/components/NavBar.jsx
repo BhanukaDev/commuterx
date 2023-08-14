@@ -135,12 +135,22 @@ export const NavBar = () => {
           <Link
             to="/profile"
             className={
-              "h-full w-full p-3" + ` ${isActive("/profile") && "bg-slate-300"}`
+              "h-full w-full p-3" +
+              ` ${
+                (isActive("/profile/driver") ||
+                  isActive("/profile/commuter")) &&
+                "bg-slate-300"
+              }`
             }
           >
             <IoPerson
               className={
-                "icon-bar-icon" + ` ${isActive("/profile") && "opacity-100"}`
+                "icon-bar-icon" +
+                ` ${
+                  (isActive("/profile/driver") ||
+                    isActive("/profile/commuter")) &&
+                  "opacity-100"
+                }`
               }
             />
           </Link>

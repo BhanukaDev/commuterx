@@ -8,17 +8,16 @@ import { TrainForm } from "../components/TrainForm"
 import { NavBar } from "../components/NavBar"
 import { Button } from "../components/Button"
 import { deleteCurrentUser, logOut } from "../Utils/auth"
-import { Navigate, useNavigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { authContext } from "../components/User"
 
 export const DriverProfilePage = () => {
   const user = useContext(authContext)
-  console.log(user?.userData?.role === "commuter")
+  console.log(user?.authData?.role === "commuter")
 
-  const navigate = useNavigate()
   const [active, setActive] = useState("bus")
 
-  if (user?.userData?.role === "commuter") {
+  if (user?.authData?.role === "commuter") {
     return <Navigate to={"/profile/commuter"} />
   }
   return (
@@ -88,7 +87,7 @@ export const DriverProfilePage = () => {
             className={""}
             buttonStyle={"btn-solid bg-black my-3 h-10"}
             onClick={() => {
-              logOut(navigate)
+              logOut()
             }}
           >
             Log Out
@@ -97,7 +96,7 @@ export const DriverProfilePage = () => {
             className={""}
             buttonStyle={"btn-solid bg-rose-600 my-3 h-10"}
             onClick={() => {
-              deleteCurrentUser(navigate)
+              deleteCurrentUser()
             }}
           >
             Delete Account

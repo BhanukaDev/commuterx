@@ -9,7 +9,7 @@ import {
   where,
 } from "firebase/firestore"
 import app from "../firebase"
-import { auth, getUID } from "./auth"
+import { getUID } from "./auth"
 
 export const db = getFirestore(app)
 
@@ -27,15 +27,11 @@ export const addTrainToDatabase = async (data) => {
   setDoc(doc(db, "Trains", data.uid), { ...data })
   addToUniteDB(data.uid, "train")
 }
-export const addCommuterToDatabase = async () => {
-  const user = auth.currentUser
-  setDoc(doc(db, "Commuters", user.uid), {
-    role: "commuter",
-    uid: user.uid,
-    name: user.displayName,
-    email: user.email,
+export const addCommuterToDatabase = async (data) => {
+  setDoc(doc(db, "Commuters", data.uid), {
+    ...data,
   })
-  addToUniteDB(user.uid, "commuter")
+  addToUniteDB(data.uid, "commuter")
 }
 
 export const getUserRole = async () => {

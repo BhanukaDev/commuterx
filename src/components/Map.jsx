@@ -30,7 +30,7 @@ export const Map = () => {
 
   useEffect(() => {
     async function fetchMarkerIcon() {
-      const icon = await getMarkerIcon(user.role)
+      const icon = await getMarkerIcon(user?.authData.role)
       setMarkerIcon(icon)
       //console.log(icon)
     }

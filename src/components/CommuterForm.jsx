@@ -1,64 +1,34 @@
-import { useNavigate } from "react-router-dom"
 import { addCommuterToDatabase } from "../Utils/database"
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { authContext, setAuthContext, updateCurrentUserState } from "./User"
 import { auth } from "../Utils/auth"
+import { Commuter } from "../Data/Commuter"
 
 export const CommuterForm = () => {
-  const navigate = useNavigate()
   const user = useContext(authContext)
   const setUser = useContext(setAuthContext)
-  // const [validity, setValidity] = useState({
-  //   routenoV: true,
-  //   numberplateV: true,
-  //   organisationV: true,
-  // })
-  // const [government, setGovernment] = useState(true)
-  // const form = useRef(null)
-  // const organisationName = useRef("ctb")
-  const [name, setName] = useState("")
-  useEffect(() => {
-    setName(user?.authData?.displayName)
-  }, [user])
+
+  const [name, setName] = useState(
+    user?.userData?.organisationName ? user?.userData?.organisationName : ""
+  )
+  const [phoneNumber, setPhoneNumber] = useState(
+    user?.userData?.phoneNumber ? user?.userData?.phoneNumber : ""
+  )
+
   const email = useRef("")
 
-  const checkInput = () => {
+  const checkInput = async () => {
     event.preventDefault()
-
-    addCommuterToDatabase()
+    const data = new Commuter(
+      auth.currentUser.uid,
+      name,
+      auth.currentUser.email,
+      auth.currentUser.photoURL,
+      phoneNumber
+    )
+    await addCommuterToDatabase(data)
     updateCurrentUserState(auth.currentUser, setUser)
-
-    navigate("/busmap")
-
-    // setValidity({
-    //   routenoV: !(routeNo.current.value === ""),
-    //   numberplateV: numberplate.current.value.length > 5,
-    //   organisationV: !(!government && organisationName.current.value === ""),
-    // })
-    // if (
-    //   !(routeNo.current.value === "") &&
-    //   numberplate.current.value.length > 5 &&
-    //   !(!government && organisationName.current.value === "")
-    // ) {
-    //   navigate("/showmap")
-
-    //   let data = new Bus(
-    //     auth.currentUser.uid,
-    //     routeNo.current.value,
-    //     numberplate.current.value,
-    //     organisationName.current.value
-    //   )
-
-    //   data.getLocationInformation()
-    //   console.log(data)
-    //
-    // }
   }
-
-  // useEffect(() => {
-  //   organisationName.current.value = government ? "ctb" : ""
-  //   organisationName.current.hidden = government
-  // }, [government])
 
   return (
     <form
@@ -70,7 +40,7 @@ export const CommuterForm = () => {
         Name<span className="font-bold text-red-400">*</span>
       </label>
       <input
-        value={name || ""}
+        value={name}
         onChange={(e) => {
           setName(e.target.value)
         }}
@@ -78,6 +48,22 @@ export const CommuterForm = () => {
         name="name"
         type="text"
         placeholder="Name"
+        className={` 
+        mb-4 w-5/6 max-w-xs rounded-md border border-black px-2 leading-loose`}
+      />
+
+      <label className="mb-2" htmlFor="phoneNumber">
+        Phone Number<span className="font-bold text-red-400">*</span>
+      </label>
+      <input
+        value={phoneNumber}
+        onChange={(e) => {
+          setPhoneNumber(e.target.value)
+        }}
+        id="phoneNumber"
+        name="phoneNumber"
+        type="text"
+        placeholder="e.g. 0775346543"
         className={` 
         mb-4 w-5/6 max-w-xs rounded-md border border-black px-2 leading-loose`}
       />
