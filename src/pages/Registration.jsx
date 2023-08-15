@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
 import { addToUniteDB } from "../Utils/database"
 import { auth } from "../Utils/auth"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { setAuthContext, updateCurrentUserState } from "../components/User"
 
 export const Registration = () => {
   // const user = useContext(authContext)
   const [driverChoice, setDriverChoice] = useState(false)
   const navigate = useNavigate()
+  const setUser = useContext(setAuthContext)
 
   if (driverChoice) {
     return (
@@ -20,9 +22,10 @@ export const Registration = () => {
               <button
                 onClick={async () => {
                   await addToUniteDB(auth.currentUser.uid, "bus")
-                  navigate("/profile")
+                  await updateCurrentUserState(auth.currentUser, setUser)
+
+                  setTimeout(() => navigate("/profile"))
                 }}
-                to={"/profile"}
                 className="flex h-full w-full items-center justify-center rounded-2xl bg-zinc-900 font-quicksand text-[clamp(18px,4vw,26px)] text-white hover:bg-zinc-800 active:bg-zinc-700 "
               >
                 Bus
@@ -32,9 +35,10 @@ export const Registration = () => {
               <button
                 onClick={async () => {
                   await addToUniteDB(auth.currentUser.uid, "train")
-                  navigate("/profile")
+                  await updateCurrentUserState(auth.currentUser, setUser)
+
+                  setTimeout(() => navigate("/profile"))
                 }}
-                to={"/profile"}
                 className="flex h-full w-full items-center justify-center rounded-2xl bg-zinc-900 font-quicksand text-[clamp(18px,4vw,26px)] text-white hover:bg-zinc-800 active:bg-zinc-700 "
               >
                 Train
@@ -62,11 +66,10 @@ export const Registration = () => {
           </div>
           <div className="flex h-full w-1/2 items-center p-1 px-2 md:p-4">
             <div
-              type="button"
               onClick={() => {
                 setDriverChoice(true)
               }}
-              className="flex h-full w-full items-center justify-center rounded-2xl bg-zinc-900 font-quicksand text-[clamp(18px,4vw,26px)] text-white hover:bg-zinc-800 active:bg-zinc-700 "
+              className="flex h-full w-full cursor-pointer items-center justify-center rounded-2xl bg-zinc-900 font-quicksand text-[clamp(18px,4vw,26px)] text-white hover:bg-zinc-800 active:bg-zinc-700 "
             >
               Driver
             </div>

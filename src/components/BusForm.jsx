@@ -8,8 +8,6 @@ export const BusForm = () => {
   const user = useContext(authContext)
   const setUser = useContext(setAuthContext)
 
-  const validity = true //simulate validation
-
   const [government, setGovernment] = useState(true)
 
   const [organisationName, setOrganisationName] = useState(
@@ -31,24 +29,22 @@ export const BusForm = () => {
   const checkInput = async () => {
     event.preventDefault()
 
-    if (validity) {
-      let data = new Bus(
-        auth.currentUser.uid,
-        routeNo,
-        numberplate,
-        true,
-        organisationName,
-        desA,
-        desB
-      )
+    let data = new Bus(
+      auth.currentUser.uid,
+      routeNo,
+      numberplate,
+      true,
+      organisationName,
+      desA,
+      desB
+    )
 
-      data.getLocationInformation()
-      console.log(data)
-      await addBusToDatabase(data)
-      updateCurrentUserState(auth.currentUser, setUser).then(() => {
-        console.log(55)
-      })
-    }
+    data.getLocationInformation()
+    console.log(data)
+    await addBusToDatabase(data)
+    updateCurrentUserState(auth.currentUser, setUser).then(() => {
+      console.log(55)
+    })
   }
 
   // useEffect(() => {
@@ -62,7 +58,7 @@ export const BusForm = () => {
       method="get"
       className="relative flex h-[85%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
     >
-      <label className="mb-2" htmlFor="busrouteno">
+      <label className="" htmlFor="busrouteno">
         Route No<span className="font-bold text-red-400">*</span>
       </label>
       <input
@@ -74,11 +70,14 @@ export const BusForm = () => {
         name="busrouteno"
         type="text"
         placeholder="e.g. 101"
-        className={`${!validity.routenoV && "border-red-500"} 
-        mb-4 rounded-md border border-black px-2 leading-loose`}
+        className={` peer/busrouteno
+        mt-2 rounded-md border border-black px-2 leading-loose invalid:border-red-500`}
       />
+      <span className="mt-1 hidden text-sm text-red-500 peer-invalid/busrouteno:block">
+        Route Number should contain only numbers and special characters
+      </span>
 
-      <label className="mb-2" htmlFor="numberplate">
+      <label className="mt-4" htmlFor="numberplate">
         Number Plate<span className="font-bold text-red-400">*</span>
       </label>
       <input
@@ -90,12 +89,14 @@ export const BusForm = () => {
         name="numberplate"
         type="text"
         placeholder="e.g. ND-1986"
-        className={`${
-          !validity.numberplateV && "border-red-500"
-        } mb-4 rounded-md border border-black px-2 leading-loose`}
+        pattern="^.{4,}$"
+        className={`peer/numberplate mt-2 rounded-md border border-black px-2 leading-loose invalid:border-red-500`}
       />
+      <span className="mt-1 hidden text-sm text-red-500 peer-invalid/numberplate:block">
+        Number plate should be atleast 4 characters long
+      </span>
 
-      <div className="mb-2 flex">
+      <div className="mt-4 flex">
         <button
           type="button"
           onClick={() => {
@@ -128,15 +129,20 @@ export const BusForm = () => {
         name="organisation"
         type="text"
         placeholder="Organisation Name"
+        pattern="^.{1,}$"
         value={organisationName}
         onChange={(e) => {
           setOrganisationName(e.target.value)
         }}
-        className={`${!validity.organisationV && "border-red-500"} 
-        mb-3 mt-1 border-b-2 border-black px-2 outline-0`}
+        className={`peer/organisation mb-1
+        mt-3 border-b-2 border-black px-2 outline-0 invalid:border-red-500`}
       />
-      <label className="mb-2" htmlFor="desA">
-        Destination A<span className="font-bold text-red-400">*</span>
+      <span className="mt-1 hidden text-sm text-red-500 peer-invalid/organisation:block">
+        Organisation Name should not be empty
+      </span>
+
+      <label className="mt-4" htmlFor="desA">
+        Destination A
       </label>
       <input
         value={desA}
@@ -148,11 +154,11 @@ export const BusForm = () => {
         type="text"
         placeholder="e.g. Moratuwa"
         className={`
-        mb-4 rounded-md border border-black px-2 leading-loose`}
+        mt-2 rounded-md border border-black px-2 leading-loose`}
       />
 
-      <label className="mb-2" htmlFor="desB">
-        Destination B<span className="font-bold text-red-400">*</span>
+      <label className="mt-4" htmlFor="desB">
+        Destination B
       </label>
       <input
         value={desB}
@@ -164,13 +170,13 @@ export const BusForm = () => {
         type="text"
         placeholder="e.g. Pettah"
         className={`
-        mb-4 rounded-md border border-black px-2 leading-loose`}
+        mt-2 rounded-md border border-black px-2 leading-loose`}
       />
 
       <button
         type="submit"
         className={
-          "btn btn-secondary mt-2 h-auto w-auto bg-green-600 md:absolute md:bottom-5"
+          "btn btn-secondary mt-4 h-auto w-auto bg-green-600 md:absolute md:bottom-5"
         }
       >
         Update Profile

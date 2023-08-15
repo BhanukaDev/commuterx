@@ -36,6 +36,9 @@ export const updateCurrentUserState = async (currentUser, setUser) => {
 export const User = ({ children }) => {
   const [user, setUser] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+
+  console.log(auth?.currentUser)
+
   useEffect(() => {
     onAuthStateChanged(auth, async (currentUser) => {
       setIsLoading(true)

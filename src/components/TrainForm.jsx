@@ -8,8 +8,6 @@ export const TrainForm = () => {
   const user = useContext(authContext)
   const setUser = useContext(setAuthContext)
 
-  const validity = true //just to simulate validation
-
   const [trainID, setTrainID] = useState(
     user?.userData?.trainID ? user?.userData?.trainID : ""
   )
@@ -25,19 +23,18 @@ export const TrainForm = () => {
 
   const checkInput = async () => {
     event.preventDefault()
+    // const formdata = new FormData(e.target)
 
-    if (validity) {
-      let data = new Train(
-        auth.currentUser.uid,
-        trainName,
-        trainID,
-        trainStart,
-        trainStop
-      )
-      await addTrainToDatabase(data)
+    let data = new Train(
+      auth.currentUser.uid,
+      trainName,
+      trainID,
+      trainStart,
+      trainStop
+    )
+    await addTrainToDatabase(data)
 
-      updateCurrentUserState(auth.currentUser, setUser)
-    }
+    updateCurrentUserState(auth.currentUser, setUser)
   }
 
   return (
@@ -47,7 +44,7 @@ export const TrainForm = () => {
       method="get"
       className="relative flex h-[85%] w-full flex-col items-start rounded-b-xl rounded-r-xl bg-white p-5 shadow-upwardsXL"
     >
-      <label className="mb-2" htmlFor="trainID">
+      <label className="" htmlFor="trainID">
         Train No<span className="font-bold text-red-400">*</span>
       </label>
       <input
@@ -59,12 +56,16 @@ export const TrainForm = () => {
         name="trainID"
         type="text"
         placeholder="e.g. 8086"
-        className={`${!validity.trainIDV && "border-red-500"} 
-    mb-4 rounded-md border border-black px-2 leading-loose`}
+        pattern="^[0-9]*$"
+        className={`peer/trainID 
+    mt-2 rounded-md border border-black px-2 leading-loose`}
       />
+      <span className="mt-1 hidden text-sm text-red-500 peer-invalid/trainID:block">
+        Train ID should contain only numbers
+      </span>
 
-      <label className="mb-2" htmlFor="trainName">
-        Train Name<span className="font-bold text-red-400">*</span>
+      <label className="mt-4" htmlFor="trainName">
+        Train Name
       </label>
       <input
         value={trainName}
@@ -74,12 +75,11 @@ export const TrainForm = () => {
         id="trainName"
         name="trainName"
         type="text"
-        placeholder="Ruhunu Kumari"
-        className={`${!validity.trainIDV && "border-red-500"} 
-    mb-4 rounded-md border border-black px-2 leading-loose`}
+        placeholder="e.g. Ruhunu Kumari"
+        className={` mt-2 rounded-md border border-black px-2 leading-loose`}
       />
 
-      <label className="my-2" htmlFor="trainStart">
+      <label className="my-2 mt-6" htmlFor="trainStart">
         Start<span className="font-bold text-red-400">*</span>
         <select
           className="ml-5 rounded-md px-1 py-0.5 outline outline-2"

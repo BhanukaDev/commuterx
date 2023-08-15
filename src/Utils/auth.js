@@ -45,11 +45,11 @@ export const signInWithGoogle = async (navigate) => {
   await signInWithPopup(auth, authProvider)
     .then(async (result) => {
       isNewUser = result._tokenResponse?.isNewUser
+      console.log(result)
 
       if (isNewUser) {
         await addToUniteDB(auth.currentUser.uid, "commuter")
         // await addCommuterToDatabase()
-
         setTimeout(() => {
           setTimeout(navigate, 0, "/registration", { replace: true })
         }, 10)
