@@ -2,7 +2,7 @@ import { AppBar } from "../../components/AppBar"
 import { Hero } from "./Hero"
 import { HomeInformation } from "./HomeInformation"
 
-export const Home = () => {
+export default function Home() {
   return (
     <>
       <AppBar />

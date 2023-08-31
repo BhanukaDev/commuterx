@@ -4,7 +4,7 @@ import { Loading } from "../Loading"
 import { NavBar } from "../../components/NavBar"
 import { SearchBar } from "../../components/SearchBar"
 
-export const MapPage = () => {
+export default function MapPage() {
   const googlemapAPIKey = import.meta.env.VITE_GOOGLEMAP_API_KEY
 
   const { isLoaded } = useLoadScript({
