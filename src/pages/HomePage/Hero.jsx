@@ -2,6 +2,8 @@
 
 import { FaAngleDoubleRight } from "react-icons/fa"
 import { Button } from "../../components/Button"
+import { writeToRDB } from "../../Utils/realtimeDB"
+import { getUID } from "../../Utils/auth"
 export const Hero = () => {
   return (
     <div className="flex h-screen w-full flex-col bg-[url(/bgmobile.jpg)] bg-cover bg-right px-5 pt-16 sm:bg-[url(/bgdesktop.png)] sm:px-[6%]">
@@ -17,6 +19,9 @@ export const Hero = () => {
         buttonStyle={"btn-primary"}
         className={" get-started "}
         linkpath={"/signup"}
+        onClick={() => {
+          writeToRDB(getUID(), "Bhanuka dasa", "Hello How are you guys")
+        }}
       >
         Get Started
         <FaAngleDoubleRight className="ml-2 text-lg" />

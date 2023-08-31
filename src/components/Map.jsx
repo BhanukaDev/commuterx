@@ -11,6 +11,8 @@ import {
 import { RecenterButton } from "./RecenterButton"
 import { getMarkerIcon } from "../Utils/database"
 import { authContext } from "./User"
+import { writeBusPositionToRDB } from "../Utils/realtimeDB"
+import { auth, getUID } from "../Utils/auth"
 // import { RouteBar } from "./RouteBar"
 
 export const Map = () => {
@@ -85,6 +87,33 @@ export const Map = () => {
   }, [])
 
   const onLoad = useCallback((map) => (mapRef.current = map), [])
+
+  ////////// Update RDB If User is a bus //////////
+  function DriverPositionUpdate() {
+    writeBusPositionToRDB(
+      getUID(),
+      coords,
+      user.userData.routeID,
+      user.userData.organisationName
+    )
+    console.log("Position Update")
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (user.userData.role == "bus") {
+        DriverPositionUpdate()
+      }
+    }, 7000)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
+  ////////// Bus Updating Finished //////////
+
+  ////////// Update Commuter's Map with Buses //////////
+
   return (
     <GoogleMap
       zoom={15}
@@ -99,7 +128,7 @@ export const Map = () => {
           updateCenter(!centerChange)
         }}
       />
-      {/* <Marker position={{ lat: 6.795506168321762, lng: 79.8557110778035 }} /> */}
+      <Marker position={{ lat: 6.795506168321762, lng: 79.8557110778035 }} />
     </GoogleMap>
   )
 }
