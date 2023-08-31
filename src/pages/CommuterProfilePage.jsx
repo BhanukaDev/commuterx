@@ -22,21 +22,17 @@ export default function CommuterProfilePage() {
       <div className="flex h-full min-h-screen flex-col bg-white px-[2%] pt-5 font-searchBar md:flex-row md:justify-between md:pl-20">
         <div className="w-full px-2 ">
           <div className="mb-4 flex max-h-52 w-full items-center justify-between rounded-xl px-2 py-4 shadow-upwardsLG ">
-            <figure className="group relative w-32 overflow-hidden rounded-full border-4 border-white">
+            <figure className="group relative h-32 w-32 overflow-hidden rounded-full border-4 border-white">
               <img
                 width={120}
                 referrerPolicy="no-referrer"
-                src={
-                  user?.authData?.photoURL
-                    ? user?.authData?.photoURL
-                    : "/noImage.jpg"
-                }
-                className=""
+                src={user?.authData?.photoURL ? "/lkbus.webp" : "/noImage.jpg"}
+                className="aspect-square h-full"
                 alt="no image"
               />
               <img
                 src="/edit.png"
-                className="absolute left-0 z-10 hidden bg-white opacity-20 group-hover:inline "
+                className="absolute left-0 z-10 hidden h-full w-full bg-white opacity-20 group-hover:inline "
                 alt="edit"
               />
             </figure>
