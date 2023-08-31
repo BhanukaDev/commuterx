@@ -10,7 +10,7 @@ import { Navigate } from "react-router-dom"
 import { CommuterForm } from "../components/CommuterForm"
 import { authContext } from "../components/User"
 
-export const CommuterProfilePage = () => {
+export default function CommuterProfilePage() {
   const user = useContext(authContext)
 
   if (user?.authData?.role !== "commuter") {

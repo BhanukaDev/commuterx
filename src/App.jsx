@@ -1,17 +1,18 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import { MapPage } from "./pages/MapPage/MapPage"
 import { PageNotFound } from "./pages/PageNotFound"
-import SignUp from "./pages/SignUp"
 import { BrowserCheck } from "./components/BrowserCheck"
-import { NotSupport } from "./pages/NotSupport"
-import { Login } from "./pages/Login"
 import { ProtectedRoutes } from "./components/ProtectedRoutes"
-import { Home } from "./pages/HomePage/Home"
-import { DriverProfilePage } from "./pages/DriverProfilePage"
-import { CommuterProfilePage } from "./pages/CommuterProfilePage"
-import { Registration } from "./pages/Registration"
-import { useContext } from "react"
+import { Suspense, lazy, useContext } from "react"
+const Home = lazy(() => import("./pages/HomePage/Home"))
+const SignUp = lazy(() => import("./pages/SignUp"))
+const Login = lazy(() => import("./pages/Login"))
+const MapPage = lazy(() => import("./pages/MapPage/MapPage"))
+const DriverProfilePage = lazy(() => import("./pages/DriverProfilePage"))
+const CommuterProfilePage = lazy(() => import("./pages/CommuterProfilePage"))
+const Registration = lazy(() => import("./pages/Registration"))
+const NotSupport = lazy(() => import("./pages/NotSupport"))
 import { authContext } from "./components/User"
+import { Loading } from "./pages/Loading"
 
 export default function App() {
   const user = useContext(authContext)
@@ -19,38 +20,44 @@ export default function App() {
   return (
     <BrowserRouter>
       <BrowserCheck />
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/busmap" element={<MapPage />} />
-          <Route path="/trainmap" element={<MapPage />} />
-          <Route
-            path="/profile"
-            exact
-            element={
-              user?.userData?.role === "commuter" ? (
-                <Navigate to={"/profile/commuter"} replace />
-              ) : (
-                <Navigate to={"/profile/driver"} replace />
-              )
-            }
-          ></Route>
-          <Route exact path="/profile/driver" element={<DriverProfilePage />} />
-          <Route
-            exact
-            path="/profile/commuter"
-            element={<CommuterProfilePage />}
-          />
-          <Route path="/registration" element={<Registration />} />
-        </Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/busmap" element={<MapPage />} />
+            <Route path="/trainmap" element={<MapPage />} />
+            <Route
+              path="/profile"
+              exact
+              element={
+                user?.userData?.role === "commuter" ? (
+                  <Navigate to={"/profile/commuter"} replace />
+                ) : (
+                  <Navigate to={"/profile/driver"} replace />
+                )
+              }
+            ></Route>
+            <Route
+              exact
+              path="/profile/driver"
+              element={<DriverProfilePage />}
+            />
+            <Route
+              exact
+              path="/profile/commuter"
+              element={<CommuterProfilePage />}
+            />
+            <Route path="/registration" element={<Registration />} />
+          </Route>
 
-        <Route path="*" element={<PageNotFound />} />
-        <Route path="/not-supported" element={<NotSupport />} />
-      </Routes>
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/not-supported" element={<NotSupport />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }

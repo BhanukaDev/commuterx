@@ -4,7 +4,7 @@ import { auth } from "../Utils/auth"
 import { useContext, useState } from "react"
 import { setAuthContext, updateCurrentUserState } from "../components/User"
 
-export const Registration = () => {
+export default function Registration() {
   // const user = useContext(authContext)
   const [driverChoice, setDriverChoice] = useState(false)
   const navigate = useNavigate()

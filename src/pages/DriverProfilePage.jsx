@@ -11,7 +11,7 @@ import { deleteCurrentUser, logOut } from "../Utils/auth"
 import { Navigate } from "react-router-dom"
 import { authContext } from "../components/User"
 
-export const DriverProfilePage = () => {
+export default function DriverProfilePage() {
   const user = useContext(authContext)
   console.log(user?.authData?.role === "commuter")
 

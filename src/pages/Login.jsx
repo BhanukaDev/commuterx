@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc"
 import { signInWithGoogle } from "../Utils/auth"
 import { AppBar } from "../components/AppBar"
 
-export const Login = () => {
+export default function Login() {
   const navigate = useNavigate()
 
   const signUp = () => {
