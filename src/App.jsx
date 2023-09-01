@@ -7,6 +7,7 @@ const Home = lazy(() => import("./pages/HomePage/Home"))
 const SignUp = lazy(() => import("./pages/SignUp"))
 const Login = lazy(() => import("./pages/Login"))
 const MapPage = lazy(() => import("./pages/MapPage/MapPage"))
+//import { MapPage } from "./pages/MapPage/MapPage"
 const DriverProfilePage = lazy(() => import("./pages/DriverProfilePage"))
 const CommuterProfilePage = lazy(() => import("./pages/CommuterProfilePage"))
 const Registration = lazy(() => import("./pages/Registration"))

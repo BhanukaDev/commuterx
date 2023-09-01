@@ -11,11 +11,13 @@ import {
 import { RecenterButton } from "./RecenterButton"
 import { getMarkerIcon } from "../Utils/database"
 import { authContext } from "./User"
-import { writeBusPositionToRDB } from "../Utils/realtimeDB"
-import { auth, getUID } from "../Utils/auth"
-// import { RouteBar } from "./RouteBar"
+import {
+  readBusPositionsFromRDB,
+  writeBusPositionToRDB,
+} from "../Utils/realtimeDB"
+import { getUID } from "../Utils/auth"
 
-export const Map = () => {
+export default function Map() {
   const mapRef = useRef()
   const user = useContext(authContext)
   const mapOption = useMemo(
@@ -99,10 +101,29 @@ export const Map = () => {
     console.log("Position Update")
   }
 
+  function ShowBusesPositions() {
+    readBusPositionsFromRDB()
+      .then((snapshot) => {
+        console.log(snapshot.val().A656NHqTAeSIaratlcbAoTD0m6k1)
+        const snapshotValue = snapshot.val()
+        for (const busId in snapshotValue) {
+          const bus = snapshotValue[busId]
+          console.log(`Bus ID: ${busId}`)
+          console.log(`position: ${bus.position}`)
+          console.log(`routeID: ${bus.routeID}`)
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (user.userData.role == "bus") {
-        DriverPositionUpdate()
+        //DriverPositionUpdate()
+        //console.log(readBusPositionsFromRDB())
+        //ShowBusesPositions()
       }
     }, 7000)
     return () => {
